@@ -18,17 +18,17 @@ import {
 } from 'lucide-react'
 
 // ---------------------------------------------------------------------------
-// Constantes
+// Constants (català)
 // ---------------------------------------------------------------------------
-const CATEGORIAS = ['Todas', 'Teatro', 'Música', 'Infantil', 'Deportes', 'Formación', 'Otros']
+const CATEGORIAS = ['Totes', 'Teatre', 'Música', 'Infantil', 'Esport', 'Formació', 'Altres']
 
 const CAT_META = {
-  Teatro: { icon: Theater, classes: 'bg-rose-100 text-rose-700', dot: 'bg-rose-500' },
+  Teatre: { icon: Theater, classes: 'bg-rose-100 text-rose-700', dot: 'bg-rose-500' },
   Música: { icon: Music, classes: 'bg-violet-100 text-violet-700', dot: 'bg-violet-500' },
   Infantil: { icon: Baby, classes: 'bg-amber-100 text-amber-700', dot: 'bg-amber-500' },
-  Deportes: { icon: Dumbbell, classes: 'bg-emerald-100 text-emerald-700', dot: 'bg-emerald-500' },
-  Formación: { icon: GraduationCap, classes: 'bg-sky-100 text-sky-700', dot: 'bg-sky-500' },
-  Otros: { icon: Sparkles, classes: 'bg-slate-100 text-slate-700', dot: 'bg-slate-500' },
+  Esport: { icon: Dumbbell, classes: 'bg-emerald-100 text-emerald-700', dot: 'bg-emerald-500' },
+  Formació: { icon: GraduationCap, classes: 'bg-sky-100 text-sky-700', dot: 'bg-sky-500' },
+  Altres: { icon: Sparkles, classes: 'bg-slate-100 text-slate-700', dot: 'bg-slate-500' },
 }
 
 const MESES = ['', 'Gen', 'Febr', 'Març', 'Abr', 'Maig', 'Juny', 'Jul', 'Ag', 'Set', 'Oct', 'Nov', 'Des']
@@ -40,7 +40,7 @@ function fmtFecha(iso) {
 }
 
 // ---------------------------------------------------------------------------
-// Hook: detección nativa del SDK de Telegram
+// Hook: detecció nativa del SDK de Telegram
 // ---------------------------------------------------------------------------
 function useTelegram() {
   const [tg, setTg] = useState(null)
@@ -49,11 +49,11 @@ function useTelegram() {
     if (webapp) {
       try {
         webapp.ready?.()
-        webapp.expand?.() // se integra como Mini App a pantalla completa
+        webapp.expand?.() // es integra com a Mini App a pantalla completa
         webapp.setHeaderColor?.('#1a5fd0')
         webapp.setBackgroundColor?.('#f4f6fb')
       } catch (e) {
-        /* no crítico */
+        /* no crític */
       }
       setTg(webapp)
     }
@@ -62,7 +62,7 @@ function useTelegram() {
 }
 
 // ---------------------------------------------------------------------------
-// Componentes de UI
+// Components d'UI
 // ---------------------------------------------------------------------------
 function Header({ municipio, mes, search, setSearch }) {
   return (
@@ -99,7 +99,7 @@ function Header({ municipio, mes, search, setSearch }) {
   )
 }
 
-function Filtros({ activa, setActiva }) {
+function Filtres({ activa, setActiva }) {
   return (
     <div className="sticky top-[104px] z-10 -mx-4 flex gap-2 overflow-x-auto px-4 py-2 scroll-area bg-[#f4f6fb]/95 backdrop-blur">
       {CATEGORIAS.map((c) => {
@@ -140,7 +140,7 @@ function SponsorBanner() {
             Patrocinador · On menjar
           </p>
           <p className="truncate text-sm font-bold text-slate-800">
-            ¿Dónde cenar este fin de semana?
+            On sopar aquest cap de setmana?
           </p>
           <p className="truncate text-xs text-slate-500">
             Descobreix els restaurants del poble · Espai B2B
@@ -153,7 +153,7 @@ function SponsorBanner() {
 }
 
 function EventCard({ ev, onOpen }) {
-  const meta = CAT_META[ev.categoria] || CAT_META.Otros
+  const meta = CAT_META[ev.categoria] || CAT_META.Altres
   const Icon = meta.icon
   const f = fmtFecha(ev.fecha_inicio)
   const hora = ev.hora_inicio
@@ -161,9 +161,9 @@ function EventCard({ ev, onOpen }) {
       ? `${ev.hora_inicio} – ${ev.hora_fin}`
       : `A les ${ev.hora_inicio}`
     : ''
-  const precio = ev.precio_general
+  const preu = ev.precio_general
     ? ev.precio_socios
-      ? `Soci: ${ev.precio_socios} · General: ${ev.precio_general}`
+      ? `Socis: ${ev.precio_socios} · General: ${ev.precio_general}`
       : `${ev.precio_general}`
     : ev.precio_socios
     ? ev.precio_socios
@@ -172,7 +172,7 @@ function EventCard({ ev, onOpen }) {
   return (
     <article className="overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-slate-100">
       <div className="flex">
-        {/* fecha */}
+        {/* data */}
         <div className="flex w-14 shrink-0 flex-col items-center justify-center bg-brand-50 py-3 text-brand-700">
           <span className="text-xl font-extrabold leading-none">{f.dia}</span>
           <span className="text-[11px] font-semibold uppercase">{f.mes}</span>
@@ -211,7 +211,7 @@ function EventCard({ ev, onOpen }) {
               <MapPinned className="h-3.5 w-3.5" /> Maps
             </a>
           </div>
-          <p className="mt-1.5 text-[11px] font-medium text-slate-400">{precio}</p>
+          <p className="mt-1.5 text-[11px] font-medium text-slate-400">{preu}</p>
         </div>
       </div>
     </article>
@@ -219,11 +219,11 @@ function EventCard({ ev, onOpen }) {
 }
 
 function EventModal({ ev, onClose }) {
-  const meta = CAT_META[ev.categoria] || CAT_META.Otros
+  const meta = CAT_META[ev.categoria] || CAT_META.Altres
   const Icon = meta.icon
   const fh = fmtFecha(ev.fecha_fin && ev.fecha_fin !== ev.fecha_inicio ? ev.fecha_fin : null)
   const fi = fmtFecha(ev.fecha_inicio)
-  const rango =
+  const rang =
     fh && fh.dia
       ? `${fi.dia} ${fi.mes} – ${fh.dia} ${fh.mes} ${fi.any}`
       : `${fi.dia} ${fi.mes} ${fi.any}`
@@ -247,7 +247,7 @@ function EventModal({ ev, onClose }) {
           <div className="mt-3 space-y-2 text-sm text-slate-600">
             <div className="flex items-center gap-2">
               <CalendarDays className="h-4 w-4 text-brand-600" />
-              <span>{rango}</span>
+              <span>{rang}</span>
             </div>
             {ev.hora_inicio && (
               <div className="flex items-center gap-2">
@@ -265,7 +265,11 @@ function EventModal({ ev, onClose }) {
               <div className="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">
                 {ev.precio_socios && <div>Socis: {ev.precio_socios}</div>}
                 {ev.precio_general && <div>General: {ev.precio_general}</div>}
-                {!ev.precio_socios && !ev.precio_general && <div>Entrada lliure</div>}
+              </div>
+            )}
+            {!ev.precio_general && !ev.precio_socios && (
+              <div className="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">
+                Entrada lliure
               </div>
             )}
           </div>
@@ -279,7 +283,7 @@ function EventModal({ ev, onClose }) {
               rel="noopener noreferrer"
               className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
             >
-              <MapPinned className="h-4 w-4" /> Obrir en Google Maps
+              <MapPinned className="h-4 w-4" /> Obre a Google Maps
             </a>
             <button
               onClick={onClose}
@@ -302,8 +306,8 @@ export default function App() {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [search, setSearch] = useState('')
-  const [cat, setCat] = useState('Todas')
-  const [abierto, setAbierto] = useState(null)
+  const [cat, setCat] = useState('Totes')
+  const [obert, setObert] = useState(null)
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/eventos.json`, { cache: 'no-store' })
@@ -315,12 +319,12 @@ export default function App() {
       .catch((e) => setError(String(e)))
   }, [])
 
-  const eventos = data?.eventos || []
+  const events = data?.eventos || []
 
-  const filtrados = useMemo(() => {
+  const filtrats = useMemo(() => {
     const q = search.trim().toLowerCase()
-    return eventos
-      .filter((e) => (cat === 'Todas' ? true : e.categoria === cat))
+    return events
+      .filter((e) => (cat === 'Totes' ? true : e.categoria === cat))
       .filter((e) => {
         if (!q) return true
         return (
@@ -331,13 +335,13 @@ export default function App() {
         )
       })
       .sort((a, b) => (a.fecha_inicio + (a.hora_inicio || '')).localeCompare(b.fecha_inicio + (b.hora_inicio || '')))
-  }, [eventos, search, cat])
+  }, [events, search, cat])
 
   return (
     <div className="mx-auto flex min-h-full max-w-md flex-col bg-[#f4f6fb]">
       <Header municipio={data?.municipio || 'i els Monjos'} mes={data?.mes || 'Setembre 2026'} search={search} setSearch={setSearch} />
       <div className="px-4">
-        <Filtros activa={cat} setActiva={setCat} />
+        <Filtres activa={cat} setActiva={setCat} />
       </div>
 
       <main className="flex-1 space-y-3 px-4 pb-6 pt-1">
@@ -353,24 +357,24 @@ export default function App() {
           <div className="py-10 text-center text-sm text-slate-400">Carregant agenda…</div>
         )}
 
-        {data && filtrados.length === 0 && (
+        {data && filtrats.length === 0 && (
           <div className="py-10 text-center text-sm text-slate-400">
             Cap activitat coincideix amb la cerca.
           </div>
         )}
 
-        {filtrados.map((ev, i) => (
-          <EventCard key={ev.id || i} ev={ev} onOpen={setAbierto} />
+        {filtats.map((ev, i) => (
+          <EventCard key={ev.id || i} ev={ev} onOpen={setObert} />
         ))}
 
-        {data && filtrados.length > 0 && (
+        {data && filtrats.length > 0 && (
           <p className="pt-1 text-center text-xs text-slate-400">
-            {filtrados.length} activitat{filtrados.length !== 1 ? 's' : ''} · font: web municipal
+            {filtrats.length} activitat{filtrats.length !== 1 ? 's' : ''} · font: web municipal
           </p>
         )}
       </main>
 
-      {abierto && <EventModal ev={abierto} onClose={() => setAbierto(null)} />}
+      {obert && <EventModal ev={obert} onClose={() => setObert(null)} />}
     </div>
   )
 }
