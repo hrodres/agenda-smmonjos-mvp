@@ -34,8 +34,13 @@ scripts/
   per canviar de mes; cada agenda baixa el seu propi PDF.
 - Pestanyes (dinàmiques, derivades del JSON, no hardcodejades): `Agenda` (Actes),
   `Formació`, `Esport`, `Notícies`, `Telèfons`.
+- **Capçalera:** el **icono de calendari** (esquerra del títol) obre un popup discret per
+  canviar de mes; el **icono "i" d'informació** (dreta del títol) obre un banner gris amb
+  l'avís de generació (IA + PDF oficial + descàrrec de responsabilitat) que s'auto-oculta.
 - Cerca i filtre per dia actuen **dins de la categoria activa**. La targeta obre el detall
-  amb un sol toc; `Maps` només al detall. Camps buits no es mostren.
+  amb un sol toc; `Maps` (blau) i `Compartir` (verd) només al detall. Camps buits no es mostren.
+- **Esport** s'agrupa només per `subcategoria` (**Joves i Infants** / **Persones Adultes**),
+  sense subsegments per curs. `Formació` manté subagrupacions.
 
 ## Dades
 
@@ -44,13 +49,17 @@ Cada esdeveniment (esquema comú a totes les agendes):
 `id, seccio, categoria, subcategoria, subsubcategoria, titulo, descripcion, lugar,
 fecha_inicio, fecha_fin, hora_inicio, hora_fin, grup, enlace_maps, contactes`
 
+> `subsubcategoria` **no s'usa a Esports** (només `subcategoria` Joves/Adults). En altres
+> seccions pot existir segons el PDF d'origen.
+
 Contactes (pestanya Telèfons): `nom, telefon, email, nota, web, grup`.
 
 **Badges de categoria:** el color s'aplica **inline** (`style="background:…;color:…"`) per
 garantir visibilitat independent del CSS. Categories amb color definit: `Teatre, Música,
 Infantil, Esport, Formació, Cultura, Festes, Gastronomia, Mercats, Serveis` (+ fallback
-gris `Altres` si en falta). Els esdeveniments **sense data** apareixen com a "Avís" a
-Notícies.
+gris `Altres` si en falta). Icones de pestanya: Agenda=calendari, Formació=graduació,
+Esport=trofeu, Notícies=periòdic, Telèfons=telèfon. Els esdeveniments **sense data**
+apareixen com a "Avís" a Notícies.
 
 **Regles de manteniment (projecte):**
 - **Mai "Altres" com a agrupació.** Si un element no encaixa en una subcategoria real,
@@ -75,8 +84,14 @@ per dia + Festa Major). Per tant no hi ha un sol extractor perfecte; el camí re
 Després: afegeix l'entrada a `data/agendas.json` (l'última de la llista és la que carrega
 per defecte) i fes `git push`.
 
+**Font oficial:** les agendes en PDF es publiquen a la **web municipal** a
+https://www.santamargaridaielsmonjos.cat/actualitat/publicacions-locals/agenda-municipal
+(el banner d'informació de la capçalera hi enllaça a la web). Els JSON es generen a
+partir d'aquests PDF.
+
 **Seguretat de dades:** `ingest.py` fa backup (`.bak`) abans de sobreescriure i **no
-destrueix** l'arxiu existent si falla.
+destrueix** l'arxiu existent si falla. (Els `.bak` són artefactes locals i **no es
+versionen**.)
 
 ## Desplegament
 

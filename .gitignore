@@ -22,3 +22,6 @@ agenda.pdf
 .DS_Store
 .idea/
 .vscode/
+
+# Backups locals del pipeline
+*.bak
