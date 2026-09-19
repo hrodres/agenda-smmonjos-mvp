@@ -358,7 +358,10 @@
       "hora_inicio": "21:00",
       "hora_fin": null,
       "lugar": "Societat La Margaridoia",
-      "categoria": "Gastronomia",
+      "categoria": [
+        "Gastronomia",
+        "Música"
+      ],
       "seccio": "Actes",
       "precio_socios": null,
       "precio_general": null,
@@ -1309,7 +1312,10 @@
       "hora_inicio": null,
       "hora_fin": null,
       "lugar": null,
-      "categoria": "Formació",
+      "categoria": [
+        "Formació",
+        "Cultura"
+      ],
       "descripcion": "El Servei d'Igualtat posarà en marxa a partir del mes d'octubre el taller de teatre La teva veu importa, una proposta adreçada a dones que es durà a terme els dimarts al matí. A través del teatre i l'expressió corporal, el taller oferirà un espai de reflexió sobre els rols de gènere, les cures i les desigualtats. Les inscripcions es formalitzen enviant un correu a igualtat@smmonjos.cat.",
       "enlace_maps": null,
       "precio_socios": null,
