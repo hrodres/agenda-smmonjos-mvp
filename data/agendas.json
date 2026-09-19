@@ -14,7 +14,7 @@
       "file": "agenda-juliol-agost-2026.json",
       "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9749/AGENDA%20Juliol-Agost%2026_web.pdf",
       "default": false,
-      "fuente": "extraccio heuristica parcial (sense LLM: PDF de Festa Major, layout irregular)"
+      "fuente": "extraccio completa (LLM deepseek-v4-pro via subagent OpenClaw, 128 events)"
     }
   ],
   "default": "setembre-2026"
