@@ -1094,7 +1094,7 @@
     },
     {
       "id": "evt-20260907-gimnastica-manteniment",
-      "titulo": "Gimnàstica de manteniment",
+      "titulo": "Gimnàstica de manteniment (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1110,7 +1110,7 @@
     },
     {
       "id": "evt-20260907-gimnastica-terapeutica",
-      "titulo": "Gimnàstica terapèutica i salut",
+      "titulo": "Gimnàstica terapèutica i salut (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1126,7 +1126,7 @@
     },
     {
       "id": "evt-20260907-marxes-nordiques",
-      "titulo": "Marxes nòrdiques",
+      "titulo": "Marxes nòrdiques (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1142,7 +1142,7 @@
     },
     {
       "id": "evt-20260907-qi-jong",
-      "titulo": "Qi Jong",
+      "titulo": "Qi Jong (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1158,7 +1158,7 @@
     },
     {
       "id": "evt-20260907-ioga",
-      "titulo": "Ioga",
+      "titulo": "Ioga (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1174,7 +1174,7 @@
     },
     {
       "id": "evt-20260907-pilates",
-      "titulo": "Pilates",
+      "titulo": "Pilates (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1190,7 +1190,7 @@
     },
     {
       "id": "evt-20260907-futbol-sala-adults",
-      "titulo": "Futbol sala",
+      "titulo": "Futbol sala (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1202,11 +1202,11 @@
       "precio_general": null,
       "descripcion": "Futbol sala per a adults. Dilluns i dijous de 17 h a 18 h. Escola Sant Domènec. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-mini-volei-adults",
-      "titulo": "Mini vòlei",
+      "titulo": "Mini vòlei (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1218,11 +1218,11 @@
       "precio_general": null,
       "descripcion": "Mini vòlei per a adults. Dimarts i dijous de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-padel-adults",
-      "titulo": "Iniciació al pàdel",
+      "titulo": "Iniciació al pàdel (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1234,11 +1234,11 @@
       "precio_general": null,
       "descripcion": "Iniciació al pàdel per a adults. Divendres de 18 h a 19 h. Pavelló municipal. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-hoquei-adults",
-      "titulo": "Hoquei",
+      "titulo": "Hoquei (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1250,11 +1250,11 @@
       "precio_general": null,
       "descripcion": "Hoquei per a adults. Dilluns o dijous de 17 h a 18 h. Pista poliesportiva municipal. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pista%20poliesportiva%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-balls-moderns-adults",
-      "titulo": "Balls moderns",
+      "titulo": "Balls moderns (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1266,11 +1266,11 @@
       "precio_general": null,
       "descripcion": "Balls moderns per a adults. Divendres de 19 h a 20 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-lets-dance-adults",
-      "titulo": "Let's dance",
+      "titulo": "Let's dance (adults)",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1282,7 +1282,7 @@
       "precio_general": null,
       "descripcion": "Let's dance per a adults. Divendres de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Joves i Infants"
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "N1",
