@@ -17,7 +17,7 @@
   .tabbar button { flex: 1; background: none; border: none; padding: 8px 2px 6px; font-size: 11px; font-weight: 600; color: #64748b; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
   .tabbar button.active { color: #1a5fd0; }
   .tabbar svg { width: 22px; height: 22px; }
-  .disclaimer { position: fixed; left: 0; right: 0; bottom: calc(54px + env(safe-area-inset-bottom, 0px)); z-index: 59; background: #f4f6fb; border-top: 1px solid #e2e8f0; padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px)); text-align: center; font-size: 10px; line-height: 1.4; color: #64748b; }
+  .disclaimer { margin: 16px 0 60px; text-align: center; font-size: 10px; line-height: 1.4; color: #64748b; }
   .contact { display: flex; align-items: center; gap-3; background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(15,23,42,.08); }
   .contact .ico { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #e0ecff; color: #1a5fd0; display: flex; align-items: center; justify-content: center; }
   .contact a { font-weight: 700; color: #0f172a; text-decoration: none; }
@@ -29,7 +29,6 @@
   <div id="header"></div>
   <main class="flex-1 space-y-3 px-4 pb-6 pt-1" id="main"></main>
 </div>
-<div class="disclaimer">Agenda generada a partir del PDF oficial de l'Ajuntament. Per a la informació oficial, consulta la <a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" style="color:#1a5fd0;font-weight:600">web municipal ↗</a>. L'organitzador de cada activitat n'és el responsable.</div>
 <div id="tabbar" class="tabbar"></div>
 <div id="modal-root"></div>
 
@@ -213,6 +212,7 @@
   function renderMain(){
     var m = document.getElementById('main');
     if(!state.data){ m.innerHTML='<div class="py-10 text-center text-sm text-slate-400">Carregant…</div>'; return; }
+    var DISC = '<div class="disclaimer">Agenda generada a partir del PDF oficial de l\'Ajuntament. Per a la informació oficial, consulta la <a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" style="color:#1a5fd0;font-weight:600">web municipal ↗</a>. L\'organitzador de cada activitat n\'és el responsable.</div>';
     if(state.tab==='telefons'){
       var c = state.data.contactes||[];
       var q = state.q.trim().toLowerCase();
@@ -236,6 +236,7 @@
         });
       });
       html += '<a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" class="block mt-2 rounded-2xl bg-white px-4 py-3 text-center text-sm font-semibold text-brand-600 shadow-card">Web municipal ↗</a>';
+      html += DISC;
       m.innerHTML = html;
       return;
     }
@@ -268,6 +269,7 @@
       evs.forEach(function(e){ html += card(e); });
     }
     html += '<p class="pt-1 text-center text-xs text-slate-400">'+evs.length+' activitat'+(evs.length!==1?'s':'')+'</p>';
+    html += DISC;
     m.innerHTML = html;
     Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){
       b.onclick = function(){ state.obert = evs.filter(function(e){return e.id===b.getAttribute('data-open');})[0]; renderModal(); };
