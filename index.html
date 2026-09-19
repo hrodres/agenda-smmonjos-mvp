@@ -273,7 +273,7 @@
       evs.forEach(function(e){ html += card(e); });
     }
     html += '<p class="pt-1 text-center text-xs text-slate-400">'+evs.length+' activitat'+(evs.length!==1?'s':'')+'</p>';
-    html += '<div class="disclaimer">Agenda generada a partir del PDF oficial de l\'Ajuntament. Per a la informació oficial, consulta la <a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" style="color:#1a5fd0;font-weight:600">web municipal ↗</a>. L\'organitzador de cada activitat n\'és el responsable.</div>';
+    html += '<div style="height:12px"></div>';
     m.innerHTML = html;
     Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){
       b.onclick = function(){ state.obert = evs.filter(function(e){return e.id===b.getAttribute('data-open');})[0]; renderModal(); };
