@@ -52,7 +52,7 @@ PDF_URL = os.environ.get(
 MUNICIPIO = "Santa Margarida i els Monjos"
 MES = os.environ.get("AGENDA_MES", "Setembre 2026")
 # Ruta REAL que serveix el lloc (arrel del repo /data/eventos.json)
-OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "eventos.json")
+OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "eventos.json")
 
 # "Best Model Selection": ranking de modelos de opencode-go, de mayor a menor
 # capacidad para interpretar maquetacion en columnas y estructurar eventos en

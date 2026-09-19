@@ -1,89 +1,90 @@
-# Agenda SMMonjos — Setembre 2026
+# Agenda SMMonjos — web estàtica multi-mes
 
-Agenda interactiva *mobile-first* de **Santa Margarida i els Monjos** servida com a web
-estàtica a GitHub Pages, preparada per funcionar també com a **Telegram Mini App** sense
+Agenda interactiva *mobile-first* de **Santa Margarida i els Monjos**, servida com a web
+estàtica a GitHub Pages. Suporta **diversos mesos** (una agenda per mes, seleccionable
+des del propi lloc) i està preparada per funcionar també com a **Telegram Mini App** sense
 canviar el codi.
 
 🌐 https://hrodres.github.io/agenda-smmonjos-mvp/
 
-## Com funciona
+## Estructura del repo
 
-És un lloc estàtic **autònom** (no cal compilar):
+```
+index.html                      # app (HTML + JS, icones Lucide inline). És el lloc.
+styles.css                      # Tailwind COMPILAT que usa index.html (definició real de
+                                #   bg-brand-600, flex, rounded-xl, colors de badge…). VIU.
+data/
+  agendas.json                  # MANIFEST: llista d'agendes + default (l'última de la llista)
+  agenda-setembre-2026.json     # 88 esdeveniments (agenda per defecte)
+  agenda-juliol-agost-2026.json # 128 esdeveniments (Festa Major + campus)
+  eventos.json                  # FALLBACK (còpia de setembre) si falla agendas.json
+scripts/
+  ingest.py                     # pipeline LLM (opencode-go / deepseek-v4-pro) -> JSON d'agenda
+  extract_pdf_dates.py          # extractor heurístic (sense clau) com a fallback
+```
 
-- `index.html` — app (HTML + JS, icones Lucide inline)
-- `styles.css` — estils (inclou els colors de badge de categoria)
-- `data/eventos.json` — base de dades dels esdeveniments
+> El lloc **no necessita compilar**: s'obre directament al navegador. No cal `npm install`
+> ni `npm run build`. (`node_modules/`, `dist/`, `src/`, configs Vite/React foren el MVP
+> inicial i **s'han eliminat**; el codi en producció és aquest estàtic autònom.)
 
-S'obre directament al navegador; no cal `npm install` ni `npm run build`.
+## Com funciona (render)
+
+- `index.html` carrega `data/agendas.json` i mostra **l'última agenda del manifest** per
+  defecte (ara: Setembre 2026). El **icono de calendari del títol** obre un popup discret
+  per canviar de mes; cada agenda baixa el seu propi PDF.
+- Pestanyes (dinàmiques, derivades del JSON, no hardcodejades): `Agenda` (Actes),
+  `Formació`, `Esport`, `Notícies`, `Telèfons`.
+- Cerca i filtre per dia actuen **dins de la categoria activa**. La targeta obre el detall
+  amb un sol toc; `Maps` només al detall. Camps buits no es mostren.
+
+## Dades
+
+Cada esdeveniment (esquema comú a totes les agendes):
+
+`id, seccio, categoria, subcategoria, subsubcategoria, titulo, descripcion, lugar,
+fecha_inicio, fecha_fin, hora_inicio, hora_fin, grup, enlace_maps, contactes`
+
+Contactes (pestanya Telèfons): `nom, telefon, email, nota, web, grup`.
+
+**Badges de categoria:** el color s'aplica **inline** (`style="background:…;color:…"`) per
+garantir visibilitat independent del CSS. Categories amb color definit: `Teatre, Música,
+Infantil, Esport, Formació, Cultura, Festes, Gastronomia, Mercats, Serveis` (+ fallback
+gris `Altres` si en falta). Els esdeveniments **sense data** apareixen com a "Avís" a
+Notícies.
+
+**Regles de manteniment (projecte):**
+- **Mai "Altres" com a agrupació.** Si un element no encaixa en una subcategoria real,
+  `null` i es llista directe sota el grup pare.
+- **Month-agnostic:** el codi no coneix noms concrets de grups/categories; el render els
+  deriva del propi JSON. Regenerar el JSON d'un altre mes no requereix tocar `index.html`.
+
+## Afegir / regenerar un mes
+
+El PDF de cada mes té **layout diferent** (setembre = seccions; juliol-agost = calendari
+per dia + Festa Major). Per tant no hi ha un sol extractor perfecte; el camí recomanat:
+
+1. **Via OpenClaw (recomanat):** delegar a un subagent amb `deepseek-v4-pro` que llegeixi
+   el PDF i escrigui `data/agenda-<mes>.json` seguint l'esquema de
+   `agenda-setembre-2026.json`. (El script sol contra `opencode.ai` rep **403 de Cloudflare**
+   perquè no porta la sessió legítima d'opencode; dins OpenClaw sí funciona.)
+2. **Via script (si tens la clau i sessió):** `python3 scripts/ingest.py --out
+   data/agenda-<mes>.json --pdf-url <URL> --mes "<Mes Any>"` (necessita
+   `OPENCODE_API_KEY`). `scripts/extract_pdf_dates.py` és l'extractor heurístic sense clau
+   (útil només per PDFs senzills; per Festa Major és incomplet).
+
+Després: afegeix l'entrada a `data/agendas.json` (l'última de la llista és la que carrega
+per defecte) i fes `git push`.
+
+**Seguretat de dades:** `ingest.py` fa backup (`.bak`) abans de sobreescriure i **no
+destrueix** l'arxiu existent si falla.
 
 ## Desplegament
 
 GitHub Pages amb **Source: Deploy from a branch → `main`** (arrel). Qualsevol `git push`
-a `main` publica el lloc. Abans s'usava la branca `gh-pages`, ja eliminada.
-
-## Dades
-
-`data/eventos.json` és la base de dades. Cada esdeveniment:
-
-`id, titulo, fecha_inicio, fecha_fin, hora_inicio, hora_fin, lugar, categoria, seccio,
-precio_socios, precio_general, descripcion, enlace_maps`
-
-**Categories** (badge de color): `Teatre, Música, Infantil, Esport, Formació, Altres,
-Cultura, Festes, Gastronomia`. El color del badge s'aplica **inline**
-(`style="background:…;color:…"`) per garantir que es veu sempre, independent del CSS extern.
-
-**Seccions** (pestanyes): `Actes, Formació, Esports, Notícies`. Els esdeveniments sense data
-apareixen com a "Avís" dins de Notícies.
-
-**Contactes** (`contactes`, pestanya Telèfons): `nom, telefon, email, nota, web, grup`.
-El camp `grup` agrupa els telèfons igual que al PDF oficial (setembre 2026: `Serveis
-Municipals`, `Altres Serveis`, `Grups Municipals`). **El render de la pestanya deriva els
-grups del propi JSON** (no estan hardcodejats), així que si un altre mes el PDF trau grups
-nous, es mostren sols sense tocar el codi. En regenerar el JSON de cap altre mes, cal
-assignar `grup` a cada contacte; qui no en tingui cau a `Altres Serveis`.
-
-**Formació — estructura dinàmica (clau per al manteniment mensual).** Els esdeveniments de
-la secció `Formació` porten `subcategoria` (i, opcionalment, `subsubcategoria`) que repliquen
-les sub-capçaleres del PDF (setembre 2026: `Servei Local d'Ocupació`, `Cursos i Activitats`
-→ `Manualitats de Dona al Dia` / `Tallers als Casals de la Gent Gran`, `Cant Coral`, `Escola
-d'Adults Fina Garcia Mateu`, `Pla Educatiu d'Entorn`). **El render agrupa per aquests camps
-sense assumir cap nom concret**: les agrupacions es deriven del propi JSON, amb `Altres` només
-com a valor per defecte si falta el camp. **Regla de manteniment: el lloc ha de funcionar mes a
-mes independentment de les categories/subcategories que porti la formació en cada PDF.** Per tant,
-en regenerar el JSON d'un altre mes, cal assignar `subcategoria`/`subsubcategoria` a cada curs
-segons el PDF d'aquell mes; el codi no necessita canvis encara que les agrupacions canviïn.
-
-## Editar dades
-
-Edita `data/eventos.json` i fes `git push`. La extracció inicial es va curar manualment
-perquè la sortida automàtica (opencode-go) sortia amb basura en `lugar`/`horario`.
-
-### Regeneració mensual automàtica (pipeline)
-
-`legacy/scripts/ingest.py` regenera `data/eventos.json` a partir del PDF oficial de
-QUALSEVOL mes, **sense edició manual**. És *month-agnostic*: el codi no coneix noms
-concrets de grups/categories; el LLM deriva `seccio`/`subcategoria`/`subsubcategoria`
-i `contactes`+`grup` del propi PDF, i el render del lloc (dinàmic) els mostra sols.
-
-```bash
-# necessita OPENCODE_API_KEY (model ranking: gpt-5.6-luna > deepseek-v4-pro > hy3)
-python3 legacy/scripts/ingest.py            # desa a data/eventos.json (amb backup .bak)
-python3 legacy/scripts/ingest.py --pdf-url <URL> --mes "Octubre 2026"
-python3 legacy/scripts/ingest.py --force-seed   # només si no existeix l'arxiu
-```
-
-**Seguretat de dades:** abans de sobreescriure es fa backup (`.bak` amb data); si el
-LLM falla o no hi ha clau, **no es destrueix** l'arxiu existent. Mai s'usa `Altres`
-com a agrupació (els elements sense grup es llisten directament sota el grup pare).
+a `main` publica. No s'usa GitHub Actions (el workflow de `legacy/` s'ha eliminat).
+Cache de Pages `max-age=600`: el lloc trenca la memòria cau amb `?v=N` a la URL.
 
 ## Telegram Mini App
 
-`index.html` detecta `window.Telegram?.WebApp`: si existeix, crida `ready()`/`expand()` per
-integrar-se a pantalla completa; si no, es renderitza com a web estàndard. El mateix codi
-serveix per a tots dos destins.
-
-## Històric
-
-El MVP original era en React/Vite (`legacy/`). La versió en producció és aquesta estàtica
-autònoma, resultat d'iterar la UI per a mòbil (cercador, botó PDF, vista de calendari per
-dies, targeta que obre el detall amb un sol toc, badges de categoria amb color).
+`index.html` detecta `window.Telegram?.WebApp`: si existeix crida `ready()`/`expand()`;
+si no, es renderitza com a web estàndard. El mateix codi serveix per a tots dos destins.
