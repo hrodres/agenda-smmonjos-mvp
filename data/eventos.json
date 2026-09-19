@@ -702,7 +702,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació a l'hoquei per a I4 i I5. Dilluns o dijous de 17 h a 18 h. Pista poliesportiva municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pista%20poliesportiva%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pista%20poliesportiva%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "I4 i I5",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-psicomotricitat",
@@ -717,7 +719,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Psicomotricitat. Dimarts de 16.30 h a 18 h. Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-psicomotricitat-arrels",
@@ -732,7 +735,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Psicomotricitat. Divendres de 16.30 h a 18 h. Escola Arrels. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Arrels%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Arrels%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-gimnastica-ritmica-i",
@@ -747,7 +751,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica rítmica. Dilluns i dimecres de 17 h a 18 h. Gimnàs municipal; divendres de 16.30 h a 18.30 h a l'Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-karate-inf",
@@ -762,7 +767,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al karate per a infants. Divendres de 17 h a 18 h. Gimnàs municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-patinatge-inf",
@@ -777,7 +783,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al patinatge. Dilluns de 17 h a 18 h. Pavelló municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-iniciacio-esport",
@@ -792,7 +799,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació a l'esport per a 1r i 2n de primària. Dilluns de 16.30 h a 18 h a l'Escola Doctor Samaranch; dijous de 16.30 h a 18 h a l'Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Doctor%20Samaranch%20/%20Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Doctor%20Samaranch%20/%20Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "1r i 2n de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-gimnastica-ritmica-prim",
@@ -807,7 +816,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica rítmica. Dilluns i dimecres de 18 h a 19 h al gimnàs municipal; divendres de 16.30 h a 18.30 h a l'Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-karate-5e6e",
@@ -822,7 +833,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al karate per a 5è i 6è de primària. Divendres de 17 h a 18 h. Gimnàs municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-patinatge-5e6e",
@@ -837,7 +850,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al patinatge. Dilluns de 17 h a 18 h. Pavelló municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-mini-volei-prim",
@@ -852,7 +867,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini vòlei. Dimarts de 17 h a 18 h. Gimnàs institut El Foix. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-mini-basquet-prim",
@@ -867,7 +884,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini bàsquet. Dijous de 16.30 h a 18 h. Escola Doctor Samaranch. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Doctor%20Samaranch%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Doctor%20Samaranch%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-padel-prim",
@@ -882,7 +901,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al pàdel. Divendres de 18 h a 19 h. Pavelló municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-lets-dance-prim",
@@ -897,7 +918,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Let's dance. Divendres de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "5è i 6è de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-gimnastica-ritmica-3i4eso",
@@ -912,7 +935,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica rítmica. Dilluns i dimecres de 19 h a 20 h. Gimnàs municipal; divendres de 16.30 h a 18.30 h a l'Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "3r i 4t de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-karate-3i4eso",
@@ -927,7 +952,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al karate. Divendres de 18 h a 19 h. Gimnàs municipal. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "1r i 2n d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-futbol-sala-inf1",
@@ -942,7 +969,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Futbol sala. Dilluns i dijous de 17 h a 18 h. Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "1r i 2n de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-futbol-sala-inf2",
@@ -957,7 +986,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Futbol sala. Dilluns i dijous de 17 h a 18 h. Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "3r i 4t de primària",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-futbol-sala-es",
@@ -972,7 +1003,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Futbol sala. Dilluns i dijous de 18 h a 19 h. Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "1r i 2n d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-futbol-sala-3i4",
@@ -987,7 +1020,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Futbol sala. Dilluns i dijous de 18 h a 19 h. Escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "3r i 4t d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-mini-volei-3i4eso",
@@ -1002,7 +1037,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini vòlei. Dimarts i dijous de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "3r i 4t d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-mini-volei-1i2eso",
@@ -1017,7 +1054,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini vòlei. Dimarts i dijous de 17 h a 18 h. Gimnàs institut El Foix. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "1r i 2n d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-mini-basquet-eso",
@@ -1032,7 +1071,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini bàsquet. Dilluns de 17 h a 18 h a l'Escola Arrels; dimecres de 17 h a 18 h al gimnàs institut El Foix; i dimarts i dijous de 19 h a 20 h al gimnàs escola Sant Domènec. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Arrels%20/%20Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Arrels%20/%20Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260914-balls-moderns-3i4",
@@ -1047,7 +1088,9 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Balls moderns. Divendres de 19 h a 20 h. Gimnàs institut El Foix. Inscripcions a partir del 14 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subsubcategoria": "3r i 4t d'ESO",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-gimnastica-manteniment",
@@ -1062,7 +1105,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica de manteniment. Dilluns i dimecres de 19.15 h a 20.15 h. Gimnàs escola Sant Domènec. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-gimnastica-terapeutica",
@@ -1077,7 +1121,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica terapèutica i salut. Dilluns i dimecres de 16 h a 17 h, i dimarts i dijous de 9.15 h a 10.15 h i de 10.15 h a 11.15 h. Gimnàs municipal. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-marxes-nordiques",
@@ -1092,7 +1137,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Marxes nòrdiques. Divendres de 9.30 h a 11 h. Camp de futbol. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Camp%20de%20futbol%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Camp%20de%20futbol%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-qi-jong",
@@ -1107,7 +1153,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Qi Jong. Dimarts de 10 h a 11 h. Escoles velles de la Ràpita. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escoles%20velles%20de%20la%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escoles%20velles%20de%20la%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-ioga",
@@ -1122,7 +1169,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Ioga. Dilluns i dimecres de 17 h a 18.30 h i de 18.30 h a 20 h. Gimnàs escola Samaranch i Fina. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20escola%20Samaranch%20i%20Fina%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20escola%20Samaranch%20i%20Fina%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-pilates",
@@ -1137,11 +1185,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Pilates. Dimarts i dijous de 18 h a 19 h, de 19 h a 20 h i de 20 h a 21 h. Gimnàs municipal. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Persones Adultes"
     },
     {
       "id": "evt-20260907-futbol-sala-adults",
-      "titulo": "Futbol sala (adults)",
+      "titulo": "Futbol sala",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1152,11 +1201,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Futbol sala per a adults. Dilluns i dijous de 17 h a 18 h. Escola Sant Domènec. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola%20Sant%20Dom%C3%A8nec%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-mini-volei-adults",
-      "titulo": "Mini vòlei (adults)",
+      "titulo": "Mini vòlei",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1167,11 +1217,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mini vòlei per a adults. Dimarts i dijous de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-padel-adults",
-      "titulo": "Iniciació al pàdel (adults)",
+      "titulo": "Iniciació al pàdel",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1182,11 +1233,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Iniciació al pàdel per a adults. Divendres de 18 h a 19 h. Pavelló municipal. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pavell%C3%B3%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-hoquei-adults",
-      "titulo": "Hoquei (adults)",
+      "titulo": "Hoquei",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1197,11 +1249,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Hoquei per a adults. Dilluns o dijous de 17 h a 18 h. Pista poliesportiva municipal. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pista%20poliesportiva%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pista%20poliesportiva%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-balls-moderns-adults",
-      "titulo": "Balls moderns (adults)",
+      "titulo": "Balls moderns",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1212,11 +1265,12 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Balls moderns per a adults. Divendres de 19 h a 20 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "evt-20260907-lets-dance-adults",
-      "titulo": "Let's dance (adults)",
+      "titulo": "Let's dance",
       "fecha_inicio": "2026-09-07",
       "fecha_fin": null,
       "hora_inicio": null,
@@ -1227,7 +1281,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Let's dance per a adults. Divendres de 18 h a 19 h. Gimnàs institut El Foix. Inscripcions a partir del 7 de setembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Gimn%C3%A0s%20institut%20El%20Foix%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Joves i Infants"
     },
     {
       "id": "N1",

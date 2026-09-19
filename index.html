@@ -187,8 +187,7 @@
     var evs = filtered(state.tab);
     var labelTab = {actes:'Agenda', formacio:'Formació i Cursos', esport:'Esport', noticies:'Notícies'};
     var html = (labelTab[state.tab]? '<div class="section-title">'+labelTab[state.tab]+'</div>' : '');
-    if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
-    else if(state.tab==='formacio'){
+    function renderGrups(evs, html){
       var SUBS = [];
       evs.forEach(function(e){ var s=e.subcategoria||'Altres'; if(SUBS.indexOf(s)<0) SUBS.push(s); });
       SUBS.forEach(function(s){
@@ -206,6 +205,11 @@
           });
         }
       });
+      return html;
+    }
+    if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
+    else if(state.tab==='formacio' || state.tab==='esport'){
+      html = renderGrups(evs, html);
     } else {
       evs.forEach(function(e){ html += card(e); });
     }
