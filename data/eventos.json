@@ -490,7 +490,8 @@
       "precio_general": null,
       "descripcion": "Curs de dibuix i pintura. Dilluns de 15.30 h a 17.45 h. Inici el 5 d'octubre, curs anual. Inscripcions a la web de l'ajuntament.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Cursos i Activitats"
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Manualitats de Dona al Dia"
     },
     {
       "id": "evt-20260916-coral-penyafel",
@@ -586,7 +587,8 @@
       "precio_general": null,
       "descripcion": "Taller de manualitats al casal de la gent gran. La Ràpita, dilluns de 15.30 h a 17 h.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Cursos i Activitats"
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Tallers als Casals de la Gent Gran"
     },
     {
       "id": "evt-20261001-manualitats-casal-monjos",
@@ -602,7 +604,8 @@
       "precio_general": null,
       "descripcion": "Taller de manualitats al casal de la gent gran. Els Monjos, dimecres de 17 h a 18.30 h.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Cursos i Activitats"
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Tallers als Casals de la Gent Gran"
     },
     {
       "id": "evt-20261001-musicoterapia-rapita",
@@ -618,7 +621,8 @@
       "precio_general": null,
       "descripcion": "Musicoteràpia. La Ràpita, dilluns de 10 h a 11 h. Inscripcions a l'ajuntament.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Cursos i Activitats"
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Tallers als Casals de la Gent Gran"
     },
     {
       "id": "evt-20261001-musicoterapia-monjos",
@@ -634,7 +638,8 @@
       "precio_general": null,
       "descripcion": "Musicoteràpia. Els Monjos, dimarts de 17 h a 18 h i de 18 h a 19 h (dos grups). Inscripcions a l'ajuntament.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Cursos i Activitats"
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Tallers als Casals de la Gent Gran"
     },
     {
       "id": "evt-20260901-efa-inscripcions",
@@ -650,7 +655,7 @@
       "precio_general": null,
       "descripcion": "Inscripcions a l'Escola de Formació de Persones Adultes Fina Garcia Mateu (cultura general, llengua catalana i castellana, perfeccionament del català, anglès i alemany, competències informàtiques i IA, preparació per a proves d'accés a cicles formatius). De l'1 al 12 de setembre: dilluns, dimarts, dimecres i dijous de 10 h a 13 h i dilluns i dimecres de 16 h a 18 h, a la Casa de Cultura Mas Catarro.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
-      "subcategoria": "Servei Local d'Ocupació"
+      "subcategoria": "Escola d'Adults Fina Garcia Mateu"
     },
     {
       "id": "evt-20261001-eso",
@@ -681,7 +686,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Extraescolar en colors: Experimentació plàstica. De 1r a 3r, dimarts o dijous de 17 h a 18.30 h; de 4t a 6è, dimecres de 17 h a 18.30 h. A la Casa de Cultura Mas Catarro.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Pla Educatiu d'Entorn"
     },
     {
       "id": "evt-20260914-hoquei-i4i5",

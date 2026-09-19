@@ -194,7 +194,17 @@
       SUBS.forEach(function(s){
         var sub = evs.filter(function(e){ return (e.subcategoria||'Altres')===s; });
         html += '<div class="section-title" style="text-transform:none;letter-spacing:0">'+esc(s)+'</div>';
-        sub.forEach(function(e){ html += card(e); });
+        var hasSub = sub.some(function(e){ return e.subsubcategoria; });
+        if(!hasSub){ sub.forEach(function(e){ html += card(e); }); }
+        else {
+          var SS = [];
+          sub.forEach(function(e){ var ss=e.subsubcategoria||'Altres'; if(SS.indexOf(ss)<0) SS.push(ss); });
+          SS.forEach(function(ss){
+            var g = sub.filter(function(e){ return (e.subsubcategoria||'Altres')===ss; });
+            html += '<div class="mt-2 mb-1 px-1 text-sm font-bold text-brand-600">'+esc(ss)+'</div>';
+            g.forEach(function(e){ html += card(e); });
+          });
+        }
       });
     } else {
       evs.forEach(function(e){ html += card(e); });
