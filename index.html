@@ -91,6 +91,9 @@
   function fmtFecha(iso){ if(!iso) return {dia:'',mes:''}; var p=iso.split('-'); return {dia:+p[2], mes:MESES[+p[1]]||''}; }
   function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
+  var DIES = ['Dg','Dl','Dt','Dc','Dj','Dv','Ds'];
+  function diaSetmana(iso){ if(!iso) return ''; var d=new Date(iso+'T00:00:00'); if(isNaN(d.getTime())) return ''; return DIES[d.getDay()]||''; }
+
   var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null };
   var docCloseHandler = null;
 
@@ -155,7 +158,7 @@
     var hora = ev.hora_inicio ? (ev.hora_fin? ev.hora_inicio+' – '+ev.hora_fin : 'A les '+ev.hora_inicio) : '';
     var preu = ev.precio_general ? (ev.precio_socios? 'Socis: '+ev.precio_socios+' · General: '+ev.precio_general : ev.precio_general) : (ev.precio_socios||'');
     return '<article data-open="'+esc(ev.id)+'" class="cursor-pointer overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-slate-100"><div class="flex">'+
-      '<div class="flex w-14 shrink-0 flex-col items-center justify-center bg-brand-50 py-3 text-brand-700">'+(f.dia?('<span class="text-xl font-extrabold leading-none">'+f.dia+'</span><span class="text-[11px] font-semibold uppercase">'+f.mes+'</span>'):'<span class="text-[11px] font-semibold uppercase">Avís</span>')+'</div>'+
+      '<div class="flex w-14 shrink-0 flex-col items-center justify-center bg-brand-50 py-2 text-brand-700">'+(f.dia?('<span class="text-[10px] font-bold uppercase tracking-wide text-brand-500">'+diaSetmana(ev.fecha_inicio)+'</span><span class="text-xl font-extrabold leading-none">'+f.dia+'</span><span class="text-[11px] font-semibold uppercase">'+f.mes+'</span>'):'<span class="text-[11px] font-semibold uppercase">Avís</span>')+'</div>'+
       '<div class="min-w-0 flex-1 p-3"><div class="mb-1 flex flex-wrap items-center gap-1.5">'+
       catChips(ev.categoria, {pill:'text-[11px] font-semibold', icon:'h-3 w-3'})+'</div>'+
       '<h3 class="line-clamp-2 text-[15px] font-bold leading-snug text-slate-800">'+esc(ev.titulo)+'</h3>'+
