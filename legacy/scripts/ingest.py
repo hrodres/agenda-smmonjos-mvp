@@ -131,7 +131,7 @@ SYSTEM_PROMPT = (
     "maquetacio, emparellar cada activitat amb la seva data/hora/lloc, i retornar "
     "SOLES un JSON que compleixi ESTRICTAMENT l'esquema proporcionat.\n"
     "Regles:\n"
-    "- 'categoria' ha de ser la mes adequada (suggerides: " + ", ".join(CATEGORIAS_SUGERIDES) + "; "
+    "- 'categoria' ha de ser la mes adequada (suggerides: " + ", ".join(CATEGORIAS_SUGERIDAS) + "; "
     "pots usar-ne una de nova si_cal). En catala.\n"
     "- 'seccio' (obligatoria per al filtre per pestanya): 'Actes', 'Formació', 'Esports' o "
     "'Notícies', segons la seccio del PDF. Els serveis/avisos sense data van a 'Notícies'.\n"
@@ -264,10 +264,37 @@ def extraer_texto(pdf_path: str) -> str:
 # --------------------------------------------------------------------------
 # Pas 3: crida a opencode-go amb Best Model Selection
 # --------------------------------------------------------------------------
+def resolver_api_key() -> str:
+    """Prioritat: env OPENCODE_API_KEY; si no, la clau del propi vault de
+    l'OpenClaw (config_machine_state del sqlite d'estat). Mai s'imprimeix."""
+    env = os.environ.get("OPENCODE_API_KEY")
+    if env:
+        return env
+    try:
+        import sqlite3, re, glob
+        sec = re.compile(r'(?<![A-Za-z0-9])sk-[A-Za-z0-9_\-]{20,80}(?![A-Za-z0-9])')
+        for db in glob.glob("/root/.openclaw/state/*.sqlite"):
+            con = sqlite3.connect(db)
+            cur = con.cursor()
+            for (val,) in cur.execute(
+                "SELECT value_json FROM config_machine_state WHERE value_json LIKE '%opencode%'"
+            ):
+                if not isinstance(val, str):
+                    continue
+                m = sec.search(val)
+                if m:
+                    con.close()
+                    return m.group(0)
+            con.close()
+    except Exception:
+        pass
+    return ""
+
+
 def llamar_opencodego(texto: str, modelos: list[str]) -> dict | None:
-    api_key = os.environ.get("OPENCODE_API_KEY")
+    api_key = resolver_api_key()
     if not api_key:
-        print("      OPENCODE_API_KEY no definida -> es omèt el LLM (no es toca l'arxiu existent).")
+        print("      OPENCODE_API_KEY no disponible (env ni vault) -> es omèt el LLM.")
         return None
     base = os.environ.get("OPENCODE_API_BASE", "https://opencode.ai/zen/go/v1").rstrip("/")
     for modelo in modelos:

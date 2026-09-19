@@ -1,0 +1,21 @@
+{
+  "agendas": [
+    {
+      "id": "setembre-2026",
+      "label": "Setembre 2026",
+      "file": "agenda-setembre-2026.json",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
+      "default": true,
+      "fuente": "ingest curat (LLM deepseek-v4-pro / revisat)"
+    },
+    {
+      "id": "juliol-agost-2026",
+      "label": "Juliol-Agost 2026",
+      "file": "agenda-juliol-agost-2026.json",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9749/AGENDA%20Juliol-Agost%2026_web.pdf",
+      "default": false,
+      "fuente": "extraccio heuristica parcial (sense LLM: PDF de Festa Major, layout irregular)"
+    }
+  ],
+  "default": "setembre-2026"
+}

@@ -85,7 +85,7 @@
   function fmtFecha(iso){ if(!iso) return {dia:'',mes:''}; var p=iso.split('-'); return {dia:+p[2], mes:MESES[+p[1]]||''}; }
   function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
-  var state = { data:null, q:'', tab:'actes', obert:null, day:null };
+  var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null };
   var docCloseHandler = null;
 
   function renderHeader(){
@@ -96,13 +96,14 @@
       '<div class="flex items-center gap-2">'+ svg('CalendarDays','h-6 w-6 shrink-0') +
       '<div class="leading-tight"><h1 class="text-lg font-extrabold tracking-tight">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
       '<p class="text-[11px] font-medium text-brand-100">'+esc(d.mes||'Setembre 2026')+'</p></div></div>'+
+      '<div class="mt-2"><select id="agenda" class="w-full rounded-xl bg-white/15 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 focus:outline-none">'+(state.agendas?state.agendas.map(function(a){return '<option value="'+esc(a.id)+'"'+(a.id===state.agendaId?' selected':'')+' style="color:#0f172a">'+esc(a.label)+'</option>';}).join(''):'<option>'+esc(d.mes||'')+'</option>')+'</select></div>'+
       '<div class="mt-3 flex items-center gap-3">'+
       '<div class="flex flex-1 items-center gap-2 rounded-xl bg-white/15 px-3 py-1.5 ring-1 ring-white/20">'+
       svg('Search','h-4 w-4 text-brand-100')+
       '<input id="search" value="'+esc(state.q)+'" placeholder="Cerca…" class="flex-1 bg-transparent text-sm text-white placeholder:text-brand-100 focus:outline-none" inputmode="search">'+
       '<button id="clear" aria-label="Neteja" style="display:'+(state.q?'block':'none')+'" class="rounded-full p-1 text-brand-100 hover:bg-white/10">'+svg('X','h-4 w-4')+'</button></div>'+
       '<div class="flex shrink-0 items-center gap-3">'+
-      '<button id="calbtn" aria-label="Filtra per dia" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('CalendarDays','h-5 w-5 text-brand-100')+'</button>'+      '<a href="https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf" target="_blank" rel="noopener noreferrer" download aria-label="Descarrega el PDF" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('ExternalLink','h-5 w-5 text-brand-100')+'</a>'+
+      '<button id="calbtn" aria-label="Filtra per dia" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('CalendarDays','h-5 w-5 text-brand-100')+'</button>'+      '<a href="'+esc(d.fuente_pdf||'#')+'" target="_blank" rel="noopener noreferrer" download aria-label="Descarrega el PDF" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('ExternalLink','h-5 w-5 text-brand-100')+'</a>'+
       '<button id="dayclear" aria-label="Treu filtre de dia" style="display:'+(state.day?'block':'none')+'" class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('X','h-4 w-4 text-brand-100')+'</button>'+
       '<input type="date" id="day" value="'+esc(state.day||'')+'" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;border:0">'+
       '</div>'+
@@ -113,6 +114,16 @@
     var cal = document.getElementById('calbtn'); if(cal) cal.addEventListener('click', function(){ var d=document.getElementById('day'); if(d){ if(d.showPicker){ try{ d.showPicker(); }catch(e){ d.focus(); } } else { d.focus(); } } });
     var day = document.getElementById('day'); if(day) day.addEventListener('change', function(){ state.day = day.value || null; var dc=document.getElementById('dayclear'); if(dc) dc.style.display = state.day?'block':'none'; renderMain(); });
     var dc = document.getElementById('dayclear'); if(dc) dc.addEventListener('click', function(){ state.day=null; var d=document.getElementById('day'); if(d) d.value=''; dc.style.display='none'; renderMain(); });
+    var sel = document.getElementById('agenda'); if(sel) sel.addEventListener('change', function(){ loadAgenda(sel.value); });
+  }
+
+  function loadAgenda(id){
+    var a = (state.agendas||[]).filter(function(x){ return x.id===id; })[0];
+    if(!a) return;
+    state.agendaId = id;
+    fetch('./data/'+a.file, { cache:'no-store' }).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(d){ state.data=d; document.title='Agenda SMMonjos · '+(d.mes||''); renderHeader(); renderTabs(); renderMain(); })
+      .catch(function(e){ document.getElementById('main').innerHTML='<div class="py-10 text-center text-sm text-rose-700">No s\'ha pogut carregar ('+esc(e.message)+').</div>'; });
   }
 
   function renderTabs(){
@@ -255,10 +266,21 @@
     setTimeout(function(){ document.addEventListener('click', docCloseHandler, true); }, 0);
   }
 
-  fetch('./data/eventos.json', { cache: 'no-store' })
+  fetch('./data/agendas.json', { cache: 'no-store' })
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-    .then(function(d){ state.data=d; renderHeader(); renderTabs(); renderMain(); })
-    .catch(function(e){ document.getElementById('main').innerHTML='<div class="py-10 text-center text-sm text-rose-700">No s\'ha pogut carregar ('+esc(e.message)+').</div>'; });
+    .then(function(m){
+      state.agendas = m.agendas || [];
+      var def = m.default || (state.agendas.length? state.agendas[state.agendas.length-1].id : null);
+      var a = state.agendas.filter(function(x){ return x.id===def; })[0] || (state.agendas.length? state.agendas[state.agendas.length-1] : null);
+      if(a){ loadAgenda(a.id); }
+      else { throw new Error('Cap agenda'); }
+    })
+    .catch(function(e){
+      fetch('./data/eventos.json', { cache: 'no-store' })
+        .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+        .then(function(d){ state.data=d; renderHeader(); renderTabs(); renderMain(); })
+        .catch(function(err){ document.getElementById('main').innerHTML='<div class="py-10 text-center text-sm text-rose-700">No s\'ha pogut carregar ('+esc(err.message)+').</div>'; });
+    });
 })();
 </script>
 </body>
