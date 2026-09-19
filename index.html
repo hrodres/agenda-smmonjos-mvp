@@ -188,7 +188,17 @@
     var labelTab = {actes:'Agenda', formacio:'Formació i Cursos', esport:'Esport', noticies:'Notícies'};
     var html = (labelTab[state.tab]? '<div class="section-title">'+labelTab[state.tab]+'</div>' : '');
     if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
-    evs.forEach(function(e){ html += card(e); });
+    else if(state.tab==='formacio'){
+      var SUBS = [];
+      evs.forEach(function(e){ var s=e.subcategoria||'Altres'; if(SUBS.indexOf(s)<0) SUBS.push(s); });
+      SUBS.forEach(function(s){
+        var sub = evs.filter(function(e){ return (e.subcategoria||'Altres')===s; });
+        html += '<div class="section-title" style="text-transform:none;letter-spacing:0">'+esc(s)+'</div>';
+        sub.forEach(function(e){ html += card(e); });
+      });
+    } else {
+      evs.forEach(function(e){ html += card(e); });
+    }
     html += '<p class="pt-1 text-center text-xs text-slate-400">'+evs.length+' activitat'+(evs.length!==1?'s':'')+'</p>';
     m.innerHTML = html;
     Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){

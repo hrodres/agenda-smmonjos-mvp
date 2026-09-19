@@ -441,7 +441,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Curs del Club de la Feina: 'Dibuixa el teu mapa'. Dilluns 21 de setembre de 9.15 h a 12.15 h. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrites al Servei Local d'Ocupació o a la Xarxa Xaloc. Inscripcions al Club de la Feina o a clubdefeina@smmonjos.cat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Servei Local d'Ocupació"
     },
     {
       "id": "evt-20260923-soft-skills",
@@ -456,7 +457,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Curs del Club de la Feina: 'Soft skills amb les mans'. Dimecres 23 de setembre de 9.15 h a 12.15 h. Adreçat a persones en situació d'atur del municipi o en procés de millora de l'ocupació.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Servei Local d'Ocupació"
     },
     {
       "id": "evt-20260928-mapa-talent",
@@ -471,7 +473,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Curs del Club de la Feina: 'Crea el teu mapa de Talent!'. Del 28 de setembre a l'1 d'octubre, de 9 h a 13 h. Places limitades. Inscripcions al Club de la Feina (dimarts i divendres de 10 h a 13 h), a Ca l'Antic (edifici Tangram) o a clubdefeina@smmonjos.cat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Servei Local d'Ocupació"
     },
     {
       "id": "evt-20261001-dibuix-pintura",
@@ -486,7 +489,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Curs de dibuix i pintura. Dilluns de 15.30 h a 17.45 h. Inici el 5 d'octubre, curs anual. Inscripcions a la web de l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cursos i Activitats"
     },
     {
       "id": "evt-20260916-coral-penyafel",
@@ -501,7 +505,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos de la Coral Amics de Penyafel, dimecres de 19.30 h a 21.30 h a la Casa de Cultura Mas Catarro. Inici el 16 de setembre. Places limitades 13 (mínim 8 inscripcions). Inscripcions: 619 208 960 o coral.amics.penyafel@gmail.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cant Coral"
     },
     {
       "id": "evt-20261001-coral-infantil-flabiol",
@@ -516,7 +521,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos de la Coral Infantil El Flabiol, dimecres de 17 h a 18 h. Inici el 2 d'octubre (assajos dimecres). Inscripcions al 667 467 497 o coralinfantilelflabiol@gmail.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cant Coral"
     },
     {
       "id": "evt-20261001-coral-amistat",
@@ -531,7 +537,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos de la Coral l'Amistat de la Ràpita, dijous de 20.30 h a 22 h. Inscripcions: amistat.larapita@gmail.com o 679 467 335.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cant Coral"
     },
     {
       "id": "evt-20261001-coral-bombeta",
@@ -546,7 +553,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos de la Coral Infantil La Bombeta Màgica, divendres de 17 h a 17.45 h (petits), de 17.15 h a 18.15 h (mitjans) i de 17.15 h a 18.45 h (grans). Inscripcions: coralinfantilbombetamagica@gmail.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cant Coral"
     },
     {
       "id": "evt-20261001-cor-margaridoia",
@@ -561,7 +569,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos del Cor Margaridoia, dimarts de 19.30 h a 21 h. Inscripcions: 657 839 001.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cant Coral"
     },
     {
       "id": "evt-20261001-manualitats-casal-rapita",
@@ -576,7 +585,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Taller de manualitats al casal de la gent gran. La Ràpita, dilluns de 15.30 h a 17 h.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cursos i Activitats"
     },
     {
       "id": "evt-20261001-manualitats-casal-monjos",
@@ -591,7 +601,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Taller de manualitats al casal de la gent gran. Els Monjos, dimecres de 17 h a 18.30 h.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cursos i Activitats"
     },
     {
       "id": "evt-20261001-musicoterapia-rapita",
@@ -606,7 +617,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Musicoteràpia. La Ràpita, dilluns de 10 h a 11 h. Inscripcions a l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20La%20R%C3%A0pita%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cursos i Activitats"
     },
     {
       "id": "evt-20261001-musicoterapia-monjos",
@@ -621,7 +633,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Musicoteràpia. Els Monjos, dimarts de 17 h a 18 h i de 18 h a 19 h (dos grups). Inscripcions a l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casal%20de%20la%20gent%20gran%20Els%20Monjos%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Cursos i Activitats"
     },
     {
       "id": "evt-20260901-efa-inscripcions",
@@ -636,7 +649,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Inscripcions a l'Escola de Formació de Persones Adultes Fina Garcia Mateu (cultura general, llengua catalana i castellana, perfeccionament del català, anglès i alemany, competències informàtiques i IA, preparació per a proves d'accés a cicles formatius). De l'1 al 12 de setembre: dilluns, dimarts, dimecres i dijous de 10 h a 13 h i dilluns i dimecres de 16 h a 18 h, a la Casa de Cultura Mas Catarro.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Servei Local d'Ocupació"
     },
     {
       "id": "evt-20261001-eso",
@@ -651,7 +665,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "ESO: dilluns de 17 h a 18.30 h. Inscripcions del 8 al 18 de setembre al web de l'ajuntament o presencialment de 10 h a 11 h a la masia Mas Catarro. Mínim 6 i màxim 12 infants/joves per grup. Preu 47 € trimestrals.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20Cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
+      "subcategoria": "Servei Local d'Ocupació"
     },
     {
       "id": "evt-20260901-extraescolar-colors",
