@@ -337,6 +337,7 @@ def guardar(eventos: list[dict], contactes: list[dict] | None = None) -> None:
 
 
 def main() -> int:
+    global PDF_URL, MES, OUT_PATH
     ap = argparse.ArgumentParser()
     ap.add_argument("--force-seed", action="store_true", help="Escriu el seed només si no existeix l'arxiu destí.")
     ap.add_argument("--pdf-url", default=PDF_URL, help="URL del PDF de l'agenda.")
@@ -344,7 +345,6 @@ def main() -> int:
     ap.add_argument("--out", default=OUT_PATH, help="Ruta de sortida (data/eventos.json).")
     args = ap.parse_args()
 
-    global PDF_URL, MES, OUT_PATH
     PDF_URL = args.pdf_url
     MES = args.mes
     OUT_PATH = args.out
