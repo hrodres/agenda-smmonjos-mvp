@@ -271,12 +271,19 @@
       });
       return html;
     }
-    if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
-    else if(state.tab==='formacio' || state.tab==='esport'){
-      html = renderGrups(evs, html);
-    } else {
-      evs.forEach(function(e){ html += card(e); });
+    function renderEsport(evs, html){
+      var SUBS = [];
+      evs.forEach(function(e){ var s=e.subcategoria||'Sense classificar'; if(SUBS.indexOf(s)<0) SUBS.push(s); });
+      SUBS.forEach(function(s){
+        html += '<div class="section-title" style="text-transform:none;letter-spacing:0">'+esc(s)+'</div>';
+        evs.filter(function(e){ return (e.subcategoria||'Sense classificar')===s; }).forEach(function(e){ html += card(e); });
+      });
+      return html;
     }
+    if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
+    else if(state.tab==='esport'){ html = renderEsport(evs, html); }
+    else if(state.tab==='formacio'){ html = renderGrups(evs, html); }
+    else { evs.forEach(function(e){ html += card(e); }); }
     m.innerHTML = html;
     Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){
       b.onclick = function(){ state.obert = evs.filter(function(e){return e.id===b.getAttribute('data-open');})[0]; renderModal(); };
