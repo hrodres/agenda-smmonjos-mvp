@@ -35,6 +35,13 @@ Cultura, Festes, Gastronomia`. El color del badge s'aplica **inline**
 **Seccions** (pestanyes): `Actes, Formació, Esports, Notícies`. Els esdeveniments sense data
 apareixen com a "Avís" dins de Notícies.
 
+**Contactes** (`contactes`, pestanya Telèfons): `nom, telefon, email, nota, web, grup`.
+El camp `grup` agrupa els telèfons igual que al PDF oficial (setembre 2026: `Serveis
+Municipals`, `Altres Serveis`, `Grups Municipals`). **El render de la pestanya deriva els
+grups del propi JSON** (no estan hardcodejats), així que si un altre mes el PDF trau grups
+nous, es mostren sols sense tocar el codi. En regenerar el JSON de cap altre mes, cal
+assignar `grup` a cada contacte; qui no en tingui cau a `Altres Serveis`.
+
 ## Editar dades
 
 Edita `data/eventos.json` i fes `git push`. La extracció inicial es va curar manualment
