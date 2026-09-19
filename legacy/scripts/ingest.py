@@ -1,29 +1,40 @@
 #!/usr/bin/env python3
 """
-Ingesta de la Agenda Cultural de Santa Margarida i els Monjos.
+Ingesta de la Agenda de Santa Margarida i els Monjos - pipeline AUTOMATIC.
 
-Pipeline completo (MVP):
-  1. Descarga el PDF oficial de la agenda.
-  2. Extrae el texto por paginas con pdfplumber.
-  3. Llama a la API de `opencode-go` aplicando "Best Model Selection":
-     prueba los modelos mas potentes/precisos en orden hasta obtener una
-     respuesta valida, y fuerza un JSON Schema estricto con los eventos.
-  4. Guarda el resultado en public/data/eventos.json (base de datos estatica).
+Objectiu: regenerar `data/eventos.json` a partir del PDF oficial de QUALSEVOL mes,
+SENSE edicio manual. El pipeline:
 
-Requisitos:
-  - OPENCODE_API_KEY  : clave de la API de opencode-go (obligatoria para usar LLM).
-  - OPENCODE_API_BASE : base OpenAI-compatible (def.: https://api.opencode.ai/v1).
-  - OPENCODE_MODEL    : fuerza un modelo concreto (p.ej. opencode-go/gpt-5-6-luna).
-                        Si no se define, se aplica el ranking de "mejor modelo".
+  1. Descarrega el PDF de l'agenda (URL per defecte, --pdf-url o env AGENDA_PDF_URL).
+  2. Extreu el text per pagines amb pdfplumber.
+  3. Crida a opencode-go (Best Model Selection) amb un JSON Schema que FORCA
+     l'extraccio estructurada:
+       - events amb `seccio` (Actes/Formacio/Esports/Noticies),
+         `subcategoria` i `subsubcategoria` (derivades de les sub-capcaleres del PDF),
+         i `contactes` amb el seu `grup`.
+  4. Normalitza, fa backup de l'arxiu existent i desa el resultat.
 
-Si no hay clave (o falla la llamada), el pipeline NO rompe: escribe el
-seed embebido (extraccion curada del PDF oficial) para que el MVP siempre
-tenga datos validos. Ejecuta `python scripts/ingest.py [--force-seed]`.
+Disseny "month-agnostic": el codi NO coneix noms concrets de grups/categories.
+El LLM deriva les agrupacions del propi PDF. El render del lloc (index.html) es
+dinamic i les mostra soles. MAI s'usa "Altres" com a agrupacio: si un element no
+encaixa en cap grup, es deixa subcategoria a null i es llista directament sota
+el grup pare.
+
+Seguretat de dades:
+  - Abans de sobreescriure es fa backup (.bak amb data).
+  - Si el LLM no respon o falla, NO es destrueix l'arxiu existent (es manté
+    l'anterior). Nomes s'escriu el seed si no hi ha cap arxiu previ.
+  - Amb --force-seed nomes restaura el seed si l'arxiu desti NO existeix.
+
+Requisits: OPENCODE_API_KEY (obligatoria per a extraccio real). Sense clau,
+el pipeline informa i no toca l'arxiu existent.
 """
 from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import shutil
 import sys
 import tempfile
 import urllib.parse
@@ -32,23 +43,51 @@ from datetime import date
 import requests
 
 # --------------------------------------------------------------------------
-# Configuracion
+# Configuracio
 # --------------------------------------------------------------------------
-PDF_URL = "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf"
+PDF_URL = os.environ.get(
+    "AGENDA_PDF_URL",
+    "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
+)
 MUNICIPIO = "Santa Margarida i els Monjos"
-MES = "Setembre 2026"
-OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "public", "data", "eventos.json")
+MES = os.environ.get("AGENDA_MES", "Setembre 2026")
+# Ruta REAL que serveix el lloc (arrel del repo /data/eventos.json)
+OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "eventos.json")
 
 # "Best Model Selection": ranking de modelos de opencode-go, de mayor a menor
 # capacidad para interpretar maquetacion en columnas y estructurar eventos en
 # catalan/espanol. El pipeline usa el PRIMER modelo disponible que responde.
 MODEL_RANKING = [
-    "opencode-go/gpt-5.6-luna",   # indicado: extracción principal (top precisión)
+    "opencode-go/gpt-5.6-luna",   # indicado: extraccion principal (top precision)
     "opencode-go/deepseek-v4-pro",
     "opencode-go/hy3",
 ]
 
-CATEGORIAS_VALIDAS = ["Teatre", "Música", "Infantil", "Esport", "Formació", "Altres"]
+# Categories suggerides (el LLM pot retornar-ne de noves; el render te fallback de color)
+CATEGORIAS_SUGERIDAS = [
+    "Teatre", "Música", "Infantil", "Esport", "Formació",
+    "Cultura", "Festes", "Gastronomia", "Altres",
+]
+SECCIONS = ["Actes", "Formació", "Esports", "Notícies"]
+
+EVENT_PROPS = {
+    "titulo": {"type": "string"},
+    "fecha_inicio": {"type": "string", "description": "YYYY-MM-DD"},
+    "fecha_fin": {"type": ["string", "null"], "description": "YYYY-MM-DD o null"},
+    "hora_inicio": {"type": ["string", "null"], "description": "HH:MM 24h o null"},
+    "hora_fin": {"type": ["string", "null"], "description": "HH:MM 24h o null"},
+    "lugar": {"type": "string"},
+    "categoria": {"type": "string", "description": "Categoria de badge (vegeu llista suggerida); pot ser nova."},
+    "seccio": {"type": ["string", "null"], "description": "Pestanya: Actes / Formació / Esports / Notícies."},
+    "subcategoria": {"type": ["string", "null"], "description": "Sub-grup segons les sub-capçaleres del PDF (ex: 'Cursos i Activitats', 'Joves i Infants', 'Servei Local d'Ocupació'). Si no hi ha grup: null. MAI 'Altres'."},
+    "subsubcategoria": {"type": ["string", "null"], "description": "Segon nivell de grup (ex: 'Manualitats de Dona al Dia', '3r i 4t de primària'). null si no escau."},
+    "precio_socios": {"type": ["string", "null"], "description": "ej: 'Gratuït', '3 €' o null"},
+    "precio_general": {"type": ["string", "null"], "description": "ej: '8 €' o null"},
+    "descripcion": {"type": "string"},
+    "enlace_maps": {"type": "string", "description": "URL Google Maps search del lugar, URL-encoded."},
+    "fuente": {"type": ["string", "null"]},
+    "id": {"type": ["string", "null"]},
+}
 
 JSON_SCHEMA = {
     "type": "object",
@@ -65,46 +104,59 @@ JSON_SCHEMA = {
                     "lugar", "categoria", "precio_socios", "precio_general",
                     "descripcion", "enlace_maps",
                 ],
+                "properties": EVENT_PROPS,
+            },
+        },
+        "contactes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["nom", "telefon"],
                 "properties": {
-                    "titulo": {"type": "string"},
-                    "fecha_inicio": {"type": "string", "description": "YYYY-MM-DD"},
-                    "fecha_fin": {"type": ["string", "null"], "description": "YYYY-MM-DD o null"},
-                    "hora_inicio": {"type": ["string", "null"], "description": "HH:MM 24h o null"},
-                    "hora_fin": {"type": ["string", "null"], "description": "HH:MM 24h o null"},
-                    "lugar": {"type": "string"},
-                    "categoria": {"type": "string", "enum": CATEGORIAS_VALIDAS},
-                    "precio_socios": {"type": ["string", "null"], "description": "ej: 'Gratuït', '3 €' o null"},
-                    "precio_general": {"type": ["string", "null"], "description": "ej: '8 €' o null"},
-                    "descripcion": {"type": "string"},
-                    "enlace_maps": {"type": "string", "description": "URL Google Maps search del lugar"},
+                    "nom": {"type": "string"},
+                    "telefon": {"type": "string"},
+                    "email": {"type": ["string", "null"]},
+                    "nota": {"type": ["string", "null"]},
+                    "web": {"type": ["string", "null"]},
+                    "grup": {"type": ["string", "null"], "description": "Grup del PDF (ex: 'Serveis Municipals', 'Altres Serveis'). Si no hi ha grup: null. MAI 'Altres'."},
                 },
             },
-        }
+        },
     },
 }
 
 SYSTEM_PROMPT = (
-    "Eres un extractor de datos de agendas culturales municipales en Catalunya. "
-    "Recibes el texto extraido de un PDF de agenda de actes (maquetado en columnas). "
-    "Tu tarea: interpretar la maquetacion, emparejar cada actividad con su fecha/hora/lugar, "
-    "y devolver SOLO un JSON que cumpla ESTRICTAMENTE el esquema proporcionado.\n"
-    "Reglas:\n"
-    "- 'categoria' debe ser uno de: " + ", ".join(CATEGORIAS_VALIDAS) + ".\n"
-    "- Las fechas en 'fecha_inicio'/'fecha_fin' en formato YYYY-MM-DD (anio 2026). "
-    "Si una actividad abarca varios dias usa fecha_fin; si es un solo dia, fecha_fin igual a fecha_inicio.\n"
-    "- 'hora_inicio'/'hora_fin' en HH:MM (24h) o null si no aplica.\n"
-    "- 'precio_socios'/'precio_general': texto literal ('Gratuït', '8 €', '3 €') o null si no se indica.\n"
-    "- 'enlace_maps': URL Google Maps search del lugar, formato "
-    "https://www.google.com/maps/search/?api=1&query=<lugar+municipio> (URL-encoded).\n"
-    "- 'descripcion': resumen conciso en castellano/catalan con la info util (inscripcions, contactes).\n"
-    "- Incluye TODOS los eventos del mes (acts de setembre), incloent visites repetides al "
-    "Castell, tallers, concerts, cinema, teatre i trobades. Omite solo servicios permanentes "
-    "sin fecha concreta del mes (ej. telefons d'interes). Las categorias y la descripcio "
-    "deben estar en catalan (idioma del municipi)."
+    "Eres un extractor de dades d'agendes municipals a Catalunya. Reps el text extret "
+    "d'un PDF d'agenda (maquetat en columnes). La teva tasca: interpretar la "
+    "maquetacio, emparellar cada activitat amb la seva data/hora/lloc, i retornar "
+    "SOLES un JSON que compleixi ESTRICTAMENT l'esquema proporcionat.\n"
+    "Regles:\n"
+    "- 'categoria' ha de ser la mes adequada (suggerides: " + ", ".join(CATEGORIAS_SUGERIDES) + "; "
+    "pots usar-ne una de nova si_cal). En catala.\n"
+    "- 'seccio' (obligatoria per al filtre per pestanya): 'Actes', 'Formació', 'Esports' o "
+    "'Notícies', segons la seccio del PDF. Els serveis/avisos sense data van a 'Notícies'.\n"
+    "- DINS 'Formació' i 'Esport', el PDF usa sub-capçaleres (ex: 'Cursos i Activitats', "
+    "'Cant Coral', 'Joves i Infants', 'Persones Adultes', 'Servei Local d'Ocupació'). "
+    "Extreu-les a 'subcategoria'. Si hi ha un segon nivell (ex: 'Manualitats de Dona al Dia', "
+    "'3r i 4t de primària', 'Tallers als Casals de la Gent Gran'), posa'l a 'subsubcategoria'.\n"
+    "- Si un element NO encaixa en cap sub-grup, deixa 'subcategoria' i 'subsubcategoria' a null. "
+    "MAI utilitzis 'Altres' com a agrupacio.\n"
+    "- 'fecha_inicio'/'fecha_fin' en YYYY-MM-DD (any del PDF). Si abasta varis dies usa "
+    "fecha_fin; si es un sol dia, igual a fecha_inicio.\n"
+    "- 'hora_inicio'/'hora_fin' en HH:MM (24h) o null.\n"
+    "- 'precio_socios'/'precio_general': text literal ('Gratuït', '8 €') o null.\n"
+    "- 'enlace_maps': URL Google Maps search del lloc, "
+    "https://www.google.com/maps/search/?api=1&query=<lloc+municipi> (URL-encoded).\n"
+    "- 'descripcion': resum concis en catala (inscripcions, contactes utils).\n"
+    "- Inclou TOTS els events del mes (actes, visites, tallers, concerts, cinema, teatre, "
+    "trobades, esport, formacio). NO omitis els serveis permanents sense data: vesen a "
+    "'contactes' (seccio de telefons d'interes del PDF) amb el seu 'grup'.\n"
+    "- El JSON ha de tenir SOLES les claus 'eventos' i 'contactes'."
 )
 
 # --------------------------------------------------------------------------
-# Seed embebido (extraccion curada del PDF oficial) — fallback sin LLM
+# Seed embebido (fallback sense LLM) - nomes s'usa si no hi ha arxiu previ
 # --------------------------------------------------------------------------
 SEED_EVENTOS = [
     {'id': 'evt-2026-09-06-mercat', 'titulo': 'Mercat de segona mà', 'fecha_inicio': '2026-09-06', 'fecha_fin': '2026-09-06', 'hora_inicio': '10:00', 'hora_fin': '14:00', 'lugar': 'Plaça de Pau Casals', 'categoria': 'Altres', 'precio_socios': None, 'precio_general': None, 'descripcion': 'Mercat de segona mà al matí a la plaça de Pau Casals. Ven al teu poble i troba tresors.', 'enlace_maps': 'https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a%20de%20Pau%20Casals%2C%20Santa%20Margarida%20i%20els%20Monjos'},
@@ -136,46 +188,91 @@ SEED_EVENTOS = [
 
 
 # --------------------------------------------------------------------------
-# Paso 1 + 2: descargar y extraer
+# Utilitats de normalitzacio
+# --------------------------------------------------------------------------
+def slug(s: str) -> str:
+    s = (s or "").lower().strip()
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    return s.strip("-") or "item"
+
+
+def norm_seccio(s):
+    if not s:
+        return None
+    s = s.strip()
+    if s in SECCIONS:
+        return s
+    low = {k.lower(): k for k in SECCIONS}
+    if s.lower() in low:
+        return low[s.lower()]
+    sl = s.lower()
+    if "form" in sl:
+        return "Formació"
+    if "esport" in sl:
+        return "Esports"
+    if "notic" in sl:
+        return "Notícies"
+    return "Actes"
+
+
+def gen_ids(eventos: list[dict]) -> list[dict]:
+    seen = set()
+    for e in eventos:
+        if e.get("id") and e["id"] not in seen:
+            seen.add(e["id"])
+            continue
+        base = "evt-" + date.today().isoformat() + "-" + slug(e.get("titulo", ""))
+        i = base
+        n = 1
+        while i in seen:
+            n += 1
+            i = base + f"-{n}"
+        seen.add(i)
+        e["id"] = i
+    return eventos
+
+
+# --------------------------------------------------------------------------
+# Pas 1 + 2: descarregar i extreure
 # --------------------------------------------------------------------------
 def descargar_pdf(url: str) -> str:
-    print(f"[1/4] Descargando PDF: {url}")
+    print(f"[1/4] Descarregant PDF: {url}")
     r = requests.get(url, timeout=60)
     r.raise_for_status()
     fd, path = tempfile.mkstemp(suffix=".pdf")
     with os.fdopen(fd, "wb") as f:
         f.write(r.content)
-    print(f"      PDF guardado temporalmente ({len(r.content)} bytes).")
+    print(f"      PDF desat temporalment ({len(r.content)} bytes).")
     return path
 
 
 def extraer_texto(pdf_path: str) -> str:
-    print("[2/4] Extrayendo texto con pdfplumber...")
+    print("[2/4] Extraient text amb pdfplumber...")
     try:
         import pdfplumber
     except ImportError:
-        raise SystemExit("ERROR: instala pdfplumber (pip install pdfplumber).")
+        raise SystemExit("ERROR: instal·la pdfplumber (pip install pdfplumber).")
     bloques = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages):
             t = page.extract_text() or ""
-            bloques.append(f"--- PÁGINA {i+1} ---\n{t}")
+            bloques.append(f"--- PÀGINA {i+1} ---\n{t}")
     texto = "\n\n".join(bloques)
-    print(f"      Texto extraído: {len(texto)} caracteres.")
+    print(f"      Text extret: {len(texto)} caràcters.")
     return texto
 
 
 # --------------------------------------------------------------------------
-# Paso 3: llamada a opencode-go con Best Model Selection
+# Pas 3: crida a opencode-go amb Best Model Selection
 # --------------------------------------------------------------------------
 def llamar_opencodego(texto: str, modelos: list[str]) -> dict | None:
     api_key = os.environ.get("OPENCODE_API_KEY")
     if not api_key:
-        print("      OPENCODE_API_KEY no definida -> se omite el LLM.")
+        print("      OPENCODE_API_KEY no definida -> es omèt el LLM (no es toca l'arxiu existent).")
         return None
     base = os.environ.get("OPENCODE_API_BASE", "https://opencode.ai/zen/go/v1").rstrip("/")
     for modelo in modelos:
-        print(f"      Probando modelo opencode-go: {modelo}")
+        print(f"      Provant model opencode-go: {modelo}")
         try:
             resp = requests.post(
                 f"{base}/chat/completions",
@@ -195,46 +292,68 @@ def llamar_opencodego(texto: str, modelos: list[str]) -> dict | None:
                 timeout=120,
             )
             if resp.status_code != 200:
-                print(f"      -> {modelo} respondió {resp.status_code}: {resp.text[:200]}")
+                print(f"      -> {modelo} va respondre {resp.status_code}: {resp.text[:200]}")
                 continue
             content = resp.json()["choices"][0]["message"]["content"]
             data = json.loads(content)
-            print(f"      -> {modelo} OK. Eventos extraídos: {len(data.get('eventos', []))}")
+            print(f"      -> {modelo} OK. Events: {len(data.get('eventos', []))}; Contactes: {len(data.get('contactes', []))}")
             return data
         except Exception as e:  # noqa: BLE001
-            print(f"      -> {modelo} falló: {e}")
+            print(f"      -> {modelo} ha fallat: {e}")
             continue
-    print("      Todos los modelos fallaron.")
+    print("      Tots els models han fallat.")
     return None
 
 
 # --------------------------------------------------------------------------
-# Paso 4: guardar
+# Pas 4: guardar (amb backup i normalitzacio)
 # --------------------------------------------------------------------------
-def guardar(eventos: list[dict]) -> None:
+def guardar(eventos: list[dict], contactes: list[dict] | None = None) -> None:
     out = os.path.abspath(OUT_PATH)
     os.makedirs(os.path.dirname(out), exist_ok=True)
+    if os.path.exists(out):
+        bak = out + "." + date.today().isoformat() + ".bak"
+        shutil.copy2(out, bak)
+        print(f"      Backup de l'arxiu existent -> {bak}")
+    eventos = gen_ids(eventos)
+    for e in eventos:
+        e["seccio"] = norm_seccio(e.get("seccio"))
+        for f in ("fecha_fin", "hora_inicio", "hora_fin", "lugar",
+                  "precio_socios", "precio_general", "enlace_maps", "fuente", "subcategoria", "subsubcategoria"):
+            e.setdefault(f, None)
     payload = {
         "municipio": MUNICIPIO,
         "mes": MES,
         "fuente_pdf": PDF_URL,
         "generado": date.today().isoformat(),
+        "generado_por": "agenda-ingest (opencode-go)",
         "total": len(eventos),
         "eventos": eventos,
+        "contactes": contactes or [],
     }
     with open(out, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"[4/4] Guardado {len(eventos)} eventos -> {out}")
+    print(f"[4/4] Desats {len(eventos)} events + {len(contactes or [])} contactes -> {out}")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--force-seed", action="store_true", help="No usa LLM; escribe el seed embebido.")
+    ap.add_argument("--force-seed", action="store_true", help="Escriu el seed només si no existeix l'arxiu destí.")
+    ap.add_argument("--pdf-url", default=PDF_URL, help="URL del PDF de l'agenda.")
+    ap.add_argument("--mes", default=MES, help="Mes de l'agenda (p. ex. 'Octubre 2026').")
+    ap.add_argument("--out", default=OUT_PATH, help="Ruta de sortida (data/eventos.json).")
     args = ap.parse_args()
 
+    global PDF_URL, MES, OUT_PATH
+    PDF_URL = args.pdf_url
+    MES = args.mes
+    OUT_PATH = args.out
+
     if args.force_seed:
-        print("Modo --force-seed: escribiendo seed embebido.")
-        guardar(SEED_EVENTOS)
+        if os.path.exists(OUT_PATH):
+            print("--force-seed: ja existeix l'arxiu; no es sobreescriu. Esborra'l si vols restaurar el seed.")
+            return 0
+        guardar(SEED_EVENTOS, None)
         return 0
 
     pdf_path = None
@@ -245,15 +364,19 @@ def main() -> int:
         modelos = [m for m in modelos if m]
         data = llamar_opencodego(texto, modelos)
         if data and data.get("eventos"):
-            guardar(data["eventos"])
+            guardar(data["eventos"], data.get("contactes"))
+        elif os.path.exists(OUT_PATH):
+            print("LLM sense resultats. Es manté l'arxiu existent (no es destrueixen dades).")
         else:
-            print("LLM no disponible/sin resultados -> escribiendo seed embebido (MVP funcional).")
-            guardar(SEED_EVENTOS)
+            print("LLM sense resultats i no hi ha arxiu previ -> seed.")
+            guardar(SEED_EVENTOS, None)
         return 0
     except Exception as e:  # noqa: BLE001
         print(f"ERROR en el pipeline: {e}")
-        print("-> Fallback a seed embebido para no romper el MVP.")
-        guardar(SEED_EVENTOS)
+        if os.path.exists(OUT_PATH):
+            print("-> Fallback: es manté l'arxiu existent.")
+        else:
+            guardar(SEED_EVENTOS, None)
         return 0
     finally:
         if pdf_path and os.path.exists(pdf_path):
