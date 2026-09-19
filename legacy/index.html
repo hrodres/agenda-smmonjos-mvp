@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1a5fd0" />
+<meta name="description" content="Agenda de Santa Margarida i els Monjos — setembre 2026." />
+<title>Agenda SMMonjos · Setembre 2026</title>
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem); }
+  .pt-safe { padding-top: calc(env(safe-area-inset-top, 0px) + 0.25rem); }
+  .scroll-area::-webkit-scrollbar { width: 0; height: 0; }
+  main { padding-bottom: 78px; }
+  .tabbar { position: fixed; bottom: 0; left: 0; right: 0; display: flex; background: #fff; border-top: 1px solid #e2e8f0; padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 60; }
+  .tabbar button { flex: 1; background: none; border: none; padding: 8px 2px 6px; font-size: 11px; font-weight: 600; color: #64748b; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
+  .tabbar button.active { color: #1a5fd0; }
+  .tabbar svg { width: 22px; height: 22px; }
+  .contact { display: flex; align-items: center; gap-3; background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(15,23,42,.08); }
+  .contact .ico { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: #e0ecff; color: #1a5fd0; display: flex; align-items: center; justify-content: center; }
+  .contact a { font-weight: 700; color: #0f172a; text-decoration: none; }
+  .section-title { margin: 18px 2px 8px; font-size: 13px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<div id="app" class="mx-auto flex min-h-full max-w-md flex-col bg-[#f4f6fb]">
+  <div id="header"></div>
+  <main class="flex-1 space-y-3 px-4 pb-6 pt-1" id="main"></main>
+</div>
+<div id="tabbar" class="tabbar"></div>
+<div id="modal-root"></div>
+
+<script>
+(function () {
+  var ICONS = {
+    CalendarDays:'<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+    Search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    X:'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    Clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    MapPin:'<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    MapPinned:'<path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M12 12v4"/><path d="M10 16h4"/>',
+    ExternalLink:'<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    UtensilsCrossed:'<path d="M16 2v7a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V2"/><path d="M5 2v20"/><path d="M19 2v20"/><path d="M5 11h4"/><path d="M19 11h-4"/>',
+    Theater:'<path d="M2 10s3-3 3-8"/><path d="M22 10s-3-3-3-8"/><path d="M2 22v-6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v6"/><path d="M10 22V8"/><path d="M14 22V8"/>',
+    Music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+    Baby:'<path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M22 12c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2s10 4.5 10 10Z"/>',
+    Dumbbell:'<path d="m14.4 14.4 4.6-4.6a2.6 2.6 0 0 0-3.7-3.7L10.7 10.7"/><path d="m13 13 1.5-1.5"/><path d="m16 16 1.5-1.5"/><path d="M3 21v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M21 3v6a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/>',
+    GraduationCap:'<path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/>',
+    Sparkles:'<path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>',
+    Phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>',
+    Landmark:'<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+    PartyPopper:'<path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63-.43 0-.83-.21-1.07-.56l-1.87-2.87"/><path d="M9 13.5V15c0 1.1.9 2 2 2v3.5a2 2 0 0 0 2 2h.5a2 2 0 0 0 2-2V15c0-1.1.9-2 2-2v-.5a2 2 0 0 0 2-2h.5a2 2 0 0 0 2-2V9.5a2 2 0 0 0-2-2h-.5a2 2 0 0 0-2 2v.5a2 2 0 0 0-2 2v.5a2 2 0 0 0-2 2Z"/>',
+  };
+  var CAT_META = {
+    Teatre:{icon:'Theater',bg:'#ffe4e6',fg:'#be123c'},
+    Música:{icon:'Music',bg:'#f5f3ff',fg:'#7c3aed'},
+    Infantil:{icon:'Baby',bg:'#fef3c7',fg:'#b45309'},
+    Esport:{icon:'Dumbbell',bg:'#d1fae5',fg:'#047857'},
+    Formació:{icon:'GraduationCap',bg:'#e0f2fe',fg:'#0369a1'},
+    Altres:{icon:'Sparkles',bg:'#f1f5f9',fg:'#475569'},
+    Cultura:{icon:'Landmark',bg:'#eef2ff',fg:'#4f46e5'},
+    Festes:{icon:'PartyPopper',bg:'#fae8ff',fg:'#a21caf'},
+    Gastronomia:{icon:'UtensilsCrossed',bg:'#ffedd5',fg:'#c2410c'},
+  };
+  var TABS = [
+    {id:'actes', label:'Agenda', icon:'CalendarDays'},
+    {id:'formacio', label:'Formació', icon:'GraduationCap'},
+    {id:'esport', label:'Esport', icon:'Dumbbell'},
+    {id:'noticies', label:'Notícies', icon:'Sparkles'},
+    {id:'telefons', label:'Telèfons', icon:'Phone'}
+  ];
+  var MESES = ['','Gen','Febr','Març','Abr','Maig','Juny','Jul','Ag','Set','Oct','Nov','Des'];
+
+  function svg(name, cls){ return '<svg class="'+cls+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICONS[name]+'</svg>'; }
+  function fmtFecha(iso){ if(!iso) return {dia:'',mes:''}; var p=iso.split('-'); return {dia:+p[2], mes:MESES[+p[1]]||''}; }
+  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  var state = { data:null, q:'', tab:'actes', obert:null, day:null };
+  var docCloseHandler = null;
+
+  function renderHeader(){
+    var d = state.data || {};
+    var h = document.getElementById('header');
+    h.className = 'pt-safe sticky top-0 z-20 bg-brand-600 text-white shadow-lg';
+    h.innerHTML = '<div class="px-4 pt-3 pb-3">'+
+      '<div class="flex items-center gap-2">'+ svg('CalendarDays','h-6 w-6 shrink-0') +
+      '<div class="leading-tight"><h1 class="text-lg font-extrabold tracking-tight">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
+      '<p class="text-[11px] font-medium text-brand-100">'+esc(d.mes||'Setembre 2026')+'</p></div></div>'+
+      '<div class="mt-3 flex items-center gap-3">'+
+      '<div class="flex flex-1 items-center gap-2 rounded-xl bg-white/15 px-3 py-1.5 ring-1 ring-white/20">'+
+      svg('Search','h-4 w-4 text-brand-100')+
+      '<input id="search" value="'+esc(state.q)+'" placeholder="Cerca…" class="flex-1 bg-transparent text-sm text-white placeholder:text-brand-100 focus:outline-none" inputmode="search">'+
+      '<button id="clear" aria-label="Neteja" style="display:'+(state.q?'block':'none')+'" class="rounded-full p-1 text-brand-100 hover:bg-white/10">'+svg('X','h-4 w-4')+'</button></div>'+
+      '<div class="flex shrink-0 items-center gap-3">'+
+      '<a href="https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf" target="_blank" rel="noopener noreferrer" download aria-label="Descarrega el PDF" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('ExternalLink','h-5 w-5 text-brand-100')+'</a>'+
+      '<button id="calbtn" aria-label="Filtra per dia" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('CalendarDays','h-5 w-5 text-brand-100')+'</button>'+
+      '<button id="dayclear" aria-label="Treu filtre de dia" style="display:'+(state.day?'block':'none')+'" class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('X','h-4 w-4 text-brand-100')+'</button>'+
+      '<input type="date" id="day" value="'+esc(state.day||'')+'" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;border:0">'+
+      '</div>'+
+      '</div></div>';
+    var s = document.getElementById('search');
+    s.addEventListener('input', function(e){ state.q=e.target.value; var c=document.getElementById('clear'); if(c) c.style.display = state.q?'block':'none'; renderMain(); });
+    var c = document.getElementById('clear'); if(c) c.addEventListener('click', function(){ state.q=''; var i=document.getElementById('search'); if(i){ i.value=''; i.focus(); } c.style.display='none'; renderMain(); });
+    var cal = document.getElementById('calbtn'); if(cal) cal.addEventListener('click', function(){ var d=document.getElementById('day'); if(d){ if(d.showPicker){ try{ d.showPicker(); }catch(e){ d.focus(); } } else { d.focus(); } } });
+    var day = document.getElementById('day'); if(day) day.addEventListener('change', function(){ state.day = day.value || null; var dc=document.getElementById('dayclear'); if(dc) dc.style.display = state.day?'block':'none'; renderMain(); });
+    var dc = document.getElementById('dayclear'); if(dc) dc.addEventListener('click', function(){ state.day=null; var d=document.getElementById('day'); if(d) d.value=''; dc.style.display='none'; renderMain(); });
+  }
+
+  function renderTabs(){
+    var bar = document.getElementById('tabbar'); bar.innerHTML='';
+    TABS.forEach(function(t){
+      var b = document.createElement('button');
+      b.className = (state.tab===t.id?'active':'');
+      b.innerHTML = svg(t.icon,'') + '<span>'+t.label+'</span>';
+      b.onclick = function(){ state.tab = t.id; renderTabs(); renderMain(); };
+      bar.appendChild(b);
+    });
+  }
+
+  function card(ev){
+    var meta = CAT_META[ev.categoria]||CAT_META.Altres;
+    var f = fmtFecha(ev.fecha_inicio);
+    var hora = ev.hora_inicio ? (ev.hora_fin? ev.hora_inicio+' – '+ev.hora_fin : 'A les '+ev.hora_inicio) : '';
+    var preu = ev.precio_general ? (ev.precio_socios? 'Socis: '+ev.precio_socios+' · General: '+ev.precio_general : ev.precio_general) : (ev.precio_socios||'');
+    return '<article data-open="'+esc(ev.id)+'" class="cursor-pointer overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-slate-100"><div class="flex">'+
+      '<div class="flex w-14 shrink-0 flex-col items-center justify-center bg-brand-50 py-3 text-brand-700">'+(f.dia?('<span class="text-xl font-extrabold leading-none">'+f.dia+'</span><span class="text-[11px] font-semibold uppercase">'+f.mes+'</span>'):'<span class="text-[11px] font-semibold uppercase">Avís</span>')+'</div>'+
+      '<div class="min-w-0 flex-1 p-3"><div class="mb-1 flex items-center gap-2">'+
+      '<span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold '+'" style="background:'+meta.bg+';color:'+meta.fg+'">'+svg(meta.icon,'h-3 w-3')+esc(ev.categoria)+'</span></div>'+
+      '<h3 class="line-clamp-2 text-[15px] font-bold leading-snug text-slate-800">'+esc(ev.titulo)+'</h3>'+
+      '<div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">'+
+      (hora?'<span class="inline-flex items-center gap-1">'+svg('Clock','h-3.5 w-3.5')+' '+esc(hora)+'</span>':'')+
+      (ev.lugar?'<span class="inline-flex items-center gap-1">'+svg('MapPin','h-3.5 w-3.5')+' '+esc(ev.lugar)+'</span>':'')+'</div>'+
+      (preu?'<p class="mt-2 text-[11px] font-medium text-slate-400">'+esc(preu)+'</p>':'')+'</div></div></article>';
+  }
+
+  function filtered(tab){
+    if(!state.data) return [];
+    var evs = state.data.eventos.slice();
+    if(state.day) evs = evs.filter(function(e){ return (e.fecha_inicio||'').slice(0,10) === state.day; });
+    if(tab==='formacio') evs = evs.filter(function(e){return e.seccio==='Formació';});
+    else if(tab==='esport') evs = evs.filter(function(e){return e.seccio==='Esports';});
+    else if(tab==='noticies') evs = evs.filter(function(e){return e.seccio==='Notícies';});
+    else if(tab==='actes') evs = evs.filter(function(e){return e.seccio==='Actes';});
+    var q = state.q.trim().toLowerCase();
+    if(q) evs = evs.filter(function(e){ return (e.titulo+' '+(e.lugar||'')+' '+(e.descripcion||'')+' '+(e.categoria||'')).toLowerCase().indexOf(q)>=0; });
+    evs.sort(function(a,b){ return (a.fecha_inicio+(a.hora_inicio||'')).localeCompare(b.fecha_inicio+(b.hora_inicio||'')); });
+    return evs;
+  }
+
+  function renderMain(){
+    var m = document.getElementById('main');
+    if(!state.data){ m.innerHTML='<div class="py-10 text-center text-sm text-slate-400">Carregant…</div>'; return; }
+    if(state.tab==='telefons'){
+      var c = state.data.contactes||[];
+      var q = state.q.trim().toLowerCase();
+      if(q) c = c.filter(function(x){ return (x.nom+' '+(x.nota||'')).toLowerCase().indexOf(q)>=0; });
+      var html = '<div class="section-title">Telèfons i contacte</div>';
+      if(!c.length){ html+='<div class="py-10 text-center text-sm text-slate-400">Cap contacte.</div>'; }
+      c.forEach(function(x){
+        html += '<div class="contact"><div class="ico">'+svg('Phone','h-5 w-5')+'</div><div class="min-w-0 flex-1">'+
+          '<div class="font-bold text-slate-800">'+esc(x.nom)+'</div>'+
+          (x.nota?'<div class="text-xs text-slate-500">'+esc(x.nota)+'</div>':'')+
+          (x.web?'<div class="text-xs text-brand-600 truncate"><a href="'+esc(x.web)+'" target="_blank" rel="noopener noreferrer">'+esc(x.web)+'</a></div>':'')+
+          (x.email?'<div class="text-xs text-slate-500 truncate"><a href="mailto:'+esc(x.email)+'" class="text-brand-600">'+esc(x.email)+'</a></div>':'')+
+          '</div>'+
+          (x.telefon?'<a href="tel:'+esc(x.telefon.replace(/\s/g,''))+'" class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white">'+esc(x.telefon)+'</a>':'')+
+          '</div>';
+      });
+      html += '<a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" class="block mt-2 rounded-2xl bg-white px-4 py-3 text-center text-sm font-semibold text-brand-600 shadow-card">Web municipal ↗</a>';
+      m.innerHTML = html;
+      return;
+    }
+    var evs = filtered(state.tab);
+    var labelTab = {actes:'Agenda', formacio:'Formació i Cursos', esport:'Esport', noticies:'Notícies'};
+    var html = (labelTab[state.tab]? '<div class="section-title">'+labelTab[state.tab]+'</div>' : '');
+    if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
+    evs.forEach(function(e){ html += card(e); });
+    html += '<p class="pt-1 text-center text-xs text-slate-400">'+evs.length+' activitat'+(evs.length!==1?'s':'')+'</p>';
+    m.innerHTML = html;
+    Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){
+      b.onclick = function(){ state.obert = evs.filter(function(e){return e.id===b.getAttribute('data-open');})[0]; renderModal(); };
+    });
+  }
+
+  function renderModal(){
+    var root = document.getElementById('modal-root');
+    if(!state.obert){ root.innerHTML=''; return; }
+    var ev = state.obert; var meta = CAT_META[ev.categoria]||CAT_META.Altres;
+    var anyAny = ev.fecha_inicio ? ev.fecha_inicio.split('-')[0] : '';
+    var fi = fmtFecha(ev.fecha_inicio); var fh = fmtFecha((ev.fecha_fin && ev.fecha_inicio && ev.fecha_fin!==ev.fecha_inicio)?ev.fecha_fin:null);
+    var rang = ev.fecha_inicio ? (fh.dia? fi.dia+' '+fi.mes+' – '+fh.dia+' '+fh.mes+' '+anyAny : fi.dia+' '+fi.mes+' '+anyAny) : 'Avís';
+    root.innerHTML = '<div id="back" style="position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,23,42,.5)">'+
+      '<div class="modal-card" style="max-height:88vh;width:100%;max-width:28rem;background:#fff;border-radius:24px 24px 0 0;overflow-y:auto;padding-bottom:90px">'+
+      '<div class="sticky top-0 flex items-center justify-between bg-white/95 px-4 py-3 backdrop-blur">'+
+      '<span class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold '+'" style="background:'+meta.bg+';color:'+meta.fg+'">'+svg(meta.icon,'h-3.5 w-3.5')+' '+esc(ev.categoria)+'</span>'+
+      '<button id="close" aria-label="Tanca" class="rounded-full p-1 text-slate-400 hover:bg-slate-100">'+svg('X','h-5 w-5')+'</button></div>'+
+      '<div class="px-4 pb-5"><h2 class="text-xl font-extrabold leading-tight text-slate-800">'+esc(ev.titulo)+'</h2>'+
+      '<div class="mt-3 space-y-2 text-sm text-slate-600">'+
+      '<div class="flex items-center gap-2">'+svg('CalendarDays','h-4 w-4 text-brand-600')+'<span>'+esc(rang)+'</span></div>'+
+      (ev.hora_inicio?'<div class="flex items-center gap-2">'+svg('Clock','h-4 w-4 text-brand-600')+'<span>'+(ev.hora_fin?ev.hora_inicio+' – '+ev.hora_fin:'A les '+ev.hora_inicio)+'</span></div>':'')+
+      (ev.lugar?'<div class="flex items-start gap-2">'+svg('MapPin','h-4 w-4 text-brand-600')+'<span>'+esc(ev.lugar)+'</span></div>':'')+
+      ((ev.precio_general||ev.precio_socios)?'<div class="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">'+(ev.precio_socios?'<div>Socis: '+esc(ev.precio_socios)+'</div>':'')+(ev.precio_general?'<div>General: '+esc(ev.precio_general)+'</div>':'')+'</div>':'')+
+      '</div>'+(ev.descripcion?'<p class="mt-3 text-sm leading-relaxed text-slate-600">'+esc(ev.descripcion)+'</p>':'')+
+      '<div class="mt-4 flex gap-2">'+
+      (ev.enlace_maps?'<a href="'+esc(ev.enlace_maps)+'" target="_blank" rel="noopener noreferrer" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700">'+svg('MapPinned','h-4 w-4')+' Obre a Google Maps</a>':'')+'</div></div></div></div>';
+    function closeModal(){
+      state.obert = null;
+      if(docCloseHandler){ document.removeEventListener('click', docCloseHandler, true); docCloseHandler = null; }
+      renderModal();
+    }
+    document.getElementById('back').onclick = function(e){ if(e.target.id==='back') closeModal(); };
+    document.getElementById('close').onclick = closeModal;
+    docCloseHandler = function(e){
+      var card = root.querySelector('.modal-card');
+      if(card && !card.contains(e.target)) closeModal();
+    };
+    setTimeout(function(){ document.addEventListener('click', docCloseHandler, true); }, 0);
+  }
+
+  fetch('./data/eventos.json', { cache: 'no-store' })
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(d){ state.data=d; renderHeader(); renderTabs(); renderMain(); })
+    .catch(function(e){ document.getElementById('main').innerHTML='<div class="py-10 text-center text-sm text-rose-700">No s\'ha pogut carregar ('+esc(e.message)+').</div>'; });
+})();
+</script>
+</body>
+</html>

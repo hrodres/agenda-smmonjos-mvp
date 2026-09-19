@@ -1,79 +1,54 @@
-# Agenda SMMonjos — MVP
+# Agenda SMMonjos — Setembre 2026
 
-Prototipo interactivo de la **agenda cultural de Santa Margarida i els Monjos** (setembre 2026).
-App web móvil (React + Vite + Tailwind) alojada en GitHub Pages, preparada para convertirse en
-**Telegram Mini App** sin modificar el código.
+Agenda interactiva *mobile-first* de **Santa Margarida i els Monjos** servida com a web
+estàtica a GitHub Pages, preparada per funcionar també com a **Telegram Mini App** sense
+canviar el codi.
 
-- 🌐 Demo: `https://<tu-usuario>.github.io/agenda-smmonjos-mvp/`
-- 📄 Datos en vivo extraídos del PDF oficial del Ajuntament.
+🌐 https://hrodres.github.io/agenda-smmonjos-mvp/
 
----
+## Com funciona
 
-## Estructura
+És un lloc estàtic **autònom** (no cal compilar):
 
-```
-agenda-smmonjos-mvp/
-├── .github/workflows/deploy.yml   # CI: push a main → build → gh-pages
-├── scripts/ingest.py              # Pipeline de ingesta (PDF → opencode-go → JSON)
-├── public/data/eventos.json       # Base de datos estática (generada por el pipeline)
-├── src/                           # App React (mobile-first, Lucide Icons)
-├── index.html
-├── vite.config.js                 # base: './' para GitHub Pages
-├── tailwind.config.js
-└── package.json
-```
+- `index.html` — app (HTML + JS, icones Lucide inline)
+- `styles.css` — estils (inclou els colors de badge de categoria)
+- `data/eventos.json` — base de dades dels esdeveniments
 
-## Pipeline de ingesta (`scripts/ingest.py`)
+S'obre directament al navegador; no cal `npm install` ni `npm run build`.
 
-1. Descarga el PDF oficial de la agenda.
-2. Extrae el texto por páginas con `pdfplumber`.
-3. Llama a la API de **opencode-go** aplicando *Best Model Selection*: prueba los modelos más
-   potentes/precisos en orden hasta obtener una respuesta válida, y fuerza un **JSON Schema
-   estricto** con los eventos (titulo, fechas, hora, lugar, categoria, precios, descripcion, Maps).
-4. Guarda el resultado en `public/data/eventos.json`.
+## Desplegament
 
-### Modelo seleccionado (Best Model Selection)
-El pipeline usa el primer modelo disponible de este ranking (configurable con `OPENCODE_MODEL`):
+GitHub Pages amb **Source: Deploy from a branch → `main`** (arrel). Qualsevol `git push`
+a `main` publica el lloc. Abans s'usava la branca `gh-pages`, ja eliminada.
 
-| Orden | Modelo opencode-go                         | Uso                                       |
-|------:|--------------------------------------------|-------------------------------------------|
-| 1     | `opencode-go/gpt-5-6-luna`                 | extracción principal (top precisión)      |
-| 2     | `opencode-go/deepseek-v4-pro`             | fallback de capacidad                     |
-| 3     | `opencode-go/hy3`                         | fallback final                            |
+## Dades
 
-Si `OPENCODE_API_KEY` no está definida (o todos los modelos fallan), el pipeline **no rompe**:
-escribe un *seed* embebido (extracción curada del PDF oficial) para que el MVP siempre tenga datos.
+`data/eventos.json` és la base de dades. Cada esdeveniment:
 
-```bash
-pip install pdfplumber requests
-export OPENCODE_API_KEY="tu-clave"          # opcional
-python scripts/ingest.py                    # regenera public/data/eventos.json
-python scripts/ingest.py --force-seed       # escribe solo el seed
-```
+`id, titulo, fecha_inicio, fecha_fin, hora_inicio, hora_fin, lugar, categoria, seccio,
+precio_socios, precio_general, descripcion, enlace_maps`
 
-## Desarrollo local (web)
+**Categories** (badge de color): `Teatre, Música, Infantil, Esport, Formació, Altres,
+Cultura, Festes, Gastronomia`. El color del badge s'aplica **inline**
+(`style="background:…;color:…"`) per garantir que es veu sempre, independent del CSS extern.
 
-```bash
-npm install
-npm run dev        # http://localhost:5173
-npm run build      # genera dist/ (lista para Pages)
-```
+**Seccions** (pestanyes): `Actes, Formació, Esports, Notícies`. Els esdeveniments sense data
+apareixen com a "Avís" dins de Notícies.
 
-## Despliegue en GitHub Pages
+## Editar dades
 
-El workflow `.github/workflows/deploy.yml` compila y publica en la rama `gh-pages` con cada
-`git push` a `main`. Activa Pages en el repo → *Build and deployment* → **Source: GitHub Actions**.
+Edita `data/eventos.json` i fes `git push`. La extracció inicial es va curar manualment
+perquè la sortida automàtica (opencode-go) sortia amb basura en `lugar`/`horario`. Per
+regenerar des del PDF oficial hi ha `legacy/scripts/ingest.py` (pipeline obert).
 
-## Detección nativa de Telegram Mini App
+## Telegram Mini App
 
-En `src/App.jsx` un `useEffect` detecta `window.Telegram?.WebApp`: si existe, ejecuta `ready()`
-y `expand()` para integrarse como Mini App a pantalla completa; si no, se renderiza como web
-estándar. Mismo código para ambos destinos.
+`index.html` detecta `window.Telegram?.WebApp`: si existeix, crida `ready()`/`expand()` per
+integrar-se a pantalla completa; si no, es renderitza com a web estàndard. El mateix codi
+serveix per a tots dos destins.
 
-## Categorías
+## Històric
 
-`Teatro · Música · Infantil · Deportes · Formación · Otros` (badges de color en las tarjetas).
-
-## Banner B2B
-
-Espacio destacado de patrocinio ("¿Dónde cenar este fin de semana?") listo para comercializar.
+El MVP original era en React/Vite (`legacy/`). La versió en producció és aquesta estàtica
+autònoma, resultat d'iterar la UI per a mòbil (cercador, botó PDF, vista de calendari per
+dies, targeta que obre el detall amb un sol toc, badges de categoria amb color).
