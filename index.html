@@ -94,6 +94,16 @@
   var DIES = ['Dg','Dl','Dt','Dc','Dj','Dv','Ds'];
   function diaSetmana(iso){ if(!iso) return ''; var d=new Date(iso+'T00:00:00'); if(isNaN(d.getTime())) return ''; return DIES[d.getDay()]||''; }
 
+  var MESOS = ['','gener','febrer','març','abril','maig','juny','juliol','agost','setembre','octubre','novembre','desembre'];
+  var DIES_FULL = ['Diumenge','Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte'];
+  function fmtDataCompleta(iso){
+    if(!iso) return 'Avís';
+    var p = iso.split('-'); var d = new Date(iso+'T00:00:00');
+    if(isNaN(d.getTime())) return 'Avís';
+    var dia = +p[2], mes = +p[1], any = +p[0];
+    return DIES_FULL[d.getDay()]+' '+dia+' de '+MESOS[mes]+' de '+any;
+  }
+
   var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null };
   var docCloseHandler = null;
 
@@ -212,8 +222,7 @@
       return;
     }
     var evs = filtered(state.tab);
-    var labelTab = {actes:'Agenda', formacio:'Formació i Cursos', esport:'Esport', noticies:'Notícies'};
-    var html = (labelTab[state.tab]? '<div class="section-title">'+labelTab[state.tab]+'</div>' : '');
+    var html = '';
     function renderGrups(evs, html){
       var SUBS = [];
       evs.forEach(function(e){ var s=e.subcategoria||''; if(SUBS.indexOf(s)<0) SUBS.push(s); });
@@ -251,9 +260,7 @@
     var root = document.getElementById('modal-root');
     if(!state.obert){ root.innerHTML=''; return; }
     var ev = state.obert;
-    var anyAny = ev.fecha_inicio ? ev.fecha_inicio.split('-')[0] : '';
-    var fi = fmtFecha(ev.fecha_inicio); var fh = fmtFecha((ev.fecha_fin && ev.fecha_inicio && ev.fecha_fin!==ev.fecha_inicio)?ev.fecha_fin:null);
-    var rang = ev.fecha_inicio ? (fh.dia? fi.dia+' '+fi.mes+' – '+fh.dia+' '+fh.mes+' '+anyAny : fi.dia+' '+fi.mes+' '+anyAny) : 'Avís';
+    var rang = ev.fecha_inicio ? (ev.fecha_fin && ev.fecha_fin!==ev.fecha_inicio ? fmtDataCompleta(ev.fecha_inicio)+' – '+fmtDataCompleta(ev.fecha_fin) : fmtDataCompleta(ev.fecha_inicio)) : 'Avís';
     root.innerHTML = '<div id="back" style="position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,23,42,.5)">'+
       '<div class="modal-card" style="max-height:88vh;width:100%;max-width:28rem;background:#fff;border-radius:24px 24px 0 0;overflow-y:auto;padding-bottom:90px">'+
       '<div class="sticky top-0 flex items-center justify-between bg-white/95 px-4 py-3 backdrop-blur">'+
