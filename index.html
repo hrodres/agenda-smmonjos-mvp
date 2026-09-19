@@ -164,11 +164,11 @@
       if(q) c = c.filter(function(x){ return (x.nom+' '+(x.nota||'')).toLowerCase().indexOf(q)>=0; });
       var html = '';
       if(!c.length){ html+='<div class="py-10 text-center text-sm text-slate-400">Cap contacte.</div>'; }
-      var GRUPS = [['Serveis Municipals','Serveis municipals'],['Altres Serveis','Altres serveis'],['Grups Municipals','Grups municipals']];
+      var GRUPS = [];
+      c.forEach(function(x){ var g=(x.grup||'Altres Serveis'); if(GRUPS.indexOf(g)<0) GRUPS.push(g); });
       GRUPS.forEach(function(g){
-        var gc = c.filter(function(x){ return (x.grup||'Altres Serveis')===g[0]; });
-        if(!gc.length) return;
-        html += '<div class="section-title">'+esc(g[1])+'</div>';
+        var gc = c.filter(function(x){ return (x.grup||'Altres Serveis')===g; });
+        html += '<div class="section-title">'+esc(g)+'</div>';
         gc.forEach(function(x){
           html += '<div class="contact"><div class="ico">'+svg('Phone','h-5 w-5')+'</div><div class="min-w-0 flex-1">'+
             '<div class="font-bold text-slate-800">'+esc(x.nom)+'</div>'+
