@@ -102,8 +102,7 @@
       '<input id="search" value="'+esc(state.q)+'" placeholder="Cerca…" class="flex-1 bg-transparent text-sm text-white placeholder:text-brand-100 focus:outline-none" inputmode="search">'+
       '<button id="clear" aria-label="Neteja" style="display:'+(state.q?'block':'none')+'" class="rounded-full p-1 text-brand-100 hover:bg-white/10">'+svg('X','h-4 w-4')+'</button></div>'+
       '<div class="flex shrink-0 items-center gap-3">'+
-      '<a href="https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf" target="_blank" rel="noopener noreferrer" download aria-label="Descarrega el PDF" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('ExternalLink','h-5 w-5 text-brand-100')+'</a>'+
-      '<button id="calbtn" aria-label="Filtra per dia" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('CalendarDays','h-5 w-5 text-brand-100')+'</button>'+
+      '<button id="calbtn" aria-label="Filtra per dia" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('CalendarDays','h-5 w-5 text-brand-100')+'</button>'+      '<a href="https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf" target="_blank" rel="noopener noreferrer" download aria-label="Descarrega el PDF" class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('ExternalLink','h-5 w-5 text-brand-100')+'</a>'+
       '<button id="dayclear" aria-label="Treu filtre de dia" style="display:'+(state.day?'block':'none')+'" class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/20">'+svg('X','h-4 w-4 text-brand-100')+'</button>'+
       '<input type="date" id="day" value="'+esc(state.day||'')+'" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;border:0">'+
       '</div>'+
