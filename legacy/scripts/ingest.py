@@ -58,9 +58,8 @@ OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "eventos.
 # capacidad para interpretar maquetacion en columnas y estructurar eventos en
 # catalan/espanol. El pipeline usa el PRIMER modelo disponible que responde.
 MODEL_RANKING = [
-    "opencode-go/gpt-5.6-luna",   # indicado: extraccion principal (top precision)
-    "opencode-go/deepseek-v4-pro",
-    "opencode-go/hy3",
+    "opencode-go/deepseek-v4-pro",  # model directe per defecte (extraccio robusta)
+    "opencode-go/hy3",                # fallback
 ]
 
 # Categories suggerides (el LLM pot retornar-ne de noves; el render te fallback de color)
