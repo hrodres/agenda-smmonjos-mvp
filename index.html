@@ -12,7 +12,7 @@
   .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem); }
   .pt-safe { padding-top: calc(env(safe-area-inset-top, 0px) + 0.25rem); }
   .scroll-area::-webkit-scrollbar { width: 0; height: 0; }
-  main { padding-bottom: 78px; }
+  main { padding-bottom: 96px; }
   .tabbar { position: fixed; bottom: 0; left: 0; right: 0; display: flex; background: #fff; border-top: 1px solid #e2e8f0; padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 60; }
   .tabbar button { flex: 1; background: none; border: none; padding: 8px 2px 6px; font-size: 11px; font-weight: 600; color: #64748b; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
   .tabbar button.active { color: #1a5fd0; }
@@ -121,7 +121,7 @@
     h.innerHTML = '<div class="px-4 pt-3 pb-3">'+
       '<div class="flex items-center gap-2">'+
       '<button id="agendabtn" aria-label="Canvia de mes" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('CalendarDays','h-6 w-6')+'</button>'+
-      '<div class="leading-tight flex-1"><h1 class="text-lg font-extrabold tracking-tight">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
+      '<div class="leading-tight flex-1 min-w-0"><h1 class="text-[15px] font-extrabold tracking-tight whitespace-nowrap truncate">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
       '<p class="text-[11px] font-medium text-brand-100">'+esc(d.mes||'Setembre 2026')+'</p></div>'+
       '<button id="discInfo" aria-label="Informació" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('Info','h-6 w-6')+'</button>'+
       '</div>'+
