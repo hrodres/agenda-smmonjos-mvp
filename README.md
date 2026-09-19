@@ -56,8 +56,25 @@ segons el PDF d'aquell mes; el codi no necessita canvis encara que les agrupacio
 ## Editar dades
 
 Edita `data/eventos.json` i fes `git push`. La extracció inicial es va curar manualment
-perquè la sortida automàtica (opencode-go) sortia amb basura en `lugar`/`horario`. Per
-regenerar des del PDF oficial hi ha `legacy/scripts/ingest.py` (pipeline obert).
+perquè la sortida automàtica (opencode-go) sortia amb basura en `lugar`/`horario`.
+
+### Regeneració mensual automàtica (pipeline)
+
+`legacy/scripts/ingest.py` regenera `data/eventos.json` a partir del PDF oficial de
+QUALSEVOL mes, **sense edició manual**. És *month-agnostic*: el codi no coneix noms
+concrets de grups/categories; el LLM deriva `seccio`/`subcategoria`/`subsubcategoria`
+i `contactes`+`grup` del propi PDF, i el render del lloc (dinàmic) els mostra sols.
+
+```bash
+# necessita OPENCODE_API_KEY (model ranking: gpt-5.6-luna > deepseek-v4-pro > hy3)
+python3 legacy/scripts/ingest.py            # desa a data/eventos.json (amb backup .bak)
+python3 legacy/scripts/ingest.py --pdf-url <URL> --mes "Octubre 2026"
+python3 legacy/scripts/ingest.py --force-seed   # només si no existeix l'arxiu
+```
+
+**Seguretat de dades:** abans de sobreescriure es fa backup (`.bak` amb data); si el
+LLM falla o no hi ha clau, **no es destrueix** l'arxiu existent. Mai s'usa `Altres`
+com a agrupació (els elements sense grup es llisten directament sota el grup pare).
 
 ## Telegram Mini App
 
