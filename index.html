@@ -290,8 +290,8 @@
       ((ev.precio_general||ev.precio_socios)?'<div class="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">'+(ev.precio_socios?'<div>Socis: '+esc(ev.precio_socios)+'</div>':'')+(ev.precio_general?'<div>General: '+esc(ev.precio_general)+'</div>':'')+'</div>':'')+
       '</div>'+(ev.descripcion?'<p class="mt-3 text-sm leading-relaxed text-slate-600">'+esc(ev.descripcion)+'</p>':'')+
       '<div class="mt-4 flex gap-2">'+
-      (ev.enlace_maps?'<a href="'+esc(ev.enlace_maps)+'" target="_blank" rel="noopener noreferrer" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600">'+svg('MapPinned','h-4 w-4')+' Obre a Google Maps</a>':'<span class="flex-1"></span>')+
-      '<button id="share" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-600">'+svg('Share2','h-4 w-4')+' Compartir</button>'+
+      (ev.enlace_maps?'<a href="'+esc(ev.enlace_maps)+'" target="_blank" rel="noopener noreferrer" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-600">'+svg('MapPinned','h-4 w-4')+' Obre a Google Maps</a>':'<span class="flex-1"></span>')+
+      '<button id="share" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600">'+svg('Share2','h-4 w-4')+' Compartir</button>'+
       '</div></div></div></div>';
     function closeModal(){
       state.obert = null;
