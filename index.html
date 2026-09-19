@@ -189,17 +189,17 @@
     var html = (labelTab[state.tab]? '<div class="section-title">'+labelTab[state.tab]+'</div>' : '');
     function renderGrups(evs, html){
       var SUBS = [];
-      evs.forEach(function(e){ var s=e.subcategoria||'Altres'; if(SUBS.indexOf(s)<0) SUBS.push(s); });
+      evs.forEach(function(e){ var s=e.subcategoria||''; if(SUBS.indexOf(s)<0) SUBS.push(s); });
       SUBS.forEach(function(s){
-        var sub = evs.filter(function(e){ return (e.subcategoria||'Altres')===s; });
-        html += '<div class="section-title" style="text-transform:none;letter-spacing:0">'+esc(s)+'</div>';
-        var hasSub = sub.some(function(e){ return e.subsubcategoria; });
-        if(!hasSub){ sub.forEach(function(e){ html += card(e); }); }
-        else {
+        var direct = evs.filter(function(e){ return (e.subcategoria||'')===s && !e.subsubcategoria; });
+        var grouped = evs.filter(function(e){ return (e.subcategoria||'')===s && !!e.subsubcategoria; });
+        if(s) html += '<div class="section-title" style="text-transform:none;letter-spacing:0">'+esc(s)+'</div>';
+        direct.forEach(function(e){ html += card(e); });
+        if(grouped.length){
           var SS = [];
-          sub.forEach(function(e){ var ss=e.subsubcategoria||'Altres'; if(SS.indexOf(ss)<0) SS.push(ss); });
+          grouped.forEach(function(e){ var ss=e.subsubcategoria; if(SS.indexOf(ss)<0) SS.push(ss); });
           SS.forEach(function(ss){
-            var g = sub.filter(function(e){ return (e.subsubcategoria||'Altres')===ss; });
+            var g = grouped.filter(function(e){ return e.subsubcategoria===ss; });
             html += '<div class="mt-2 mb-1 px-1 text-sm font-bold text-brand-600">'+esc(ss)+'</div>';
             g.forEach(function(e){ html += card(e); });
           });
