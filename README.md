@@ -42,6 +42,17 @@ grups del propi JSON** (no estan hardcodejats), així que si un altre mes el PDF
 nous, es mostren sols sense tocar el codi. En regenerar el JSON de cap altre mes, cal
 assignar `grup` a cada contacte; qui no en tingui cau a `Altres Serveis`.
 
+**Formació — estructura dinàmica (clau per al manteniment mensual).** Els esdeveniments de
+la secció `Formació` porten `subcategoria` (i, opcionalment, `subsubcategoria`) que repliquen
+les sub-capçaleres del PDF (setembre 2026: `Servei Local d'Ocupació`, `Cursos i Activitats`
+→ `Manualitats de Dona al Dia` / `Tallers als Casals de la Gent Gran`, `Cant Coral`, `Escola
+d'Adults Fina Garcia Mateu`, `Pla Educatiu d'Entorn`). **El render agrupa per aquests camps
+sense assumir cap nom concret**: les agrupacions es deriven del propi JSON, amb `Altres` només
+com a valor per defecte si falta el camp. **Regla de manteniment: el lloc ha de funcionar mes a
+mes independentment de les categories/subcategories que porti la formació en cada PDF.** Per tant,
+en regenerar el JSON d'un altre mes, cal assignar `subcategoria`/`subsubcategoria` a cada curs
+segons el PDF d'aquell mes; el codi no necessita canvis encara que les agrupacions canviïn.
+
 ## Editar dades
 
 Edita `data/eventos.json` i fes `git push`. La extracció inicial es va curar manualment

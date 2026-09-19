@@ -1343,6 +1343,23 @@
       "precio_general": null,
       "fuente": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
       "seccio": "Notícies"
+    },
+    {
+      "id": "evt-2026-09-19-multitallers",
+      "titulo": "Multitallers",
+      "fecha_inicio": "2026-10-05",
+      "fecha_fin": null,
+      "hora_inicio": "17:45",
+      "hora_fin": "20:00",
+      "lugar": "Casa de cultura Mas Catarro",
+      "categoria": "Formació",
+      "seccio": "Formació",
+      "precio_socios": null,
+      "precio_general": null,
+      "descripcion": "Curs anual. Inscripcions a la web de l'ajuntament.",
+      "enlace_maps": null,
+      "subcategoria": "Cursos i Activitats",
+      "subsubcategoria": "Manualitats de Dona al Dia"
     }
   ],
   "contactes": [
