@@ -1330,245 +1330,280 @@
       "telefon": "93 898 02 11",
       "email": null,
       "nota": "Oficines municipals",
-      "web": "https://www.santamargaridaielsmonjos.cat"
+      "web": "https://www.santamargaridaielsmonjos.cat",
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Policia Local",
       "telefon": "93 898 00 31",
       "email": null,
       "nota": null,
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Piscina Municipal",
       "telefon": "93 898 07 77",
       "email": null,
       "nota": null,
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Serveis Socials",
       "telefon": "93 898 08 71",
       "email": null,
       "nota": null,
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Servei d'emprenedoria",
       "telefon": "93 898 20 17",
       "email": null,
       "nota": "Ca l'Antic (servei local d'ocupació)",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Tangram - Servei de Joventut",
       "telefon": "93 818 62 96",
       "email": null,
       "nota": null,
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Turisme",
       "telefon": "669 28 75 39",
       "email": null,
       "nota": "Informació i reserves",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Biblioteca",
       "telefon": "93 898 08 29",
       "email": null,
       "nota": "Biblio@ccés Ràpita",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Avaries elèctriques",
       "telefon": "900 770 077",
       "email": null,
       "nota": null,
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Molí del Foix",
       "telefon": "93 818 69 28",
       "email": "molidelfoix@smmonjos.cat",
       "nota": "Caminada de proximitat i taller de matrícules",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "La Margaridoia",
       "telefon": "640 119 745",
       "email": "info@lamargaridoia.cat",
       "nota": "Societat La Margaridoia (sopar-ball i reserves)",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Coral Amics de Penyafel",
       "telefon": "619 208 960",
       "email": "amics.penyafel@gmail.com",
       "nota": "Inscripcions assajos",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Coral Infantil El Flabiol",
       "telefon": "667 467 497",
       "email": "coralinfantilelflabiol@gmail.com",
       "nota": "Inscripcions assajos",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Club de la Feina",
       "telefon": "93 818 66 84",
       "email": "clubdefeina@smmonjos.cat",
       "nota": "Ca l'Antic (edifici Tangram), c/ Berenguer 1, 2a planta",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Tamagica (La Ràpita)",
       "telefon": null,
       "email": "tamagica@gmail.com",
       "nota": "Coral Infantil La Bombeta Màgica",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Protecció Civil (voluntaris)",
       "telefon": "639 269 314",
       "email": "avpcsantamargaridaielsmonjos@gmail.com",
       "nota": "Associació de Voluntaris de Protecció Civil",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Coral l'Amistat de la Ràpita",
       "telefon": "679 467 335",
       "email": "amistat.larapita@gmail.com",
       "nota": "Inscripcions assajos",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Cor Margaridoia",
       "telefon": "657 839 001",
       "email": null,
       "nota": "Inscripcions assajos",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Turisme - Visites guiades Castell i Ciarga",
       "telefon": "669 287 539",
       "email": null,
       "nota": "Inscripcions a visites guiades",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Tangram - Berenar d'obertura (WhatsApp)",
       "telefon": "629 174 007",
       "email": null,
       "nota": "Inscripció berenar d'obertura",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Servei d'Igualtat",
       "telefon": null,
       "email": "igualtat@smmonjos.cat",
       "nota": "Inscripcions taller 'La teva veu importa'",
-      "web": null
+      "web": null,
+      "grup": "Serveis Municipals"
     },
     {
       "nom": "Grups municipals PL",
       "telefon": null,
       "email": "gmplataforma@smmonjos.cat",
       "nota": "PL X SMMONJOS",
-      "web": null
+      "web": null,
+      "grup": "Grups Municipals"
     },
     {
       "nom": "Grups municipals PL",
       "telefon": null,
       "email": "gmsocialista@smmonjos.cat",
       "nota": "PSC - CP",
-      "web": null
+      "web": null,
+      "grup": "Grups Municipals"
     },
     {
       "nom": "Grups municipals PL",
       "telefon": null,
       "email": "gmjxc@smmonjos.cat",
       "nota": "JUNTSxSMMONJOS",
-      "web": null
+      "web": null,
+      "grup": "Grups Municipals"
     },
     {
       "nom": "Grups municipals PL",
       "telefon": null,
       "email": "gmesquerra@smmonjos.cat",
       "nota": "ERC - AM",
-      "web": null
+      "web": null,
+      "grup": "Grups Municipals"
     },
     {
       "nom": "Grups municipals PL",
       "telefon": null,
       "email": "gmpobleactiu@smmonjos.cat",
       "nota": "PA-AMUNT",
-      "web": null
+      "web": null,
+      "grup": "Grups Municipals"
     },
     {
       "nom": "Aigües (Avaries)",
       "telefon": "93 819 91 37",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Bombers - Vilafranca",
       "telefon": "93 892 20 80",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Consultori Mèdic Monjos",
       "telefon": "93 818 67 48",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Consultori Mèdic Ràpita",
       "telefon": "93 898 37 69",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Correus",
       "telefon": "93 818 69 92",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Deixalleria",
       "telefon": "635 430 412",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Emergències",
       "telefon": "112",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Jutjat de Pau",
       "telefon": "636 457 191",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     },
     {
       "nom": "Recollida mobles, objectes i poda",
       "telefon": "900 102 089",
       "email": null,
       "nota": "Altres serveis",
-      "web": null
+      "web": null,
+      "grup": "Altres Serveis"
     }
   ]
 }

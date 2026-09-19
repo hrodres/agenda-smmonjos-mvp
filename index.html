@@ -162,17 +162,23 @@
       var c = state.data.contactes||[];
       var q = state.q.trim().toLowerCase();
       if(q) c = c.filter(function(x){ return (x.nom+' '+(x.nota||'')).toLowerCase().indexOf(q)>=0; });
-      var html = '<div class="section-title">Telèfons i contacte</div>';
+      var html = '';
       if(!c.length){ html+='<div class="py-10 text-center text-sm text-slate-400">Cap contacte.</div>'; }
-      c.forEach(function(x){
-        html += '<div class="contact"><div class="ico">'+svg('Phone','h-5 w-5')+'</div><div class="min-w-0 flex-1">'+
-          '<div class="font-bold text-slate-800">'+esc(x.nom)+'</div>'+
-          (x.nota?'<div class="text-xs text-slate-500">'+esc(x.nota)+'</div>':'')+
-          (x.web?'<div class="text-xs text-brand-600 truncate"><a href="'+esc(x.web)+'" target="_blank" rel="noopener noreferrer">'+esc(x.web)+'</a></div>':'')+
-          (x.email?'<div class="text-xs text-slate-500 truncate"><a href="mailto:'+esc(x.email)+'" class="text-brand-600">'+esc(x.email)+'</a></div>':'')+
-          '</div>'+
-          (x.telefon?'<a href="tel:'+esc(x.telefon.replace(/\s/g,''))+'" class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white">'+esc(x.telefon)+'</a>':'')+
-          '</div>';
+      var GRUPS = [['Serveis Municipals','Serveis municipals'],['Altres Serveis','Altres serveis'],['Grups Municipals','Grups municipals']];
+      GRUPS.forEach(function(g){
+        var gc = c.filter(function(x){ return (x.grup||'Altres Serveis')===g[0]; });
+        if(!gc.length) return;
+        html += '<div class="section-title">'+esc(g[1])+'</div>';
+        gc.forEach(function(x){
+          html += '<div class="contact"><div class="ico">'+svg('Phone','h-5 w-5')+'</div><div class="min-w-0 flex-1">'+
+            '<div class="font-bold text-slate-800">'+esc(x.nom)+'</div>'+
+            (x.nota?'<div class="text-xs text-slate-500">'+esc(x.nota)+'</div>':'')+
+            (x.web?'<div class="text-xs text-brand-600 truncate"><a href="'+esc(x.web)+'" target="_blank" rel="noopener noreferrer">'+esc(x.web)+'</a></div>':'')+
+            (x.email?'<div class="text-xs text-slate-500 truncate"><a href="mailto:'+esc(x.email)+'" class="text-brand-600">'+esc(x.email)+'</a></div>':'')+
+            '</div>'+
+            (x.telefon?'<a href="tel:'+esc(x.telefon.replace(/\s/g,''))+'" class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-bold text-white">'+esc(x.telefon)+'</a>':'')+
+            '</div>';
+        });
       });
       html += '<a href="https://www.santamargaridaielsmonjos.cat" target="_blank" rel="noopener noreferrer" class="block mt-2 rounded-2xl bg-white px-4 py-3 text-center text-sm font-semibold text-brand-600 shadow-card">Web municipal ↗</a>';
       m.innerHTML = html;
