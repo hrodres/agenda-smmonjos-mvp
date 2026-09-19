@@ -12,7 +12,7 @@
   .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem); }
   .pt-safe { padding-top: calc(env(safe-area-inset-top, 0px) + 0.25rem); }
   .scroll-area::-webkit-scrollbar { width: 0; height: 0; }
-  main { padding-bottom: 96px; }
+  main { padding-bottom: 88px; }
   .tabbar { position: fixed; bottom: 0; left: 0; right: 0; display: flex; background: #fff; border-top: 1px solid #e2e8f0; padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 60; }
   .tabbar button { flex: 1; background: none; border: none; padding: 8px 2px 6px; font-size: 11px; font-weight: 600; color: #64748b; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
   .tabbar button.active { color: #1a5fd0; }
@@ -64,12 +64,13 @@
     Share2:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>',
     Check:'<path d="M20 6 9 17l-5-5"/>',
     Info:'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+    Trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
   };
   var CAT_META = {
     Teatre:{icon:'Theater',bg:'#ffe4e6',fg:'#be123c'},
     Música:{icon:'Music',bg:'#f5f3ff',fg:'#7c3aed'},
     Infantil:{icon:'Baby',bg:'#fef3c7',fg:'#b45309'},
-    Esport:{icon:'Dumbbell',bg:'#d1fae5',fg:'#047857'},
+    Esport:{icon:'Trophy',bg:'#d1fae5',fg:'#047857'},
     Formació:{icon:'GraduationCap',bg:'#e0f2fe',fg:'#0369a1'},
     Altres:{icon:'Sparkles',bg:'#f1f5f9',fg:'#475569'},
     Cultura:{icon:'Landmark',bg:'#eef2ff',fg:'#4f46e5'},
@@ -90,7 +91,7 @@
   var TABS = [
     {id:'actes', label:'Agenda', icon:'CalendarDays'},
     {id:'formacio', label:'Formació', icon:'GraduationCap'},
-    {id:'esport', label:'Esport', icon:'Football'},
+    {id:'esport', label:'Esport', icon:'Trophy'},
     {id:'noticies', label:'Notícies', icon:'Newspaper'},
     {id:'telefons', label:'Telèfons', icon:'Phone'}
   ];
@@ -122,10 +123,10 @@
     h.className = 'pt-safe sticky top-0 z-20 bg-brand-600 text-white shadow-lg relative';
     h.innerHTML = '<div class="px-4 pt-3 pb-3">'+
       '<div class="flex items-center gap-1.5">'+
-      '<button id="agendabtn" aria-label="Canvia de mes" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('CalendarDays','h-5 w-5')+'</button>'+
-      '<div class="leading-tight flex-1 min-w-0 overflow-hidden"><h1 class="text-[17px] font-extrabold tracking-tight whitespace-nowrap">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
+      '<button id="agendabtn" aria-label="Canvia de mes" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('CalendarDays','h-4 w-4')+'</button>'+
+      '<div class="leading-tight flex-1 min-w-0 overflow-hidden"><h1 class="text-[18px] font-extrabold tracking-tight whitespace-nowrap truncate">Agenda '+esc(d.municipio||'SMMonjos')+'</h1>'+
       '<p class="text-[11px] font-medium text-brand-100">'+esc(d.mes||'Setembre 2026')+'</p></div>'+
-      '<button id="discInfo" aria-label="Informació" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('Info','h-5 w-5')+'</button>'+
+      '<button id="discInfo" aria-label="Informació" class="shrink-0 rounded-lg p-1 hover:bg-white/10">'+svg('Info','h-4 w-4')+'</button>'+
       '</div>'+
       '<div id="agendamenu" style="display:none" class="absolute left-3 top-14 z-30 w-52 rounded-xl bg-white p-1 text-slate-800 shadow-xl ring-1 ring-black/10">'+
       (state.agendas?state.agendas.map(function(a){return '<button data-id="'+esc(a.id)+'" class="agenda-item w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 '+(a.id===state.agendaId?'font-bold bg-slate-100':'')+'">'+esc(a.label)+'</button>';}).join(''):'')+
@@ -244,7 +245,7 @@
             '</div>';
         });
       });
-      html += '<div style="height:8px"></div>';
+      html += '<div style="height:4px"></div>';
       m.innerHTML = html;
       return;
     }
