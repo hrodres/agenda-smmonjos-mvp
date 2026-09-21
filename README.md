@@ -21,6 +21,7 @@ data/
 scripts/
   ingest.py                     # pipeline LLM (opencode-go / deepseek-v4-pro) -> JSON d'agenda
   extract_pdf_dates.py          # extractor heurístic (sense clau) com a fallback
+  check_agenda.py               # CHECK DIARI: detecta el PDF del mes nou i el processa automàticament
 ```
 
 > El lloc **no necessita compilar**: s'obre directament al navegador. No cal `npm install`
@@ -69,20 +70,27 @@ apareixen com a "Avís" a Notícies.
 
 ## Afegir / regenerar un mes
 
-El PDF de cada mes té **layout diferent** (setembre = seccions; juliol-agost = calendari
-per dia + Festa Major). Per tant no hi ha un sol extractor perfecte; el camí recomanat:
+**Check diari automàtic (actiu):** el job d'automatització `check-agenda-municipal`
+(cron `0 11 * * *` Europe/Madrid) executa `scripts/check_agenda.py` cada dia. Fa *fetch*
+a la pàgina d'agendes municipals, detecta si han publicat el PDF del **mes nou** (el més
+recent que encara no està a `data/agendas.json`) i, si el troba:
+  1. Descarrega el PDF i en treu el text (pdfplumber).
+  2. Crida **`opencode-go/deepseek-v4-pro` VIA EL GATEWAY D'OPENCLAW** (el camí que
+     funciona; el script que toca `opencode.ai` directe rep `MissingSessionID`/403 perquè
+     no porta la sessió legítima) per generar el JSON estructurat.
+  3. Aplica les regles del projecte (Esport només per `subcategoria` Joves/Adults, sense
+     `subsubcategoria`; títols originals; esquema comú).
+  4. Escriu `data/agenda-<mes>.json`, sincronitza `eventos.json`, actualitza `agendas.json`
+     (el mes nou passa a ser el defecte) i fa **commit + push a GitHub**.
+  5. Avisa per Telegram (si no hi ha novetat, el job és **silenciós**: no imprimeix res).
+Només pusheja si el JSON té >=50 events (guarda de dades dolentes). Si falla, no toca res.
 
-1. **Via OpenClaw (recomanat):** delegar a un subagent amb `deepseek-v4-pro` que llegeixi
-   el PDF i escrigui `data/agenda-<mes>.json` seguint l'esquema de
-   `agenda-setembre-2026.json`. (El script sol contra `opencode.ai` rep **403 de Cloudflare**
-   perquè no porta la sessió legítima d'opencode; dins OpenClaw sí funciona.)
-2. **Via script (si tens la clau i sessió):** `python3 scripts/ingest.py --out
-   data/agenda-<mes>.json --pdf-url <URL> --mes "<Mes Any>"` (necessita
-   `OPENCODE_API_KEY`). `scripts/extract_pdf_dates.py` és l'extractor heurístic sense clau
-   (útil només per PDFs senzills; per Festa Major és incomplet).
+**Via manual (si es vol forçar):** delegar a un subagent amb `opencode-go/deepseek-v4-pro`
+que llegeixi el PDF i escrigui `data/agenda-<mes>.json` seguint l'esquema de
+`agenda-setembre-2026.json`. (Dins OpenClaw sí funciona; contra `opencode.ai` directe no.)
 
-Després: afegeix l'entrada a `data/agendas.json` (l'última de la llista és la que carrega
-per defecte) i fes `git push`.
+Després (només via manual): afegeix l'entrada a `data/agendas.json` (l'última de la llista
+és la que carrega per defecte) i fes `git push`.
 
 **Font oficial:** les agendes en PDF es publiquen a la **web municipal** a
 https://www.santamargaridaielsmonjos.cat/actualitat/publicacions-locals/agenda-municipal
