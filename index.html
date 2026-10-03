@@ -117,6 +117,22 @@
   var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null };
   var docCloseHandler = null;
 
+  // Red de seguretat: si un JSON d'agenda ve sense el camp id (els events de
+  // l'LLM no sempre el generen), el modal no s'obre. Assignem ids estables.
+  function slugId(s){ return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40); }
+  function normalizeIds(d){
+    if(!d || !d.eventos) return d;
+    var seen = {};
+    d.eventos.forEach(function(ev){
+      if(ev.id){ seen[ev.id]=true; return; }
+      var base = 'evt-'+(ev.fecha_inicio||'').replace(/-/g,'').slice(0,8)+'-'+(slugId(ev.titulo)||'event');
+      var id = base, n = 2;
+      while(seen[id]){ id = base+'-'+n; n++; }
+      ev.id = id; seen[id] = true;
+    });
+    return d;
+  }
+
   function renderHeader(){
     var d = state.data || {};
     var h = document.getElementById('header');
@@ -163,7 +179,7 @@
     state.agendaId = id;
     fetch('./data/'+a.file, { cache:'no-store' }).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
       .then(function(d){
-        state.data=d; document.title='Agenda SMMonjos · '+(d.mes||'');
+        state.data=normalizeIds(d); document.title='Agenda SMMonjos · '+(d.mes||'');
         renderHeader(); renderTabs(); renderMain();
         if(openEventId){
           var ev = (d.eventos||[]).filter(function(x){ return x.id===openEventId; })[0];
@@ -341,7 +357,7 @@
     .catch(function(e){
       fetch('./data/eventos.json', { cache: 'no-store' })
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-        .then(function(d){ state.data=d; renderHeader(); renderTabs(); renderMain(); })
+        .then(function(d){ state.data=normalizeIds(d); renderHeader(); renderTabs(); renderMain(); })
         .catch(function(err){ document.getElementById('main').innerHTML='<div class="py-10 text-center text-sm text-rose-700">No s\'ha pogut carregar ('+esc(err.message)+').</div>'; });
     });
 

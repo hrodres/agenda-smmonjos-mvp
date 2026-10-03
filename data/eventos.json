@@ -14,7 +14,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mercat i degustació de vins, caves, formatges i embotits. Mostra d'ovelles dels pastors locals i de les cabres de Camins de Vida. Activitats infantils, jocs gegants i gimcana familiar. De 9.30 h a 11 h, munyida tradicional i mostra d'elaboració de formatge fresc, a càrrec de Daniel Giraldo. D'11 h a 12 h, presentació de llibres vinculats amb el món pastorívol.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Punt+d%27Informaci%C3%B3+Tur%C3%ADstica+del+mercat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Punt+d%27Informaci%C3%B3+Tur%C3%ADstica+del+mercat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-xi-fira-de-la-transhum-ncia"
     },
     {
       "titulo": "Club de Lectura Jove",
@@ -30,7 +31,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Primera trobada i sessió informativa.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-club-de-lectura-jove"
     },
     {
       "titulo": "Crea el teu punt de llibre",
@@ -46,7 +48,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A càrrec de Talleretcraft. Acte inclòs al programa Viu el Parc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-crea-el-teu-punt-de-llibre"
     },
     {
       "titulo": "Caminada d'arribada del ramat de Camins de Vida",
@@ -62,7 +65,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 10 h sortida del costat de l'Ajuntament de Pacs del Penedès. A les 13 h rebuda davant del Punt d'Informació turística del mercat dels Monjos. Horaris aproximats en funció de la disponibilitat del ramat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ajuntament+de+Pacs+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ajuntament+de+Pacs+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-caminada-d-arribada-del-ramat-de-camins"
     },
     {
       "titulo": "Jocs de taula en família",
@@ -78,7 +82,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Oberta a tothom. Sense inscripció (1h aprox).",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-jocs-de-taula-en-fam-lia"
     },
     {
       "titulo": "Cercavila 15è aniversari del Ball de Pastoretes dels Monjos",
@@ -94,7 +99,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Cercavila amb motiu del 15è aniversari del Ball de Pastoretes dels Monjos. En arribar al recinte de la fira, exhibició del Ball de Pastoretes dels Monjos i del Ball de pastorets Les Miloqueres de la Ràpita.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pla%C3%A7a+del+Mol%C3%AD+de+Vent+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pla%C3%A7a+del+Mol%C3%AD+de+Vent+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-cercavila-15-aniversari-del-ball-de-past"
     },
     {
       "titulo": "Espectacle infantil de titelles: Les aventures de Matito",
@@ -110,7 +116,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A càrrec d'Arnau Colom.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-espectacle-infantil-de-titelles-les-aven"
     },
     {
       "titulo": "Presentació del nou personatge de la Pastorina",
@@ -126,7 +133,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Presentació del nou personatge de la Pastorina.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-presentaci-del-nou-personatge-de-la-past"
     },
     {
       "titulo": "Trobada de pastors i pastores",
@@ -142,7 +150,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Trobada de pastors i pastores.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-trobada-de-pastors-i-pastores"
     },
     {
       "titulo": "Concert",
@@ -158,7 +167,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A càrrec de Gala Cañís.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=recinte+de+la+fira+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-concert"
     },
     {
       "titulo": "Ball de saló",
@@ -174,7 +184,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "7 euros",
       "descripcion": "A càrrec del duet Mar i Cel.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-ball-de-sal"
     },
     {
       "titulo": "Sortida a Querol",
@@ -190,7 +201,8 @@
       "precio_socios": null,
       "precio_general": "Gratuïta",
       "descripcion": "Visita al puig Formigosa 360º. Oberta a tothom. Més informació: 616 328 059 / 93 898 10 68 o caminades.info. Organitza: Grup Anem a Caminar.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=aparcament+del+mercat+dels+Monjos+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=aparcament+del+mercat+dels+Monjos+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261004-sortida-a-querol"
     },
     {
       "titulo": "Mercat d'artesania i brocanters",
@@ -206,7 +218,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Mercat d'artesania i brocanters dins la Fira de la Transhumància.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=aparcament+del+mercat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=aparcament+del+mercat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261004-mercat-d-artesania-i-brocanters"
     },
     {
       "titulo": "Visita guiada al castell de Penyafort",
@@ -222,7 +235,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261004-visita-guiada-al-castell-de-penyafort"
     },
     {
       "titulo": "Ramat de Camins de Vida",
@@ -238,7 +252,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A partir de les 9.30 h, visites escolars i del públic al ramat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=punt+d%27informaci%C3%B3+del+mercat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=punt+d%27informaci%C3%B3+del+mercat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261005-ramat-de-camins-de-vida"
     },
     {
       "titulo": "Caminada de comiat del ramat de Camins de Vida",
@@ -254,7 +269,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Sortida del ramat i pas per les avingudes de Catalunya i del Penedès en direcció a Vilanova i Cunit.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=avingudes+de+Catalunya+i+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=avingudes+de+Catalunya+i+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261006-caminada-de-comiat-del-ramat-de-camins-d"
     },
     {
       "titulo": "Ball de saló",
@@ -270,7 +286,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "7 euros",
       "descripcion": "A càrrec del duet Al&Ma.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261006-ball-de-sal"
     },
     {
       "titulo": "Estampació de samarretes",
@@ -286,7 +303,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Cal inscripció prèvia via Whatsapp al 629 17 40 07 o presencial.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261008-estampaci-de-samarretes"
     },
     {
       "titulo": "Aula Cultural",
@@ -302,7 +320,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Xerrada: El futur que ens espera, segons el cinema. A càrrec d'Albert Beorlegui.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261009-aula-cultural"
     },
     {
       "titulo": "Hora del Conte",
@@ -318,7 +337,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Amb el conte 'El vell de casa que tot ho fa bé'. A càrrec d'Eva Gonzàlez. A partir de I3.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261009-hora-del-conte"
     },
     {
       "titulo": "Ruta Modernista",
@@ -334,7 +354,8 @@
       "precio_socios": null,
       "precio_general": "Gratuïta",
       "descripcion": "Entrada gratuïta, imprescindible inscripció prèvia al 669 287 539. Acte de les Jornades Europees del Patrimoni.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Punt+d%27Informaci%C3%B3+Tur%C3%ADstica+del+mercat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Punt+d%27Informaci%C3%B3+Tur%C3%ADstica+del+mercat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261009-ruta-modernista"
     },
     {
       "titulo": "Festa Major de Cal Rubió",
@@ -350,7 +371,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 10 h, davant la Sala, traca d'inici de festa. A les 10.30 h, al carrer de la Sala, xocolatada popular. A les 12 h, a la sala, festival infantil. A les 22 h, a la Sala, pregó de Festa Major. A les 23 h, a la Sala, ball amb el grup Gina&The Tonics. Organitza: C.C.R. de Cal Rubió.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261010-festa-major-de-cal-rubi"
     },
     {
       "titulo": "Presentació Club Vòlei Monjos",
@@ -366,7 +388,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Sènior Masculí 1a Catalana vs CV Cunit. En acabar, acte de presentació dels equips.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+d%27Esports+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+d%27Esports+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261010-presentaci-club-v-lei-monjos"
     },
     {
       "titulo": "Alcaldia propera",
@@ -382,7 +405,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Alcaldia propera.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261010-alcaldia-propera"
     },
     {
       "titulo": "Ball de saló",
@@ -398,7 +422,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "7 euros",
       "descripcion": "A càrrec del duet Sènior.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261010-ball-de-sal"
     },
     {
       "titulo": "Festa Major de Cal Rubió",
@@ -414,7 +439,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 9 h, Bicicletada a la font de Cal Morgades. A les 18.30 h, al cafè, concurs de coques casolanes. A les 20 h, a la Sala, teatre. En acabar, des de la pista poliesportiva, castell de focs d'artifici.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-festa-major-de-cal-rubi"
     },
     {
       "titulo": "Jornada de portes obertes",
@@ -430,7 +456,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Acte de les Jornades europees del patrimoni.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+i+refugi+del+Serral+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+i+refugi+del+Serral+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-jornada-de-portes-obertes"
     },
     {
       "titulo": "Les Petjades del Vesper",
@@ -446,7 +473,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Visita combinada entre el Ciarga i les caves Nadal de Torrelavit. El desplaçament es fa en cotxes particulars. Inscripció prèvia al 669 287 539.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-les-petjades-del-vesper"
     },
     {
       "titulo": "Un viatge per la història del castell de Penyafort",
@@ -462,7 +490,8 @@
       "precio_socios": null,
       "precio_general": "Gratuïta",
       "descripcion": "Visita guiada al castell en el marc del programa Galeria del Servei Comarcal de l'Habitatge de l'Alt Penedès. Imprescindible inscripció al 669 287 539. Acte de les Jornades europees del patrimoni.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-un-viatge-per-la-hist-ria-del-castell-de"
     },
     {
       "titulo": "Visita guiada al castell de Penyafort",
@@ -478,7 +507,8 @@
       "precio_socios": null,
       "precio_general": "Gratuïta",
       "descripcion": "Imprescindible inscripció al 669 287 539. Acte de les Jornades europees del patrimoni.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-visita-guiada-al-castell-de-penyafort"
     },
     {
       "titulo": "Tardeo ASJ",
@@ -494,7 +524,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dj, foodtrucks i sorpreses. Obert a tothom.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=sala+Alguer+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=sala+Alguer+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261011-tardeo-asj"
     },
     {
       "titulo": "Jornada de portes obertes",
@@ -510,7 +541,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Acte de les Jornades europees del patrimoni.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+i+refugi+del+Serral+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+i+refugi+del+Serral+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261012-jornada-de-portes-obertes"
     },
     {
       "titulo": "Festa Major de Cal Rubió",
@@ -526,7 +558,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 11 h, a la sala, Missa solemne amb el cant dels goigs de la Mare de Déu del Pilar i la participació de la coral Amics de Penyafel. A les 12 h, al carrer de la Sala, Exhibició folklòrica amb els balls populars dels Monjos i la Ràpita. A les 18.30 h, a la Sala, concert, amb l'agrupació orquestra Mediterrània. Tot seguit, ball de vetlla. En acabar, traca de fi de Festa Major. Organitza: C.C.R. de Cal Rubió.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261012-festa-major-de-cal-rubi"
     },
     {
       "titulo": "Fauna i flora de la conca baixa del riu Foix",
@@ -542,7 +575,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Presentació del llibre a càrrec del seu autor Pedro Torres Expósito. Durant l'acte es parlarà de la flora i la fauna del Foix i la seva biodiversitat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Mol%C3%AD+del+Foix+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Mol%C3%AD+del+Foix+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261013-fauna-i-flora-de-la-conca-baixa-del-riu"
     },
     {
       "titulo": "Experimentem amb la tardor",
@@ -558,7 +592,8 @@
       "precio_socios": null,
       "precio_general": "Gratuït",
       "descripcion": "Taller adreçat a infants fins a I5, acompanyats per una persona adulta. Cal inscripció prèvia fins al 13 d'octubre enviant un WhatsApp al 630 489 035.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=espai+Antistiana+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=espai+Antistiana+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261014-experimentem-amb-la-tardor"
     },
     {
       "titulo": "Donació de sang",
@@ -574,7 +609,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Organitza: Banc de Sang i Teixits.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261015-donaci-de-sang"
     },
     {
       "titulo": "Bibliolab",
@@ -590,7 +626,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Amb planetari familiar; descobrim els secrets de l'espai. A càrrec d'Explora 360. A partir de I3. Cal inscripció prèvia.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261016-bibliolab"
     },
     {
       "titulo": "Cinema",
@@ -606,7 +643,8 @@
       "precio_socios": "3 euros",
       "precio_general": "4,5 euros",
       "descripcion": "Amb la pel·lícula Balandrau vent salvatge.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261017-cinema"
     },
     {
       "titulo": "Cros escolar, cursa 10 km i cursa 5 km",
@@ -622,7 +660,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Sortides a partir de les 9 h del camp municipal d'esports.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=camp+municipal+d%27esports+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=camp+municipal+d%27esports+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261017-cros-escolar-cursa-10-km-i-cursa-5-km"
     },
     {
       "titulo": "Cartells amb collage",
@@ -638,7 +677,8 @@
       "precio_socios": null,
       "precio_general": "3 € per família",
       "descripcion": "Taller familiar. Imprescindible inscripció prèvia al 669 287 539.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261017-cartells-amb-collage"
     },
     {
       "titulo": "Taller de Halloween",
@@ -654,7 +694,8 @@
       "precio_socios": null,
       "precio_general": "Gratuït",
       "descripcion": "Taller adreçat a infants de primària. Cal inscripció prèvia fins al 20 d'octubre enviant un WhatsApp al 630 489 035.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=espai+Antistiana+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=espai+Antistiana+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261017-taller-de-halloween"
     },
     {
       "titulo": "Festa Major de Cal Rubió",
@@ -670,7 +711,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Sortida de la caminada popular de Cal Rubió. Memorial Alexis Rubió. Es prega màxima puntualitat. Més informació a caminades.info.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Sala+Cal+Rubi%C3%B3+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261018-festa-major-de-cal-rubi"
     },
     {
       "titulo": "Sabors en temps de guerra",
@@ -686,7 +728,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Visita combinada entre Subirats i Santa Margarida i els Monjos. El desplaçament entre el CIUDEB i el CIARGA es fa en cotxes particulars. Inscripció prèvia a escapadasingular.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Subirats+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Subirats+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261018-sabors-en-temps-de-guerra"
     },
     {
       "titulo": "Visita guiada al castell de Penyafort",
@@ -702,7 +745,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261018-visita-guiada-al-castell-de-penyafort"
     },
     {
       "titulo": "Alcaldia propera",
@@ -718,7 +762,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dins del projecte de participació per a la millora de l'espai públic dels Monjos.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+dels+Monjos+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+dels+Monjos+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261020-alcaldia-propera"
     },
     {
       "titulo": "Millora de l'espai públic dels Monjos",
@@ -734,7 +779,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Recorregut participatiu pel centre del poble. No cal inscripció prèvia.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=ajuntament+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=ajuntament+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261020-millora-de-l-espai-p-blic-dels-monjos"
     },
     {
       "titulo": "Ball de saló",
@@ -750,7 +796,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "7 euros",
       "descripcion": "A càrrec del duet Crystal.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261020-ball-de-sal"
     },
     {
       "titulo": "Ball de saló",
@@ -766,7 +813,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "7 euros",
       "descripcion": "A càrrec del duet Jamaika.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261024-ball-de-sal"
     },
     {
       "titulo": "IV Cursa d'orientació en BTT",
@@ -782,7 +830,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Sortida des de l'avinguda del Penedès. A les 13 h, a la plaça de Ramon Cabré, vermut popular per als participants.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=avinguda+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=avinguda+del+Pened%C3%A8s+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261025-iv-cursa-d-orientaci-en-btt"
     },
     {
       "titulo": "Visita guiada al castell de Penyafort",
@@ -798,7 +847,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=castell+de+Penyafort+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261025-visita-guiada-al-castell-de-penyafort"
     },
     {
       "titulo": "Memòria de la guerra aèria",
@@ -814,7 +864,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Visita combinada entre el Ciarga i el Castell de Penyafort. El desplaçament entre ambdós punts es fa en cotxes particulars. Inscripció prèvia al 669 28 75 39.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261025-mem-ria-de-la-guerra-a-ria"
     },
     {
       "titulo": "Teatre: La derrama o la lligacama",
@@ -830,7 +881,8 @@
       "precio_socios": "Gratuït",
       "precio_general": "8 euros",
       "descripcion": "A càrrec del grup Teatre Vilafranca.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261025-teatre-la-derrama-o-la-lligacama"
     },
     {
       "titulo": "Passatge del Terror",
@@ -846,7 +898,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Cal inscripció prèvia via Whatsapp al 629 17 40 07 o presencial.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261027-passatge-del-terror"
     },
     {
       "titulo": "Aula Cultural",
@@ -862,7 +915,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Xerrada: la societat civil durant la guerra del 36. A càrrec de Marc Jobani.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casal+de+la+gent+gran+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261030-aula-cultural"
     },
     {
       "titulo": "Passatge del Terror",
@@ -878,7 +932,8 @@
       "precio_socios": null,
       "precio_general": "Gratuïta",
       "descripcion": "Activitat gratuïta. Accés per ordre d'arribada.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=carrer+de+Barcelona+40+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=carrer+de+Barcelona+40+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261031-passatge-del-terror"
     },
     {
       "titulo": "Pinta castanyes jove",
@@ -894,7 +949,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Música, tallers, jocs i castanyes. Amb la col·laboració del Grup de Joves.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pla%C3%A7a+de+l%27Espai+Vida+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pla%C3%A7a+de+l%27Espai+Vida+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261031-pinta-castanyes-jove"
     },
     {
       "titulo": "Sopar ball de la Castanyada",
@@ -910,7 +966,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A càrrec del duet Moon Star. Venda de tiquets: els dies 10, 17 i 24 al ball i el 26, 27 i 28 de 19 h a 21 h, a la secretaria de la societat. Reserves: WhatsApp al 640 119 745 o a info@lamargaridoia.cat fins al dia 28.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=societat+La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261031-sopar-ball-de-la-castanyada"
     },
     {
       "titulo": "El camí ramader de Marina. Transhumància: de la Cerdanya al Penedès",
@@ -926,7 +983,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Diumenge 4 d'octubre, durant tot el matí, a la fira.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=la+fira+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=la+fira+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261004-el-cam-ramader-de-marina-transhum-ncia-d"
     },
     {
       "titulo": "Miralda: territori, oficis i món rural",
@@ -942,7 +1000,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "De l'1 al 15 d'octubre. Dilluns, dimarts i dijous, de 15 h a 19.30 h. Dimecres i divendres, de 10 h a 13.30 h i de 15 h a 19.30 h.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=biblioteca+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-miralda-territori-oficis-i-m-n-rural"
     },
     {
       "titulo": "\"Open Arxiu\" _ 10 projects",
@@ -958,7 +1017,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "A càrrec de Miralda. Fins al 6 de desembre. De dimarts a divendres de 10 a 14 h i de 16 a 19 h. Dissabtes d'11 h a 14 h. Festius amb cita prèvia.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Palmadotze+Galeria+d%27Art+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Palmadotze+Galeria+d%27Art+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-open-arxiu-10-projects"
     },
     {
       "titulo": "Manualitats",
@@ -974,7 +1034,8 @@
       "precio_socios": null,
       "precio_general": "39 euros/ trimestre",
       "descripcion": "Dilluns de 15.30 h a 17.45 h. Inici el 5 d'octubre. Curs anual. Inscripcions a la web de l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261005-manualitats"
     },
     {
       "titulo": "Dibuix i pintura",
@@ -990,7 +1051,8 @@
       "precio_socios": null,
       "precio_general": "39 euros/ trimestre",
       "descripcion": "Els dilluns de 17.45 h a 20 h. Inici el 5 d'octubre. Curs anual. Inscripcions a la web de l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261005-dibuix-i-pintura"
     },
     {
       "titulo": "Escola de formació de persones adultes Fina Garcia Mateu",
@@ -1006,7 +1068,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Cultura general, llegir, escriure i càlcul matemàtic (nivells 1 i 2). Dimarts i divendres de 10 h a 13 h. Curs d'iniciació a la llengua catalana i castellana (Nivell inicial / elemental). Perfeccionament del català (Nivell B intermedi i Nivell C1 suficiència). Anglès i alemany (Nivells inicials). Cursos de competències informàtiques i Intel·ligència Artificial. Preparació per a les proves d'accés a Cicles formatius de grau mitjà i superior. Atenció al públic: a la casa de cultura Mas Catarro (1r pis), els dimarts de 10 h a 13 h, o bé amb cita prèvia. Tel. 93 818 66 84.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Multitallers+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-escola-de-formaci-de-persones-adultes-fi"
     },
     {
       "titulo": "La teva veu importa",
@@ -1022,7 +1085,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dimarts de 9.15 h a 12.15 h. Del 6 d'octubre al 15 de desembre. Taller adreçat a dones. Espai de teatre i expressió corporal per compartir, reflexionar i fomentar l'empoderament col·lectiu.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261006-la-teva-veu-importa"
     },
     {
       "titulo": "Manualitats",
@@ -1038,7 +1102,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "La Ràpita, dilluns de 15.30 h a 17 h. Els Monjos, dimecres de 17 h a 18.30 h.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casals+de+la+gent+gran+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casals+de+la+gent+gran+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-manualitats"
     },
     {
       "titulo": "Musicoteràpia",
@@ -1054,7 +1119,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "La Ràpita, dilluns de 10 h a 11 h. Els Monjos, dimarts de 17 h a 18 h i de 18 h a 19 h (dos grups). Inscripcions a l'ajuntament.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casals+de+la+gent+gran+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casals+de+la+gent+gran+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-musicoter-pia"
     },
     {
       "titulo": "Ús i aplicació de la IA a la recerca de feina",
@@ -1070,7 +1136,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Del 5 al 8 d'octubre de 9 h a 13 h. Places limitades. Adreçat a persones en situació d'atur del municipi o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261005-s-i-aplicaci-de-la-ia-a-la-recerca-de-f"
     },
     {
       "titulo": "Comunicació",
@@ -1086,7 +1153,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dimecres 14 d'octubre, de 9.15 h a 12.15 h. Places limitades. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261014-comunicaci"
     },
     {
       "titulo": "Treball en equip",
@@ -1102,7 +1170,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dijous 15 d'octubre, de 9.15 h a 12.15 h. Places limitades. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261015-treball-en-equip"
     },
     {
       "titulo": "Afrontar les dificultats",
@@ -1118,7 +1187,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dilluns 26 d'octubre, de 9.15 h a 12.15 h. Places limitades. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261026-afrontar-les-dificultats"
     },
     {
       "titulo": "Redacta el teu Elevator Pitch",
@@ -1134,7 +1204,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Dilluns 19 d'octubre, de 9.15 h a 12.15 h. Places limitades. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261019-redacta-el-teu-elevator-pitch"
     },
     {
       "titulo": "L'entrevista per competències: com destacar les teves habilitats",
@@ -1150,7 +1221,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Del 21 al 29 d'octubre, de 9.15 h a 12.15 h. Places limitades. Adreçat a persones en situació d'atur o en procés de millora de l'ocupació inscrits al Servei Local d'Ocupació o a la Xarxa Xaloc.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca+l%27Antic+edifici+Tangram+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261021-l-entrevista-per-compet-ncies-com-destac"
     },
     {
       "titulo": "Servei d'assessorament jurídic",
@@ -1166,7 +1238,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Informació i cita a Serveis socials. Regidoria d'Igualtat. C/ St. Josep 1. Cita prèvia per WhatsApp: 608 056 097 o igualtat@smmonjos.cat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Regidoria+d%27Igualtat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Regidoria+d%27Igualtat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-servei-d-assessorament-jur-dic"
     },
     {
       "titulo": "Servei d'atenció psicològica",
@@ -1182,7 +1255,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Els dijous, matí i tarda. Informació i cita a Serveis socials o Servei Igualtat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Regidoria+d%27Igualtat+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Regidoria+d%27Igualtat+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-servei-d-atenci-psicol-gica"
     },
     {
       "titulo": "Sardanes",
@@ -1198,7 +1272,8 @@
       "precio_socios": "12 €",
       "precio_general": "15 €/mes",
       "descripcion": "Dijous a les 18.30 h. Nivells Iniciació i Perfeccionament. Inici 1 d'octubre. Classes a càrrec de la colla sardanista Maragda del Penedès.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-sardanes"
     },
     {
       "titulo": "Escacs",
@@ -1214,7 +1289,8 @@
       "precio_socios": "5 €/mes",
       "precio_general": "5 €/mes",
       "descripcion": "Dissabtes a les 18 h. Nivells iniciació i perfeccionament. A partir de 7 anys. Inici el 3 d'octubre. Inscripció 10€ (socis inscripció de franc). Classes impartides per Juan Muñoz.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-escacs"
     },
     {
       "titulo": "Zumba",
@@ -1230,7 +1306,8 @@
       "precio_socios": "descompte de 3 €/mes",
       "precio_general": "18-25 €/mes",
       "descripcion": "Dimarts i dijous a les 20 h. 1 dia/setmana: 18 €/mes. 2 dies/setmana: 25 €/mes. Es pot provar sense cap compromís. Classes impartides per Daniela.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-zumba"
     },
     {
       "titulo": "Ball en línia",
@@ -1246,7 +1323,8 @@
       "precio_socios": "25 €/trimestre",
       "precio_general": "30 €/trimestre",
       "descripcion": "Dimarts a les 18 h. Inici 6 d'octubre. Classes impartides per Meri Fernández.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261006-ball-en-l-nia"
     },
     {
       "titulo": "Ball de saló",
@@ -1262,7 +1340,8 @@
       "precio_socios": "20 €",
       "precio_general": "25 € parella/mes",
       "descripcion": "Dissabtes a les 19.30 h. Inici 3 d'octubre. Classes impartides per Meri Fernandez.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261003-ball-de-sal-2"
     },
     {
       "titulo": "Taller de teatre",
@@ -1278,7 +1357,8 @@
       "precio_socios": null,
       "precio_general": "25 €/mes",
       "descripcion": "Dilluns i divendres a les 16.30 h, infantils/joves. Inici: 2 octubre. Impartit per l'actor i director Gregori Escalona. Més informació: 627 446 885. Inscripcions a les hores de classe, a la secretaria de la societat (dimarts, de 19 h a 21 h), a info@lamargaridoia.cat o per WhatsApp al 640 119 745.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261002-taller-de-teatre"
     },
     {
       "titulo": "Coral Amics de Penyafel",
@@ -1294,7 +1374,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos dimecres de 19.30 h a 21.30 h. Inscripcions: 619 20 89 60 o coral.amics.penyafel@gmail.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-coral-amics-de-penyafel"
     },
     {
       "titulo": "Coral Infantil El Flabiol",
@@ -1310,7 +1391,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos dimecres de 17 h a 18 h. Alumnes Samaranch acollida de 16:30 h a 17 h. Inscripcions 667 46 74 97 o coralinfantilelflabiol@gmail.com.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola+Samaranch+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Escola+Samaranch+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-coral-infantil-el-flabiol"
     },
     {
       "titulo": "Coral l'Amistat de la Ràpita",
@@ -1326,7 +1408,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos dijous de 20.30 h a 22 h. Inscripcions: amistat.larapita@gmail.com o 679 46 73 35.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+R%C3%A0pita+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+R%C3%A0pita+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-coral-l-amistat-de-la-r-pita"
     },
     {
       "titulo": "Coral Infantil La Bombeta Màgica",
@@ -1342,7 +1425,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos divendres de 17 h a 17.45 h (petits I4-1r), de 17.15 h a 18.15 h (mitjans 2n a 5è) i de 17.15 h a 18.45 h (grans 6è a 2n ESO). Inici 2 d'octubre. Servei de recollida a la sortida de l'escola Sant Domènec.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=escoles+velles+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=escoles+velles+de+la+R%C3%A0pita+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261002-coral-infantil-la-bombeta-m-gica"
     },
     {
       "titulo": "Cor Margaridoia",
@@ -1358,7 +1442,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Assajos: dimarts de 19.30 h a 21 h. Inscripcions: 657 839 001.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La+Margaridoia+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-cor-margaridoia"
     },
     {
       "titulo": "Activitats esportives Joves i Infants 2026-2027",
@@ -1374,7 +1459,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "I4 i I5: Iniciació a l'hoquei (dilluns o dijous de 17 h a 18 h, pista poliesportiva municipal), Psicomotricitat (dimarts de 16.30 h a 18 h, escola Sant Domènec), Gimnàstica rítmica (dilluns i dimecres de 17 h a 18 h, gimnàs municipal). 1r i 2n de primària: Iniciació a l'hoquei, Iniciació a l'esport, Gimnàstica rítmica, Iniciació al karate, Iniciació al patinatge, Mini vòlei, Mini bàsquet. 3r i 4t de primària: Let's dance, Gimnàstica rítmica, Iniciació al karate, Futbol sala, Mini vòlei, Mini bàsquet, Iniciació al patinatge. 5è i 6è de primària: Let's dance, Iniciació al pàdel, Gimnàstica rítmica, Iniciació al karate, Futbol sala, Mini vòlei. 1r i 2n d'ESO: Balls moderns, Futbol sala, Iniciació al pàdel. 3r i 4t d'ESO: Balls moderns, Futbol sala, Iniciació al pàdel. Inscripcions: online a la pàgina web municipal.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-activitats-esportives-joves-i-infants-20"
     },
     {
       "titulo": "Activitats esportives Persones Adultes 2026-2027",
@@ -1390,7 +1476,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Gimnàstica de manteniment, Gimnàstica terapèutica i salut, Marxes nòrdiques, Qi Jong, Ioga, Pilates. Inscripcions: online a la pàgina web municipal.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-activitats-esportives-persones-adultes-2"
     },
     {
       "titulo": "Horaris de Tots Sants al cementiri",
@@ -1406,7 +1493,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "El cementiri obrirà en horari especial els dies previs a Tots Sants. Del 26 d'octubre al 2 de novembre obert ininterrompudament de 9 h a 18 h. Els dies 30, 31 i 1 hi haurà servei d'assistència de 10 h a 13 h i de 15 h a 18 h.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=cementiri+municipal+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=cementiri+municipal+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261026-horaris-de-tots-sants-al-cementiri"
     },
     {
       "titulo": "Concurs fotografia",
@@ -1422,7 +1510,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Concurs de Fotografia Viu el parc, 32a edició. Paisatges i patrimoni natural i cultural del Parc del Foix, Garraf i Olèrdola. Cada participant pot presentar fins a tres fotografies per modalitat. El termini finalitza el 20 de novembre i repartirà 1.225 euros en premis.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Parc+del+Foix+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Parc+del+Foix+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-concurs-fotografia"
     },
     {
       "titulo": "Premis Joan Mañé",
@@ -1438,7 +1527,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Trenta vuitena edició dels Premis literaris Joan Mañé i Guillaumes. Categories des de la infantil de dibuix a partir d'I3 fins a la d'adults. Temàtica lliure, prosa i poesia. El termini de presentació finalitza el 15 d'octubre i el lliurament de premis tindrà lloc el 7 de novembre.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Grup+d%27Estudis+Rapitencs+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Grup+d%27Estudis+Rapitencs+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-premis-joan-ma"
     },
     {
       "titulo": "Protecció Civil busca voluntaris",
@@ -1454,7 +1544,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "L'Associació de Voluntaris de Protecció Civil busca noves persones voluntàries per col·laborar en tasques de prevenció, suport logístic i assistència en dispositius de seguretat i emergències, així com en actes públics. Més informació: policia local (93 898 00 31) o cappolicia@smmonjos.cat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-protecci-civil-busca-voluntaris"
     },
     {
       "titulo": "Inici de curs a la Ludo",
@@ -1470,7 +1561,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "La ludoteca La Baldufa enceta el curs 2026-2027 l'1 d'octubre amb programació de lleure i jocs per a infants de I3 a 2n de primària. Places completes, llista d'espera oberta: infancia@smmonjos.cat.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ludoteca+La+Baldufa+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ludoteca+La+Baldufa+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-inici-de-curs-a-la-ludo"
     },
     {
       "titulo": "Bases de la Mostra Artística",
@@ -1486,7 +1578,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "43a edició de la Mostra Artística Sant Raimon de Penyafort. Exposició del 15 de gener al 3 de febrer amb dibuix, pintura, ceràmica, escultura, fotografia i il·lustració digital. Categoria joves de 12 a 17 anys i mostra infantil. Recepció d'obres finalitza el 18 de desembre. Bases al web municipal.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos",
+      "id": "evt-20270115-bases-de-la-mostra-art-stica"
     },
     {
       "titulo": "Casa dels Passos Petits",
@@ -1502,7 +1595,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "L'espai familiar reprèn l'activitat a l'octubre. Adreçat a infants d'I0 a I2 i les seves famílies, amb acompanyament d'una persona adulta. Obre dimarts i divendres de 10 h a 12 h; dilluns de 16.45 h a 18.30 h, i alguns dimecres. Servei gratuït, sense inscripció prèvia.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=carrer+d%27Anselm+Clav%C3%A9+9+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=carrer+d%27Anselm+Clav%C3%A9+9+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-casa-dels-passos-petits"
     },
     {
       "titulo": "La teva veu importa",
@@ -1518,7 +1612,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Espai de teatre i expressió corporal per fomentar l'empoderament col·lectiu, adreçat a dones. Els dimarts al matí, d'octubre a desembre. Inscripcions a igualtat@smmonjos.cat amb nom i telèfon de contacte.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=casa+de+cultura+Mas+Catarro+Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261001-la-teva-veu-importa"
     },
     {
       "titulo": "Prohibició de foc",
@@ -1534,7 +1629,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Fins al 15 d'octubre no es pot encendre foc en terreny forestal ni en la franja de 500 metres. Norma de la Generalitat de Catalunya, especialment important en temps de sequera.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=terrenys+forestals+Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=terrenys+forestals+Santa+Margarida+i+els+Monjos",
+      "id": "evt-avis-prohibici-de-foc"
     },
     {
       "titulo": "Castaween",
@@ -1550,7 +1646,8 @@
       "precio_socios": null,
       "precio_general": null,
       "descripcion": "Nova proposta per celebrar la vigília de Tots Sants amb activitats al carrer i el Passatge del Terror. Cases i establiments participants s'identifiquen amb un distintiu. Inscripcions fins al 13 d'octubre al web municipal o al 93 898 02 11.",
-      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos"
+      "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Santa+Margarida+i+els+Monjos",
+      "id": "evt-20261031-castaween"
     }
   ],
   "contactes": [

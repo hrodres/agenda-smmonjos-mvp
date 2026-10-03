@@ -170,9 +170,21 @@ def generar_json(text: str, label: str, parte: str = "") -> dict | None:
 
 
 def aplicar_regles(d: dict) -> dict:
+    vistos = set()
     for ev in d.get("eventos", []):
         if ev.get("seccio") == "Esports":
             ev["subsubcategoria"] = None
+        # Garantir id únic (el frontend obre el modal buscant per id).
+        if not ev.get("id"):
+            fecha = (ev.get("fecha_inicio") or "").replace("-", "")[:8] or "avis"
+            slug = re.sub(r"[^a-z0-9]+", "-", (ev.get("titulo") or "").lower().strip())[:40].strip("-")
+            base = f"evt-{fecha}-{slug or 'event'}"
+            eid, n = base, 2
+            while eid in vistos:
+                eid = f"{base}-{n}"
+                n += 1
+            ev["id"] = eid
+        vistos.add(ev["id"])
     return d
 
 
