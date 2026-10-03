@@ -141,7 +141,7 @@ def generar_json(text: str, label: str) -> dict | None:
         r = subprocess.run(
             ["openclaw", "agent", "--model", MODEL, "--session-key", SESSION_KEY,
              "--message-file", prompt_path, "--json"],
-            capture_output=True, text=True, timeout=600,
+            capture_output=True, text=True, timeout=2400,
         )
     except Exception as e:
         print("ERROR crida agent:", e)
