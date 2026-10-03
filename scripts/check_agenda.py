@@ -140,7 +140,7 @@ def generar_json(text: str, label: str) -> dict | None:
     try:
         r = subprocess.run(
             ["openclaw", "agent", "--model", MODEL, "--session-key", SESSION_KEY,
-             "--message-file", prompt_path, "--json"],
+             "--message-file", prompt_path, "--json", "--timeout", "2400"],
             capture_output=True, text=True, timeout=2400,
         )
     except Exception as e:
