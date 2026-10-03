@@ -44,18 +44,22 @@ def fetch_html(url: str) -> str:
 def parse_agendes(html: str):
     """Retorna llista de dicts {id, label, url, key} ordenats per key descendent."""
     out = []
-    # [Agenda <mes> <any>](<url .pdf>)
-    pat = re.compile(r"\[Agenda\s+([A-Za-zçàèéíòóú·]+)\s+(\d{4})\]\((https://[^)]+\.pdf)\)", re.I)
+    # La web municipal serveix anchors HTML: <a href="https://.../fitxer/XXXX/AGENDA....pdf">Agenda <mes> <any></a>
+    pat = re.compile(r'href="(https://[^"]+\.pdf)"[^>]*>\s*Agenda\s+([^<]+)</a>', re.I)
     for m in pat.finditer(html):
-        mes = m.group(1).lower()
-        any_ = int(m.group(2))
-        url = m.group(3)
-        if mes not in MESES:
+        url = m.group(1)
+        label = " ".join(m.group(2).split())  # normalitza espais
+        # mesos en ordre + primer any de 4 xifres (el que acompanya el primer mes)
+        tokens = re.findall(r"[A-Za-zçàèéíòóú·]+|\d{4}", label)
+        mesos = [t.lower() for t in tokens if t.lower() in MESES]
+        anys = [int(t) for t in tokens if t.isdigit() and len(t) == 4]
+        if not mesos or not anys:
             continue
-        key = any_ * 12 + MESES[mes]
-        mid = f"{mes}-{any_}"
-        label = f"{m.group(1).capitalize()} {any_}"
-        out.append({"id": mid, "label": label, "url": url, "key": key})
+        any_ = anys[0]
+        key = any_ * 12 + MESES[mesos[0]]
+        mid = "-".join(mesos) + f"-{any_}"
+        lab = label[0].upper() + label[1:] if label else label
+        out.append({"id": mid, "label": lab, "url": url, "key": key})
     out.sort(key=lambda x: x["key"], reverse=True)
     return out
 
