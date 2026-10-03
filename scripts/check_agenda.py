@@ -133,14 +133,15 @@ REGLES:
 - Només el JSON, res més."""
 
 
-def generar_json(text: str, label: str) -> dict | None:
+def generar_json(text: str, label: str, parte: str = "") -> dict | None:
     prompt_path = "/tmp/agenda_prompt.txt"
+    instr = ("\n\n" + parte) if parte else ""
     with open(prompt_path, "w", encoding="utf-8") as f:
-        f.write(PROMPT_SCHEMA + "\n\nAGENDA: " + label + "\n\nTEXT DEL PDF:\n" + text)
+        f.write(PROMPT_SCHEMA + instr + "\n\nAGENDA: " + label + "\n\nTEXT DEL PDF:\n" + text)
     try:
         r = subprocess.run(
             ["openclaw", "agent", "--model", MODEL, "--session-key", SESSION_KEY,
-             "--message-file", prompt_path, "--json", "--timeout", "2400"],
+             "--message-file", prompt_path, "--json", "--timeout", "2400", "--thinking", "low"],
             capture_output=True, text=True, timeout=2400,
         )
     except Exception as e:
@@ -182,9 +183,38 @@ def main() -> int:
         return 0  # silenci: cap mes nou
     print(f"NOU MES DETECTAT: {nou['label']} -> {nou['url']}")
     text = extreure_text_pdf(nou["url"])
-    d = generar_json(text, nou["label"])
+
+    # La agenda completa no cap en una sola resposta del model (stopReason=length ~60KB):
+    # partim el text del PDF en dues meitats i fem dues crides LLM, després fusionem.
+    MARCA = "\n\n--- PÀGINA "
+    parts = text.split(MARCA)  # parts[0] = preàmbul; parts[1..] = pàgines
+    if len(parts) >= 3:
+        meitat = (len(parts) - 1 + 1) // 2
+        p1 = parts[0] + MARCA + MARCA.join(parts[1:1 + meitat])
+        p2 = parts[0] + MARCA + MARCA.join(parts[1 + meitat:])
+    else:
+        p1, p2 = text, ""
+
+    d1 = generar_json(
+        p1, nou["label"],
+        "AQUESTA ÉS LA PRIMERA MEITAT DEL PDF. Retorna NOMÉS els esdeveniments "
+        "d'aquesta part (sense contactes).")
+    d2 = None
+    if p2.strip():
+        d2 = generar_json(
+            p2, nou["label"],
+            "AQUESTA ÉS LA SEGONA MEITAT DEL PDF. Retorna els esdeveniments restants "
+            "d'aquesta part i TOTS els contactes de la pàgina de Telèfons d'interès.")
+
+    d = {"eventos": [], "contactes": []}
+    if d1:
+        d["eventos"] += d1.get("eventos", [])
+        d["contactes"] += d1.get("contactes", []) or []
+    if d2:
+        d["eventos"] += d2.get("eventos", [])
+        d["contactes"] += d2.get("contactes", []) or []
     if not d or len(d.get("eventos", [])) < MIN_EVENTS:
-        print(f"Resultat insuficient ({len(d.get('eventos',[])) if d else 0} events); no es toca res.")
+        print(f"Resultat insuficient ({len(d.get('eventos',[]))} events); no es toca res.")
         return 1
     d = aplicar_regles(d)
     d["municipio"] = "Santa Margarida i els Monjos"
