@@ -177,7 +177,61 @@ def generar_json(text: str, label: str, parte: str = "") -> dict | None:
         return None
 
 
-EXPO_RE = re.compile(r"exposic|palmadotze", re.I)
+# Exposicions per paraula clau (rescat quan el LLM no les categoritza). 'mostra'
+# només si va seguida de terme artístic (evita 'Mostra de bestiar' de la Fira
+# de la Transhumància); 'homenatge'/'col·lecció' no xoquen amb cap event actual.
+EXPO_RE = re.compile(
+    r"exposic|palmadotze|homenatge|col\.?leccio|"
+    r"mostra\s+(?:d'|de\s+)?(?:art|pintura|fotograf|dibuix|escultura|il·lustra)",
+    re.I)
+
+
+def carregar_anteriors() -> list[dict]:
+    """JSONs dels mesos ja processats (fins a 3), per comparar volums."""
+    try:
+        ags = ya_processats()
+    except Exception:
+        return []
+    prevs = []
+    for a in ags.get("agendas", [])[-3:]:
+        path = os.path.join(REPO, "data", a.get("file") or "")
+        if path.endswith(".json") and os.path.exists(path):
+            try:
+                prevs.append(json.load(open(path, encoding="utf-8")))
+            except Exception:
+                continue
+    return prevs
+
+
+def check_anomalia(d: dict, prevs: list[dict]) -> list[str]:
+    """Retorna llistat d'avisos. Un avís que comença per 'BLOQUEIG:' impedeix el
+    push (el LLM pot truncar/ometre si el PDF creix o canvia de format). Els
+    AVÍS de secció no bloquegen (una secció pot desaparèixer legítimament: Festa
+    Major, escola d'estiu...)."""
+    avisos = []
+    if not prevs:
+        return avisos
+    totals = [len(p.get("eventos", [])) for p in prevs if p.get("eventos")]
+    if not totals:
+        return avisos
+    mitjana = sum(totals) / len(totals)
+    n = len(d.get("eventos", []))
+    if n < 0.6 * mitjana:
+        avisos.append(
+            f"BLOQUEIG: {n} events nous vs mitjana {mitjana:.0f} dels últims mesos "
+            "(<60%). Possible extracció incompleta del PDF. Revisa abans de pushear.")
+    # Per secció: avís si una secció sòlida del mes anterior desapareix de cop.
+    def per_seccio(dd: dict) -> dict:
+        c: dict = {}
+        for e in dd.get("eventos", []):
+            s = e.get("seccio") or "(sense secció)"
+            c[s] = c.get(s, 0) + 1
+        return c
+    c_prev, c_new = per_seccio(prevs[-1]), per_seccio(d)
+    for s, n2 in c_prev.items():
+        if n2 >= 5 and c_new.get(s, 0) == 0:
+            avisos.append(f"AVÍS: la secció '{s}' passa de {n2} events a 0 aquest mes. Revisa si el PDF la porta.")
+    return avisos
 
 
 def aplicar_regles(d: dict) -> dict:
@@ -248,6 +302,17 @@ def main() -> int:
         print(f"Resultat insuficient ({len(d.get('eventos',[]))} events); no es toca res.")
         return 1
     d = aplicar_regles(d)
+
+    # Blindatge anti-omissió: si el volum cau molt respecte als últims mesos, no
+    # toquem res (el LLM pot haver truncat/omès). AGENDA_FORCE=1 salta el bloqueig.
+    if os.environ.get("AGENDA_FORCE") != "1":
+        avisos = check_anomalia(d, carregar_anteriors())
+        for av in avisos:
+            print("ANOMALIA:", av)
+        if any(av.startswith("BLOQUEIG") for av in avisos):
+            print("No es toca res (anomalia detectada).")
+            return 2
+
     d["municipio"] = "Santa Margarida i els Monjos"
     d["mes"] = nou["label"]
     d["fuente_pdf"] = nou["url"]

@@ -41,7 +41,9 @@ scripts/
 - Cerca i filtre per dia actuen **dins de la categoria activa**. La targeta obre el detall
   amb un sol toc; `Maps` (blau) i `Compartir` (verd) només al detall. Camps buits no es mostren.
 - **Esport** s'agrupa només per `subcategoria` (**Joves i Infants** / **Persones Adultes**),
-  sense subsegments per curs. `Formació` manté subagrupacions.
+  sense subsegments per curs. `Formació` manté subagrupacions. Quan un event esportiu
+  agrupa diverses activitats amb horari/lloc propis, el desglos es mostra al modal via el
+  camp `actividades` (nom, horari i lloc de cada una).
 
 ## Dades
 
@@ -49,6 +51,9 @@ Cada esdeveniment (esquema comú a totes les agendes):
 
 `id, seccio, categoria, subcategoria, subsubcategoria, titulo, descripcion, lugar,
 fecha_inicio, fecha_fin, hora_inicio, hora_fin, grup, enlace_maps, contactes`
+
+> `actividades` (opcional): llista de `{nombre, horario, lugar}` per a events que agrupen
+> activitats amb horari/lloc propi (típic d'ESPORTS). El modal les mostra una a una.
 
 > `subsubcategoria` **no s'usa a Esports** (només `subcategoria` Joves/Adults). En altres
 > seccions pot existir segons el PDF d'origen.
@@ -65,6 +70,9 @@ apareixen com a "Avís" a Notícies.
 **Regles de manteniment (projecte):**
 - **Mai "Altres" com a agrupació.** Si un element no encaixa en una subcategoria real,
   `null` i es llista directe sota el grup pare.
+- **Exposicions** → `seccio: Actes`, `categoria: Cultura`, `subcategoria: Exposicions`
+  (regla al pipeline + rescat per paraula clau: `exposic|palmadotze|homenatge|
+  col·leccio|mostra <d'art>`).
 - **Month-agnostic:** el codi no coneix noms concrets de grups/categories; el render els
   deriva del propi JSON. Regenerar el JSON d'un altre mes no requereix tocar `index.html`.
 
@@ -79,10 +87,14 @@ recent que encara no està a `data/agendas.json`) i, si el troba:
      funciona; el script que toca `opencode.ai` directe rep `MissingSessionID`/403 perquè
      no porta la sessió legítima) per generar el JSON estructurat.
   3. Aplica les regles del projecte (Esport només per `subcategoria` Joves/Adults, sense
-     `subsubcategoria`; títols originals; esquema comú).
-  4. Escriu `data/agenda-<mes>.json`, sincronitza `eventos.json`, actualitza `agendas.json`
+     `subsubcategoria`; **exposicions** → Cultura/Exposicions; desglos d'`actividades`
+     quan un event agrupa horaris; títols originals; esquema comú).
+  4. **Check d'anomalia** abans de pushear: si el volum d'events cau <60% de la mitjana
+     dels últims mesos (possible truncament/omissió del LLM), **no toca res** i ho diu
+     (sortida ≠ 0). Caigudes per secció només avisen. Escapatoria manual: `AGENDA_FORCE=1`.
+  5. Escriu `data/agenda-<mes>.json`, sincronitza `eventos.json`, actualitza `agendas.json`
      (el mes nou passa a ser el defecte) i fa **commit + push a GitHub**.
-  5. Avisa per Telegram (si no hi ha novetat, el job és **silenciós**: no imprimeix res).
+  6. Avisa per Telegram (si no hi ha novetat, el job és **silenciós**: no imprimeix res).
 Només pusheja si el JSON té >=50 events (guarda de dades dolentes). Si falla, no toca res.
 
 **Via manual (si es vol forçar):** delegar a un subagent amb `opencode-go/deepseek-v4-pro`
