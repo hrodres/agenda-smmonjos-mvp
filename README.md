@@ -106,8 +106,8 @@ Després (només via manual): afegeix l'entrada a `data/agendas.json` (l'última
 
 **Font oficial:** les agendes en PDF es publiquen a la **web municipal** a
 https://www.santamargaridaielsmonjos.cat/actualitat/publicacions-locals/agenda-municipal
-(el banner d'informació de la capçalera hi enllaça a la web). Els JSON es generen a
-partir d'aquests PDF.
+(el banner d'informació de la capçalera enllaça a la home de la web municipal,
+https://www.santamargaridaielsmonjos.cat). Els JSON es generen a partir d'aquests PDF.
 
 **Seguretat de dades:** `ingest.py` fa backup (`.bak`) abans de sobreescriure i **no
 destrueix** l'arxiu existent si falla. (Els `.bak` són artefactes locals i **no es
