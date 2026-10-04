@@ -299,7 +299,7 @@
     if(!evs.length){ html += '<div class="py-10 text-center text-sm text-slate-400">Cap activitat coincideix.</div>'; }
     else if(state.tab==='esport'){ html = renderEsport(evs, html); }
     else if(state.tab==='formacio'){ html = renderGrups(evs, html); }
-    else { evs.forEach(function(e){ html += card(e); }); }
+    else { html = renderGrups(evs, html); }  // Agenda: agrupa per subcategoria (ex: Exposicions) si n'hi ha
     m.innerHTML = html;
     Array.prototype.forEach.call(m.querySelectorAll('[data-open]'), function(b){
       b.onclick = function(){ state.obert = evs.filter(function(e){return e.id===b.getAttribute('data-open');})[0]; renderModal(); };

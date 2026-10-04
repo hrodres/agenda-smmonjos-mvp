@@ -22,7 +22,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260701-assaig-goigs",
@@ -41,7 +43,9 @@
       "descripcion": "Assaig popular dels goigs amb motiu del 70è aniversari dels goigs. Obert a tothom. La cantada popular es farà el 20 de juliol.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Esgl%C3%A9sia%20de%20Santa%20Margarida%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Coral Amics de Penyafel",
-      "contactes": ["Coral Amics de Penyafel"]
+      "contactes": [
+        "Coral Amics de Penyafel"
+      ]
     },
     {
       "id": "evt-20260702-torneig-ping-pong",
@@ -72,7 +76,7 @@
       "lugar": "Casa de cultura Mas Catarro i la Quadra",
       "categoria": "Cultura",
       "seccio": "Actes",
-      "subcategoria": null,
+      "subcategoria": "Exposicions",
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
@@ -89,9 +93,9 @@
       "hora_inicio": "18:00",
       "hora_fin": null,
       "lugar": "Casal de la Gent Gran",
-      "categoria": "Festes",
+      "categoria": "Cultura",
       "seccio": "Actes",
-      "subcategoria": null,
+      "subcategoria": "Exposicions",
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
@@ -155,7 +159,9 @@
       "descripcion": "Festa Holi a les 19 h al Parc de la Biblioteca. Adreçat a infants de 6 a 11 anys acompanyats d'una persona adulta. Aforament limitat. Cal inscripció prèvia al 669 28 75 39 o a turisme@smmonjos.cat.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Parc%20de%20la%20Biblioteca%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260704-20s-volei-indoor",
@@ -231,7 +237,9 @@
       "descripcion": "Assaig popular dels goigs amb motiu del 70è aniversari dels goigs. Obert a tothom. La cantada popular es farà el 20 de juliol.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Esgl%C3%A9sia%20de%20Santa%20Margarida%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Coral Amics de Penyafel",
-      "contactes": ["Coral Amics de Penyafel"]
+      "contactes": [
+        "Coral Amics de Penyafel"
+      ]
     },
     {
       "id": "evt-20260708-zumba-melonada",
@@ -269,7 +277,9 @@
       "descripcion": "Escape room a les 11 h, 12 h i 13 h a La Quadra. Grups de mínim 4 i màxim de 6 persones. Cal inscripció prèvia al 669 28 75 39 o a turisme@smmonjos.cat.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La%20Quadra%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260708-micro-obert",
@@ -326,7 +336,9 @@
       "descripcion": "Escape room a les 18 h, 19 h i 20 h a La Quadra. Grups de mínim 4 i màxim de 6 persones. Cal inscripció prèvia al 669 28 75 39 o a turisme@smmonjos.cat.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La%20Quadra%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260710-caminada-popular",
@@ -402,7 +414,9 @@
       "descripcion": "IV Slalom de cotxes de 9 h a 14 h a l'aparcament del mercat (entrada de cotxes de 8 h a 9 h i esmorzar de 9 h a 9.30 h). Inscripcions fins al 6 de juliol a trobadaclassicselsmonjos@gmail.com.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Aparcament%20del%20mercat%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Trobada Clàssics Els Monjos",
-      "contactes": ["Trobada Clàssics Els Monjos"]
+      "contactes": [
+        "Trobada Clàssics Els Monjos"
+      ]
     },
     {
       "id": "evt-20260711-gimcana-popular",
@@ -459,7 +473,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260714-les-petjades-vesper",
@@ -478,7 +494,9 @@
       "descripcion": "Visita combinada entre el Ciarga i les caves Nadal de Torrelavit. A les 10.30 h des del Ciarga. El desplaçament es fa en cotxes particulars. Inscripció prèvia al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260714-vermut-electrodiabolic",
@@ -497,7 +515,9 @@
       "descripcion": "De 12 h a 22 h. Vermut amb música electrònica amb els DJ Andre Vicenzzo, DJ Laxter, DJ Rober i DJ Oskar Koma, food trucks i zona infantil amb inflables.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Jardins%20de%20la%20casa%20de%20cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260714-master-class-zumba",
@@ -516,7 +536,9 @@
       "descripcion": "Master class de zumba a càrrec de Daniela, amb participació gratuïta i refresc per a totes les persones participants. A les 20 h a la pista exterior de la Margaridoia.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Societat%20La%20Margaridoia%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Societat La Margaridoia",
-      "contactes": ["La Margaridoia"]
+      "contactes": [
+        "La Margaridoia"
+      ]
     },
     {
       "id": "evt-20260714-contes-pijama",
@@ -535,7 +557,9 @@
       "descripcion": "De 20.45 h fins a les 23 h a la Biblioteca. Cal portar el sopar i el pijama posat. Beguda i postres a càrrec de la biblioteca. Adreçat a infants que hagin fet de 2n a 6è aquest curs. Imprescindible inscripció a santamargaridaielsmonjos.cat a partir de l'1 de juliol.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Biblioteca%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Biblioteca",
-      "contactes": ["Biblioteca"]
+      "contactes": [
+        "Biblioteca"
+      ]
     },
     {
       "id": "evt-20260714-traca-inici-festa",
@@ -592,7 +616,9 @@
       "descripcion": "Projecció de la pel·lícula Les irresponsables a les 22.30 h a la pista de La Margaridoia. Entrada gratuïta.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Societat%20La%20Margaridoia%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Societat La Margaridoia",
-      "contactes": ["La Margaridoia"]
+      "contactes": [
+        "La Margaridoia"
+      ]
     },
     {
       "id": "evt-20260714-cursa-velocitat-turbo-slot",
@@ -706,7 +732,9 @@
       "descripcion": "Sopar de carmanyola i jocs de Festa Major per equips a les 19.45 h a la Quadra. Adreçat a joves de 12 a 14 anys. L'organització es fa càrrec de les begudes i les persones participants han de portar el sopar i els coberts. Aforament limitat. Cal inscripció prèvia al 669 28 75 39 o a turisme@smmonjos.cat.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=La%20Quadra%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260716-cercavila-infantil",
@@ -839,7 +867,9 @@
       "descripcion": "Obra La importància de ser Frank a càrrec del grup Teatre del Talión de Lleida, a les 21.30 h a la Societat La Margaridoia. Entrada gratuïta per a socis, 8 € per a no socis.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Societat%20La%20Margaridoia%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Societat La Margaridoia",
-      "contactes": ["La Margaridoia"]
+      "contactes": [
+        "La Margaridoia"
+      ]
     },
     {
       "id": "evt-20260717-ball-gralles",
@@ -877,7 +907,9 @@
       "descripcion": "Ball de Festa Major a les 23 h a la pista exterior de la Margaridoia amb la petita gran orquestra Liberty. Acte commemoratiu del 50è aniversari de la inauguració de la pista exterior i la cafeteria. Entrada gratuïta per a sòcies i 7 € per a no sòcies.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Societat%20La%20Margaridoia%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Societat La Margaridoia",
-      "contactes": ["La Margaridoia"]
+      "contactes": [
+        "La Margaridoia"
+      ]
     },
     {
       "id": "evt-20260717-ball-lluiment-infantil",
@@ -934,7 +966,9 @@
       "descripcion": "Acte sacramental a les 12.30 h a la plaça de Pau Casals (hora aproximada), a càrrec del Ball de Diables dels Monjos Spantus Infantil.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a%20de%20Pau%20Casals%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260717-cercavila-foc-infantil",
@@ -953,7 +987,9 @@
       "descripcion": "Sortida de l'avinguda de Catalunya a les 19 h. Recorregut: carrers de Sant Joan, de Sant Josep, pl. de Pau Casals, raval de Sant Martí, pl. de Sant Pere i av. de Catalunya, fins a la plaça de l'Església. Organitza: Ball de Diables dels Monjos Spantus.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Avinguda%20de%20Catalunya%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260717-tabalada",
@@ -1010,7 +1046,9 @@
       "descripcion": "Concert i ball de gala a les 23 h a la pista exterior de la Margaridoia amb l'orquestra Mediterrània. Entrada gratuïta per a sòcies i 9 € per a no sòcies.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Societat%20La%20Margaridoia%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Societat La Margaridoia",
-      "contactes": ["La Margaridoia"]
+      "contactes": [
+        "La Margaridoia"
+      ]
     },
     {
       "id": "evt-20260718-concert-waikiki",
@@ -1048,7 +1086,9 @@
       "descripcion": "Sortida a les 9.30 h des de Subirats. Visita combinada entre Subirats i Santa Margarida i els Monjos. El desplaçament entre el CIUDEB i el CIARGA es fa en cotxes particulars. Inscripció prèvia a escapadasingular.com.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Subirats%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260719-visita-castell",
@@ -1067,7 +1107,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260719-ball-lluiment-acte-sacramental",
@@ -1105,7 +1147,9 @@
       "descripcion": "Sàtires diabòliques a les 13.30 h a la plaça de Pau Casals (hora aproximada), a càrrec del Ball de Diables dels Monjos Spantus.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a%20de%20Pau%20Casals%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260719-exhibicio-balls-infantils",
@@ -1162,7 +1206,9 @@
       "descripcion": "No siguis un alien a la FM26. A les 18.30 h a la plaça del Molí. Adreçat a infants de 5è de primària a 4t d'ESO.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a%20del%20Mol%C3%AD%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260719-castell-focs",
@@ -1276,7 +1322,9 @@
       "descripcion": "Nit de foc i traca de fi de festa a les 22 h davant de l'ajuntament, amb el Ball de Diables dels Monjos Spantus.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Davant%20de%20l%27ajuntament%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260719-ball-de-nit",
@@ -1352,7 +1400,9 @@
       "descripcion": "Matinades Spantus a les 8 h des de la plaça de Pau Casals, a càrrec del Ball de Diables dels Monjos Spantus.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Pla%C3%A7a%20de%20Pau%20Casals%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Ball de Diables dels Monjos Spantus",
-      "contactes": ["Ball de Diables dels Monjos Spantus"]
+      "contactes": [
+        "Ball de Diables dels Monjos Spantus"
+      ]
     },
     {
       "id": "evt-20260720-repic-campanes-anada-ofici",
@@ -1428,7 +1478,9 @@
       "descripcion": "Taller familiar al Ciarga per crear un mòbil d'avions, a les 11.30 h. Preu: 3 € per família. Inscripció prèvia al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260725-cronoescalada-montanyans",
@@ -1466,7 +1518,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260726-memoria-guerra-aeria",
@@ -1485,7 +1539,9 @@
       "descripcion": "Sortida a les 11 h des del Ciarga. Visita combinada entre el Ciarga i el Castell de Penyafort. El desplaçament entre ambdós punts es fa en cotxes particulars. Inscripció prèvia al 669 28 75 39.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260728-terrabastall-rapitenc",
@@ -1865,7 +1921,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260803-concert-festa-major-millenium",
@@ -1960,7 +2018,9 @@
       "descripcion": "Sortida a les 11 h des del Ciarga. Visita combinada entre el Ciarga i el Castell de Penyafort. El desplaçament entre ambdós punts es fa en cotxes particulars. Inscripció prèvia al 669 28 75 39.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ciarga%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260830-visita-castell",
@@ -1979,7 +2039,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260823-visita-castell",
@@ -1998,7 +2060,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260816-sabors-guerra-2",
@@ -2017,7 +2081,9 @@
       "descripcion": "Sortida a les 9.30 h des de Subirats. Visita combinada entre Subirats i Santa Margarida i els Monjos. El desplaçament entre el CIUDEB i el CIARGA es fa en cotxes particulars. Inscripció prèvia a escapadasingular.com.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Subirats%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260816-visita-castell",
@@ -2036,7 +2102,9 @@
       "descripcion": "Visita guiada al Castell de Penyafort a les 10.30 h i a les 12 h. Imprescindible inscripció al 669 287 539.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Castell%20de%20Penyafort%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Turisme",
-      "contactes": ["Turisme"]
+      "contactes": [
+        "Turisme"
+      ]
     },
     {
       "id": "evt-20260706-exposicions-festa-major",
@@ -2048,7 +2116,7 @@
       "lugar": "Casa de cultura Mas Catarro i la Quadra",
       "categoria": "Cultura",
       "seccio": "Actes",
-      "subcategoria": null,
+      "subcategoria": "Exposicions",
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
@@ -2067,7 +2135,7 @@
       "lugar": "Casal de la Gent Gran",
       "categoria": "Cultura",
       "seccio": "Actes",
-      "subcategoria": null,
+      "subcategoria": "Exposicions",
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
@@ -2086,7 +2154,7 @@
       "lugar": "Palmadotze Galeria d'Art",
       "categoria": "Cultura",
       "seccio": "Actes",
-      "subcategoria": null,
+      "subcategoria": "Exposicions",
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
@@ -2112,7 +2180,9 @@
       "descripcion": "Cursets de natació del 13 de juliol al 21 de juliol i del 3 d'agost al 21 d'agost (3 setmanes). Per a nadons de 4 mesos a 3 anys (amb mares o pares), infants de 4 a 6 anys, infants de 7 a 10 anys i classes d'Aquatònic (gimnàstica dins l'aigua). Preu cursets: 35 €. Inscripció prèvia i pagament a la piscina municipal del 8 al 12 de juny de 12 h a 14 h o en horari d'obertura.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Piscina%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Piscina Municipal",
-      "contactes": ["Piscina Municipal"]
+      "contactes": [
+        "Piscina Municipal"
+      ]
     },
     {
       "id": "evt-20260710-torneig-volei-sorra-4x4",
@@ -2283,7 +2353,9 @@
       "descripcion": "Inscripcions a l'Escola Municipal de Formació de Persones Adultes Fina Garcia Mateu, del 29 de juny fins al 15 de juliol. Cultura general, acollida lingüística (català i castellà), perfeccionament del català, idiomes (anglès i alemany), informàtica i IA, i preparació per a la prova d'accés a cicles formatius de grau mitjà i superior. Horari: dimarts, dimecres i dijous de 10 a 13 h i dilluns i dimecres de 16 a 18 h. Tel. 93 818 66 84.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Casa%20de%20cultura%20Mas%20Catarro%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Escola d'Adults Fina Garcia Mateu",
-      "contactes": ["Club de la Feina"]
+      "contactes": [
+        "Club de la Feina"
+      ]
     },
     {
       "id": "evt-20260701-servei-local-ocupacio",
@@ -2302,7 +2374,9 @@
       "descripcion": "Servei Local d'Ocupació. Juliol: dimarts i divendres de 10 h a 13 h. Agost: obert el 4 i el 7 d'agost. El Club de la Feina tanca del 10 al 28 d'agost. Obrirem el dimarts 1 de setembre. Serveis: assessorament jurídic (cita a Serveis Socials), orientació individual, pla d'acció de millora de competències i recerca de feina. Inscripcions al Club de la Feina, a Ca l'Antic (edifici Tangram) c/ Berenguer 1 2a planta o a clubdefeina@smmonjos.cat. Tel. 93 818 66 84.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Ca%20l%27Antic%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Servei Local d'Ocupació",
-      "contactes": ["Club de la Feina"]
+      "contactes": [
+        "Club de la Feina"
+      ]
     },
     {
       "id": "evt-20260601-horari-cementiri",
@@ -2340,7 +2414,9 @@
       "descripcion": "Piscina municipal oberta fins al 30 d'agost, de dilluns a diumenge d'11 h a 20 h tots els dies (20 de juliol tancat). Preus: adults 4 € (16 a 65 anys), infants 2,5 € (6 a 15 anys), persones amb discapacitat (+1 acompanyant) 2,5 €. Abonaments temporada: adults 65 €, infants 35 €. Bons 15 entrades: adults 40 €, infants 25 €. Entrada gratuïta per infants de 0-5 anys i majors de 65 anys.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=Piscina%20municipal%2C%20Santa%20Margarida%20i%20els%20Monjos",
       "grup": "Piscina Municipal",
-      "contactes": ["Piscina Municipal"]
+      "contactes": [
+        "Piscina Municipal"
+      ]
     },
     {
       "id": "N1",

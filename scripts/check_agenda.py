@@ -127,6 +127,8 @@ REGLES:
   'subcategoria'. SEGON NIVELL (ex: '3r i 4t de primària', 'Manualitats de Dona al Dia') a
   'subsubcategoria', EXCEPTE a ESPORT: allà 'subsubcategoria' SEMPRE null (només Joves i Infants
   / Persones Adultes).
+- EXPOSICIONS: els esdeveniments sota la sub-capçalera 'Exposicions' del PDF (exposicions,
+  galeries, mostres d'art) → 'seccio': 'Actes', 'categoria': 'Cultura', 'subcategoria': 'Exposicions'.
 - Si un element no encaixa en cap grup: subcategoria/subsubcategoria a null. MAI 'Altres'.
 - 'enlace_maps': https://www.google.com/maps/search/?api=1&query=<lloc>+Santa+Margarida+i+els+Monjos (URL-encoded).
 - Inclou TOTS els esdeveniments i els contactes de la pàgina de Telèfons d'interès.
@@ -169,11 +171,22 @@ def generar_json(text: str, label: str, parte: str = "") -> dict | None:
         return None
 
 
+EXPO_RE = re.compile(r"exposic|palmadotze", re.I)
+
+
 def aplicar_regles(d: dict) -> dict:
     vistos = set()
     for ev in d.get("eventos", []):
         if ev.get("seccio") == "Esports":
             ev["subsubcategoria"] = None
+        # Exposicions -> Cultura + subcategoria 'Exposicions'.
+        # No toquem Notícies (ex: 'Bases de la Mostra Artística' és un avís, no un event).
+        if ev.get("seccio") != "Notícies" and not ev.get("subcategoria"):
+            blob = " ".join(str(ev.get(k) or "") for k in ("titulo", "descripcion"))
+            if EXPO_RE.search(blob):
+                ev["seccio"] = ev.get("seccio") or "Actes"
+                ev["categoria"] = "Cultura"
+                ev["subcategoria"] = "Exposicions"
         # Garantir id únic (el frontend obre el modal buscant per id).
         if not ev.get("id"):
             fecha = (ev.get("fecha_inicio") or "").replace("-", "")[:8] or "avis"
