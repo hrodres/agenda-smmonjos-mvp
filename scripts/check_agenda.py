@@ -186,6 +186,28 @@ EXPO_RE = re.compile(
     re.I)
 
 
+def actualizar_titulo_mes(label: str) -> None:
+    """La vista prèvia en compartir (Telegram/WhatsApp) llegeix el <title> i els
+    <meta> ESTÀTICS del head — el JS no s'executa. Regenera el mes al head abans
+    del commit perquè la preview mai no quedi amb un mes antic."""
+    path = os.path.join(REPO, "index.html")
+    html = open(path, encoding="utf-8").read()
+    label = " ".join(label.split())
+    mes_lower = label.lower()
+    html2 = re.sub(r'<meta name="description" content="[^"]*" />',
+                   f'<meta name="description" content="Agenda municipal de Santa Margarida i els Monjos — {mes_lower}." />',
+                   html, count=1)
+    html2 = re.sub(r'<meta property="og:title" content="[^"]*" />',
+                   f'<meta property="og:title" content="Agenda SMMonjos · {label}" />', html2, count=1)
+    html2 = re.sub(r'<meta property="og:description" content="[^"]*" />',
+                   f'<meta property="og:description" content="Agenda municipal de Santa Margarida i els Monjos — {mes_lower}." />', html2, count=1)
+    html2 = re.sub(r'<title>Agenda SMMonjos · [^<]*</title>',
+                   f'<title>Agenda SMMonjos · {label}</title>', html2, count=1)
+    if html2 != html:
+        open(path, "w", encoding="utf-8").write(html2)
+        print(f"Títol del head actualitzat a '{label}'.")
+
+
 def carregar_anteriors() -> list[dict]:
     """JSONs dels mesos ja processats (fins a 3), per comparar volums."""
     try:
@@ -338,6 +360,9 @@ def main() -> int:
     ags["default"] = nou["id"]
     json.dump(ags, open(os.path.join(REPO, "data", "agendas.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
+
+    # La preview en compartir llegeix el head estàtic: regenerar-lo amb el mes nou.
+    actualizar_titulo_mes(nou["label"])
 
     # commit + push
     subprocess.run(["git", "-C", REPO, "add", "-A"], check=True)
