@@ -1458,9 +1458,191 @@
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
-      "descripcion": "I4 i I5: Iniciació a l'hoquei (dilluns o dijous de 17 h a 18 h, pista poliesportiva municipal), Psicomotricitat (dimarts de 16.30 h a 18 h, escola Sant Domènec), Gimnàstica rítmica (dilluns i dimecres de 17 h a 18 h, gimnàs municipal). 1r i 2n de primària: Iniciació a l'hoquei, Iniciació a l'esport, Gimnàstica rítmica, Iniciació al karate, Iniciació al patinatge, Mini vòlei, Mini bàsquet. 3r i 4t de primària: Let's dance, Gimnàstica rítmica, Iniciació al karate, Futbol sala, Mini vòlei, Mini bàsquet, Iniciació al patinatge. 5è i 6è de primària: Let's dance, Iniciació al pàdel, Gimnàstica rítmica, Iniciació al karate, Futbol sala, Mini vòlei. 1r i 2n d'ESO: Balls moderns, Futbol sala, Iniciació al pàdel. 3r i 4t d'ESO: Balls moderns, Futbol sala, Iniciació al pàdel. Inscripcions: online a la pàgina web municipal.",
+      "descripcion": "Programa d'activitats esportives per a joves i infants del curs 2026-2027, de I4 i I5 fins a 3r i 4t d'ESO, amb disciplines com hoquei, gimnàstica rítmica, karate, patinatge, futbol sala, vòlei, bàsquet, pàdel i balls moderns. Inscripcions online a la pàgina web municipal.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos",
-      "id": "evt-avis-activitats-esportives-joves-i-infants-20"
+      "id": "evt-avis-activitats-esportives-joves-i-infants-20",
+      "actividades": [
+        {
+          "nombre": "Iniciació a l'hoquei (I4 i I5)",
+          "horario": "Dilluns o dijous de 17 h a 18 h",
+          "lugar": "Pista poliesportiva municipal"
+        },
+        {
+          "nombre": "Psicomotricitat (I4 i I5)",
+          "horario": "Dimarts de 16.30 h a 18 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (I4 i I5)",
+          "horario": "Dilluns i dimecres de 17 h a 18 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Iniciació al karate (I4 i I5)",
+          "horario": "Divendres de 17 h a 18 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Iniciació al patinatge (I4 i I5)",
+          "horario": "Dilluns de 17 h a 18 h",
+          "lugar": "Pavelló municipal"
+        },
+        {
+          "nombre": "Iniciació a l'hoquei (1r i 2n de primària)",
+          "horario": "Dilluns o dijous de 17 h a 18 h",
+          "lugar": "Pista Poliesportiva municipal"
+        },
+        {
+          "nombre": "Iniciació a l'esport (1r i 2n de primària)",
+          "horario": "Dilluns de 16.30 h a 18 h",
+          "lugar": "Escola Doctor Samaranch"
+        },
+        {
+          "nombre": "Iniciació a l'esport (1r i 2n de primària)",
+          "horario": "Dijous de 16.30 h a 18 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (1r i 2n de primària)",
+          "horario": "Dilluns i dimecres de 18 h a 19 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (1r i 2n de primària)",
+          "horario": "Divendres de 16.30 h a 18.30 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Iniciació al karate (1r i 2n de primària)",
+          "horario": "Divendres de 17 h a 18 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Iniciació al patinatge (1r i 2n de primària)",
+          "horario": "Dilluns de 17 h a 18 h",
+          "lugar": "Pavelló municipal"
+        },
+        {
+          "nombre": "Mini vòlei (1r i 2n de primària)",
+          "horario": "Dimarts de 17 h a 18 h",
+          "lugar": "Gimnàs Institut El Foix"
+        },
+        {
+          "nombre": "Mini bàsquet (1r i 2n de primària)",
+          "horario": "Dijous de 16.30 h a 18 h",
+          "lugar": "Escola Doctor Samaranch"
+        },
+        {
+          "nombre": "Let's dance (3r i 4t de primària)",
+          "horario": "Divendres de 17 h a 18 h",
+          "lugar": "Gimnàs Institut El Foix"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (3r i 4t de primària)",
+          "horario": "Dilluns i dimecres de 19 h a 20 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Iniciació al karate (3r i 4t de primària)",
+          "horario": "Divendres de 18 h a 19 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Futbol sala (3r i 4t de primària)",
+          "horario": "Dilluns i dijous de 17 h a 18 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Mini vòlei (3r i 4t de primària)",
+          "horario": "Dimarts i dijous de 17 h a 18 h",
+          "lugar": "Gimnàs institut El Foix"
+        },
+        {
+          "nombre": "Mini bàsquet (3r i 4t de primària)",
+          "horario": "Dilluns de 17 h a 18 h",
+          "lugar": "Escola Arrels"
+        },
+        {
+          "nombre": "Mini bàsquet (3r i 4t de primària)",
+          "horario": "Dimecres de 17 h a 18 h",
+          "lugar": "Gimnàs institut El Foix"
+        },
+        {
+          "nombre": "Mini bàsquet (3r i 4t de primària)",
+          "horario": "Dimarts i dijous de 19 h a 20 h",
+          "lugar": "Gimnàs escola Sant Domènec"
+        },
+        {
+          "nombre": "Iniciació al patinatge (3r i 4t de primària)",
+          "horario": "Dilluns de 17 h a 18 h",
+          "lugar": "Pavelló municipal"
+        },
+        {
+          "nombre": "Let's dance (5è i 6è de primària)",
+          "horario": "Divendres de 18 h a 19 h",
+          "lugar": "Gimnàs Institut El Foix"
+        },
+        {
+          "nombre": "Iniciació al pàdel (5è i 6è de primària)",
+          "horario": "Divendres de 17 h a 18 h",
+          "lugar": "Pavelló municipal"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (5è i 6è de primària)",
+          "horario": "Dilluns i dimecres de 19 h a 20 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Gimnàstica rítmica (5è i 6è de primària)",
+          "horario": "Divendres de 16.30 h a 18.30 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Iniciació al karate (5è i 6è de primària)",
+          "horario": "Divendres de 18 h a 19 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Futbol sala (5è i 6è de primària)",
+          "horario": "Dilluns i dijous de 17 h a 18 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Mini vòlei (5è i 6è de primària)",
+          "horario": "Dimarts i dijous de 18 h a 19 h",
+          "lugar": "Gimnàs institut El Foix"
+        },
+        {
+          "nombre": "Balls moderns (1r i 2n d'ESO)",
+          "horario": "Divendres de 19 h a 20 h",
+          "lugar": "Gimnàs institut El Foix"
+        },
+        {
+          "nombre": "Futbol sala (1r i 2n d'ESO)",
+          "horario": "Dilluns i dijous de 18 h a 19 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Iniciació al pàdel (1r i 2n d'ESO)",
+          "horario": "Divendres de 18 h a 19 h",
+          "lugar": "Pavelló municipal"
+        },
+        {
+          "nombre": "Balls moderns (3r i 4t d'ESO)",
+          "horario": "Divendres de 19 h a 20 h",
+          "lugar": "Gimnàs institut El Foix"
+        },
+        {
+          "nombre": "Futbol sala (3r i 4t d'ESO)",
+          "horario": "Dilluns i dijous de 18 h a 19 h",
+          "lugar": "Escola Sant Domènec"
+        },
+        {
+          "nombre": "Iniciació al pàdel (3r i 4t d'ESO)",
+          "horario": "Divendres de 18 h a 19 h",
+          "lugar": "Pavelló municipal"
+        }
+      ]
     },
     {
       "titulo": "Activitats esportives Persones Adultes 2026-2027",
@@ -1475,9 +1657,46 @@
       "subsubcategoria": null,
       "precio_socios": null,
       "precio_general": null,
-      "descripcion": "Gimnàstica de manteniment, Gimnàstica terapèutica i salut, Marxes nòrdiques, Qi Jong, Ioga, Pilates. Inscripcions: online a la pàgina web municipal.",
+      "descripcion": "Programa d'activitats esportives per a persones adultes del curs 2026-2027, amb disciplines com gimnàstica de manteniment, gimnàstica terapèutica i salut, marxes nòrdiques, Qi Jong, ioga i pilates. Inscripcions online a la pàgina web municipal.",
       "enlace_maps": "https://www.google.com/maps/search/?api=1&query=pavell%C3%B3+municipal+Santa+Margarida+i+els+Monjos",
-      "id": "evt-avis-activitats-esportives-persones-adultes-2"
+      "id": "evt-avis-activitats-esportives-persones-adultes-2",
+      "actividades": [
+        {
+          "nombre": "Gimnàstica de manteniment",
+          "horario": "Dilluns i dimecres de 19.15 h a 20.15 h",
+          "lugar": "Gimnàs escola Sant Domènec"
+        },
+        {
+          "nombre": "Gimnàstica terapèutica i salut",
+          "horario": "Dilluns i dimecres de 16 h a 17 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Gimnàstica terapèutica i salut",
+          "horario": "Dimarts i dijous de 9.15 h a 10.15 h i de 10.15 h a 11.15 h",
+          "lugar": "Gimnàs municipal"
+        },
+        {
+          "nombre": "Marxes nòrdiques",
+          "horario": "Divendres de 9.30 h a 11 h",
+          "lugar": "Camp de futbol"
+        },
+        {
+          "nombre": "Qi Jong",
+          "horario": "Dimarts de 10 h a 11 h",
+          "lugar": "Escoles velles de la Ràpita"
+        },
+        {
+          "nombre": "Ioga",
+          "horario": "Dilluns i dimecres de 17 h a 18.30 h i de 18.30 h a 20 h",
+          "lugar": "Gimnàs escola Samaranch i Fina"
+        },
+        {
+          "nombre": "Pilates",
+          "horario": "Dimarts i dijous de 18 h a 19 h, de 19 h a 20 h i de 20 h a 21 h",
+          "lugar": "Gimnàs municipal"
+        }
+      ]
     },
     {
       "titulo": "Horaris de Tots Sants al cementiri",

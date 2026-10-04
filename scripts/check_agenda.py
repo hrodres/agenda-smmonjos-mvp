@@ -113,7 +113,9 @@ sense text al voltant) que compleixi aquest esquema:
      "hora_inicio":str|null "HH:MM 24h o null","hora_fin":str|null,
      "lugar":str,"categoria":str,"seccio":str|null "Actes|Formació|Esports|Notícies",
      "subcategoria":str|null,"subsubcategoria":str|null,"precio_socios":str|null,
-     "precio_general":str|null,"descripcion":str,"enlace_maps":str "URL Google Maps search URL-encoded"}
+     "precio_general":str|null,"descripcion":str,
+     "actividades":[{"nombre":str,"horario":str|null,"lugar":str|null}]|null,
+     "enlace_maps":str "URL Google Maps search URL-encoded"}
   ],
   "contactes":[{"nom":str,"telefon":str,"email":str|null,"nota":str|null,"web":str|null,"grup":str|null}]
 }
@@ -130,6 +132,10 @@ REGLES:
 - EXPOSICIONS: els esdeveniments sota la sub-capçalera 'Exposicions' del PDF (exposicions,
   galeries, mostres d'art) → 'seccio': 'Actes', 'categoria': 'Cultura', 'subcategoria': 'Exposicions'.
 - Si un element no encaixa en cap grup: subcategoria/subsubcategoria a null. MAI 'Altres'.
+- 'actividades': QUAN un event agrupa diverses activitats amb horari/lloc propi (típic de
+  ESPORTS: 'Joves i Infants 2026-2027' i 'Persones Adultes 2026-2027'), desglossa CADA
+  activitat amb el seu horari i lloc EXACTES del PDF (nom: l'activitat; horario: dies i hores;
+  lugar: espai). Si no hi ha activitats desglossables → null. Mai inventar dades.
 - 'enlace_maps': https://www.google.com/maps/search/?api=1&query=<lloc>+Santa+Margarida+i+els+Monjos (URL-encoded).
 - Inclou TOTS els esdeveniments i els contactes de la pàgina de Telèfons d'interès.
 - Només el JSON, res més."""

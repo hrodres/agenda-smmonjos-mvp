@@ -219,7 +219,8 @@
       '<div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">'+
       (hora?'<span class="inline-flex items-center gap-1">'+svg('Clock','h-3.5 w-3.5')+' '+esc(hora)+'</span>':'')+
       (ev.lugar?'<span class="inline-flex items-center gap-1">'+svg('MapPin','h-3.5 w-3.5')+' '+esc(ev.lugar)+'</span>':'')+'</div>'+
-      (preu?'<p class="mt-2 text-[11px] font-medium text-slate-400">'+esc(preu)+'</p>':'')+'</div></div></article>';
+      (preu?'<p class="mt-2 text-[11px] font-medium text-slate-400">'+esc(preu)+'</p>':'')+
+      (ev.actividades && ev.actividades.length ? '<p class="mt-2 text-[11px] font-medium text-brand-600">'+ev.actividades.length+' activitats · '+esc(ev.actividades.slice(0,3).map(function(a){return a.nombre;}).join(' · '))+(ev.actividades.length>3?' · …':'')+'</p>' : '')+'</div></div></article>';
   }
 
   function filtered(tab){
@@ -333,6 +334,11 @@
       (ev.lugar?'<div class="flex items-start gap-2">'+svg('MapPin','h-4 w-4 text-brand-600')+'<span>'+esc(ev.lugar)+'</span></div>':'')+
       ((ev.precio_general||ev.precio_socios)?'<div class="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">'+(ev.precio_socios?'<div>Socis: '+esc(ev.precio_socios)+'</div>':'')+(ev.precio_general?'<div>General: '+esc(ev.precio_general)+'</div>':'')+'</div>':'')+
       '</div>'+(ev.descripcion?'<p class="mt-3 text-sm leading-relaxed text-slate-600">'+esc(ev.descripcion)+'</p>':'')+
+      (ev.actividades && ev.actividades.length ? '<div class="mt-3 space-y-1.5">'+ev.actividades.map(function(a){
+        return '<div class="rounded-lg bg-slate-50 px-3 py-2 text-sm"><span class="font-semibold text-slate-800">'+esc(a.nombre)+'</span>'+
+          (a.horario?'<div class="text-xs text-slate-600">'+esc(a.horario)+'</div>':'')+
+          (a.lugar?'<div class="text-xs text-slate-500">'+esc(a.lugar)+'</div>':'')+'</div>';
+      }).join('')+'</div>':'')+
       '<div class="mt-4 flex gap-2">'+
       (ev.enlace_maps?'<a href="'+esc(ev.enlace_maps)+'" target="_blank" rel="noopener noreferrer" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-600">'+svg('MapPinned','h-4 w-4')+' Obre a Google Maps</a>':'<span class="flex-1"></span>')+
       '<button id="share" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600">'+svg('Share2','h-4 w-4')+' Compartir</button>'+
