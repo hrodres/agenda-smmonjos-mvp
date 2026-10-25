@@ -21,9 +21,16 @@ toca res del repo.
 """
 from __future__ import annotations
 import os, re, sys, json, subprocess, datetime
+from html import unescape
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = "https://www.santamargaridaielsmonjos.cat/actualitat/publicacions-locals/agenda-municipal"
+# Octubre 2026: la web municipal va canviar d'estructura. L'antic
+# /actualitat/publicacions-locals/agenda-municipal retorna 404. Ara hi ha un
+# CATÀLEG paginat de targetes (1..N); cada targeta enllaça a una subpàgina
+# .html i el PDF viu DINS d'aquesta subpàgina, no al llistat.
+BASE_URL = "https://www.santamargaridaielsmonjos.cat"
+SUB_PATH = "/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual"
+PAGE = BASE_URL + SUB_PATH
 MODEL = "opencode-go/deepseek-v4-pro"
 SESSION_KEY = "agent:main:agenda-proc"
 MIN_EVENTS = 50
@@ -42,26 +49,114 @@ def fetch_html(url: str) -> str:
 
 
 def parse_agendes(html: str):
-    """Retorna llista de dicts {id, label, url, key} ordenats per key descendent."""
+    """Retorna llista de dicts {id, label, url, key} ordenats per key descendent.
+
+    Estructura NOVA (oct. 2026): cada agenda és una targeta amb una imatge i un
+    enllaç a una subpàgina de detall. El PDF no és al llistat.
+
+        <a href="https://.../agenda-mensual/agenda-juny-2026.html">
+            <img src="..." alt="Agenda juny 2026">
+
+    S'accepta també el format ANTIC (enllaç directe a un .pdf amb el text
+    'Agenda <mes>') perquè si algun dia barregen els dos, no es perdi res.
+    """
     out = []
-    # La web municipal serveix anchors HTML: <a href="https://.../fitxer/XXXX/AGENDA....pdf">Agenda <mes> <any></a>
-    pat = re.compile(r'href="(https://[^"]+\.pdf)"[^>]*>\s*Agenda\s+([^<]+)</a>', re.I)
-    for m in pat.finditer(html):
-        url = m.group(1)
-        label = " ".join(m.group(2).split())  # normalitza espais
-        # mesos en ordre + primer any de 4 xifres (el que acompanya el primer mes)
-        tokens = re.findall(r"[A-Za-zçàèéíòóú·]+|\d{4}", label)
-        mesos = [t.lower() for t in tokens if t.lower() in MESES]
-        anys = [int(t) for t in tokens if t.isdigit() and len(t) == 4]
-        if not mesos or not anys:
+    seen = set()
+
+    # --- format nou: targeta amb imatge + alt ---
+    pat_card = re.compile(
+        r'<a\s+href="([^"]+?)"[^>]*>\s*<img[^>]*alt="([^"]*)"',
+        re.I | re.S)
+    for m in pat_card.finditer(html):
+        href, alt = m.group(1), m.group(2)
+        if "/agenda-mensual/" not in href:
+            continue  # navegació, no una agenda
+        label = " ".join(unescape(alt).split())
+        if "agenda" not in label.lower():
             continue
-        any_ = anys[0]
-        key = any_ * 12 + MESES[mesos[0]]
-        mid = "-".join(mesos) + f"-{any_}"
-        lab = label[0].upper() + label[1:] if label else label
-        out.append({"id": mid, "label": lab, "url": url, "key": key})
+        item = _agenda_item(label, href)
+        if item and item["id"] not in seen:
+            seen.add(item["id"])
+            out.append(item)
+
+    # --- format antic: enllaç directe al PDF ---
+    pat_pdf = re.compile(r'href="(https://[^"]+\.pdf)"[^>]*>\s*Agenda\s+([^<]+)</a>', re.I)
+    for m in pat_pdf.finditer(html):
+        url, label = m.group(1), " ".join(m.group(2).split())
+        item = _agenda_item(label, url)
+        if item and item["id"] not in seen:
+            seen.add(item["id"])
+            out.append(item)
+
     out.sort(key=lambda x: x["key"], reverse=True)
     return out
+
+
+def _agenda_item(label: str, url: str):
+    """Converteix 'Agenda juny 2026' + URL en {id, label, url, key} o None."""
+    tokens = re.findall(r"[A-Za-zçàèéíòóúü·]+|\d{4}", label)
+    mesos = [t.lower() for t in tokens if t.lower() in MESES]
+    anys = [int(t) for t in tokens if t.isdigit() and len(t) == 4]
+    if not mesos or not anys:
+        return None
+    any_ = anys[0]
+    key = any_ * 12 + MESES[mesos[0]]
+    mid = "-".join(mesos) + f"-{any_}"
+    lab = label[0].upper() + label[1:] if label else label
+    return {"id": mid, "label": lab, "url": url, "key": key}
+
+
+def catalog_pages(html: str) -> int:
+    """Quantes pàgines té el catàleg (llegeix 'N pàgines' del paginador)."""
+    m = re.search(r'(\d+)\s*p[àa]gines', html, re.I)
+    return int(m.group(1)) if m else 1
+
+
+def totes_les_agendes() -> list[dict]:
+    """Recorre TOT el catàleg paginat i retorna les agendes ordenades.
+
+    El mes més recent és a la pàgina 1, però es recorren totes perquè el
+    `key` calculat (no l'ordre del HTML) és qui mana.
+    """
+    first = fetch_html(PAGE)
+    n = catalog_pages(first)
+    items = {i["id"]: i for i in parse_agendes(first)}
+    for pag in range(2, min(n, 12) + 1):
+        try:
+            sub = fetch_html(f"{PAGE}?pag={pag}")
+        except Exception:
+            break
+        for i in parse_agendes(sub):
+            items.setdefault(i["id"], i)
+    return sorted(items.values(), key=lambda x: x["key"], reverse=True)
+
+
+def resoldre_pdf(item: dict) -> str | None:
+    """Retorna la URL absoluta del PDF d'una agenda.
+
+    Si `url` ja és un PDF, es retorna tal qual (format antic). Si és una
+    subpàgina de detall, s'hi busca l'enllaç al document.
+    """
+    url = item["url"]
+    if url.lower().endswith(".pdf"):
+        return url
+    if not url.startswith("http"):
+        url = BASE_URL + ("" if url.startswith("/") else "/") + url
+    try:
+        page = fetch_html(url)
+    except Exception:
+        return None
+    # El document pot aparèixer com a href directe o dins d'un visor /pdf?file=
+    m = re.search(r'href="(/media/repository/import/documents/[^"]+\.pdf)"', page, re.I)
+    if m:
+        return BASE_URL + m.group(1)
+    m = re.search(r'/pdf\?file=(/media/repository/[^"&]+)', page, re.I)
+    if m:
+        return BASE_URL + m.group(1)
+    m = re.search(r'href="(https?://[^"]+\.pdf)"', page, re.I)
+    if m:
+        return m.group(1)
+    return None
 
 
 def ya_processats() -> dict:
@@ -69,16 +164,21 @@ def ya_processats() -> dict:
     return json.load(open(p, encoding="utf-8"))
 
 
-def detectar_nou(html: str) -> dict | None:
+def detectar_nou(html: str | None = None) -> dict | None:
+    """Retorna l'agenda més recent que encara no és al manifest, o None.
+
+    Compara per `key` (any*12+mes), no per ordre del HTML: el catàleg nou
+    barreja targetes i pot repetir el mateix mes en diverses pàgines.
+    """
     ags = ya_processats()
     ids = {a["id"] for a in ags.get("agendas", [])}
-    # clau del defecte actual
     defkey = 0
     for a in ags.get("agendas", []):
-        mm = re.match(r"(\w+)-(\d{4})", a["id"])
+        mm = re.match(r"(\w+)-(\d{4})$", a["id"])
         if mm and mm.group(1) in MESES:
             defkey = max(defkey, int(mm.group(2)) * 12 + MESES[mm.group(1)])
-    for cand in parse_agendes(html):
+    candidates = totes_les_agendes() if html is None else parse_agendes(html)
+    for cand in candidates:
         if cand["id"] in ids:
             continue  # ja el tenim
         if cand["key"] > defkey:
@@ -284,12 +384,19 @@ def aplicar_regles(d: dict) -> dict:
 
 
 def main() -> int:
-    html = fetch_html(PAGE)
-    nou = detectar_nou(html)
+    # El catàleg és paginat: `detectar_nou` sense HTML recorre totes les pàgines.
+    nou = detectar_nou()
     if not nou:
         return 0  # silenci: cap mes nou
-    print(f"NOU MES DETECTAT: {nou['label']} -> {nou['url']}")
-    text = extreure_text_pdf(nou["url"])
+
+    # A la web nova l'enllaç de la targeta és una subpàgina .html i el PDF viu
+    # a dins. `resoldre_pdf` cobreix també el format antic (enllaç directe).
+    pdf_url = resoldre_pdf(nou)
+    if not pdf_url:
+        print(f"NOU MES DETECTAT però sense PDF localitzable: {nou['label']} -> {nou['url']}")
+        return 1
+    print(f"NOU MES DETECTAT: {nou['label']} -> {pdf_url}")
+    text = extreure_text_pdf(pdf_url)
 
     # La agenda completa no cap en una sola resposta del model (stopReason=length ~60KB):
     # partim el text del PDF en dues meitats i fem dues crides LLM, després fusionem.
@@ -337,7 +444,7 @@ def main() -> int:
 
     d["municipio"] = "Santa Margarida i els Monjos"
     d["mes"] = nou["label"]
-    d["fuente_pdf"] = nou["url"]
+    d["fuente_pdf"] = pdf_url
     d["generado"] = datetime.date.today().isoformat()
     d["generado_por"] = "agenda-check (opencode-go/deepseek-v4-pro via gateway)"
     d["total"] = len(d["eventos"])
@@ -354,7 +461,7 @@ def main() -> int:
         a["default"] = False
     ags["agendas"].append({
         "id": nou["id"], "label": nou["label"], "file": "agenda-" + nou["id"] + ".json",
-        "pdf": nou["url"], "default": True,
+        "pdf": pdf_url, "default": True,
         "fuente": "extraccio completa (LLM deepseek-v4-pro via gateway OpenClaw)",
     })
     ags["default"] = nou["id"]
