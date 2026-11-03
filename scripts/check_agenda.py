@@ -476,6 +476,33 @@ def aplicar_regles(d: dict) -> dict:
     return d
 
 
+# Estat del push pendent: fora del repo (no s'ha de versionar) i persistent
+# entre execucions, per poder avisar al cap de dies i no cada dia.
+PUSH_STATE = "/root/.openclaw/state/agenda-push-alert.json"
+# Dies seguits amb push fallit abans d'avisar. 3 = prou per distingir un
+# problema real d'un tall puntual de xarxa.
+PUSH_ALERT_DIES = 3
+# Un cop avisat, no repetir cada dia: com a molt un recordatori cada 7 dies.
+PUSH_ALERT_REPETIR_DIES = 7
+
+
+def _llegeix_push_state() -> dict:
+    try:
+        return json.load(open(PUSH_STATE, encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _desa_push_state(st: dict) -> None:
+    try:
+        os.makedirs(os.path.dirname(PUSH_STATE), exist_ok=True)
+        tmp = PUSH_STATE + ".tmp"
+        json.dump(st, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        os.replace(tmp, PUSH_STATE)
+    except Exception:
+        pass  # si no es pot desar, l'avís és best-effort: no ha de trencar res
+
+
 def reintentar_push_pendent() -> int | None:
     """Reintenta pujar commits locals que van quedar sense pujar.
 
@@ -483,9 +510,10 @@ def reintentar_push_pendent() -> int | None:
     el tornaria a veure mai: la publicació es perdria en silenci. Es mira
     primer si el repo va per davant d'origin i es reintenta.
 
-    Silenci en cas de fallada a propòsit: mentre no hi hagi credencial, el push
-    falla cada dia i avisar-ne cada dia seria soroll amb un problema que no es
-    pot resoldre des d'aquí. Quan el token existesqui, el backlog es puja sol.
+    Si el push segueix fallant, s'avisa: un push trencat de forma permanent vol
+    dir que la web no es publica, i abans això quedava en silenci per sempre.
+    S'avisa al cap de PUSH_ALERT_DIES dies seguits, i com a molt cada
+    PUSH_ALERT_REPETIR_DIES dies, per no convertir-ho en soroll diari.
     """
     try:
         rev = subprocess.run(
@@ -494,15 +522,52 @@ def reintentar_push_pendent() -> int | None:
         ahead = int((rev.stdout or "0").strip() or 0) if rev.returncode == 0 else 0
     except Exception:
         return None
+
+    st = _llegeix_push_state()
+    avui = datetime.date.today()
+
     if ahead <= 0:
+        # Res pendent: si veníem d'una ratxa de fallades, es neteja i s'informa.
+        if st.get("dies_seguits"):
+            print(f"PUSH PENDENT RESOLT: {ahead} commit(s) pendents, cua buida "
+                  f"(havia fallat {st.get('dies_seguits')} dia/es seguits).")
+            _desa_push_state({})
         return None
+
     try:
         subprocess.run(["git", "-C", REPO, "push", "origin", "main"],
                        check=True, capture_output=True, text=True, timeout=180)
         print(f"PUSH PENDENT RESOLT: {ahead} commit(s) pujats.")
-    except Exception:
-        pass  # silenci: es reintentarà demà sense avisar
-    return None
+        _desa_push_state({})
+        return None
+    except Exception as e:
+        # El push ha tornat a fallar: comptar la ratxa i decidir si toca avisar.
+        dies = int(st.get("dies_seguits") or 0) + 1
+        st["dies_seguits"] = dies
+        st["primer_fall"] = st.get("primer_fall") or avui.isoformat()
+        st["commit_pendents"] = ahead
+        detall = str(getattr(e, "stderr", "") or e)[:200].replace("\n", " ")
+        st["ultim_error"] = detall
+
+        ultim_avis = st.get("ultim_avis")
+        toca = dies >= PUSH_ALERT_DIES
+        if toca and ultim_avis:
+            try:
+                dies_des_avis = (avui - datetime.date.fromisoformat(ultim_avis)).days
+                toca = dies_des_avis >= PUSH_ALERT_REPETIR_DIES
+            except Exception:
+                toca = True
+
+        if toca:
+            print(f"ALERTA PUSH TRENCAT: {ahead} commit(s) sense pujar des de "
+                  f"{st['primer_fall']} ({dies} dies seguits fallant). "
+                  f"La web NO s'està actualitzant. Revisa ~/.git-credentials "
+                  f"(git l'esborra quan GitHub retorna 401). "
+                  f"Detall: {detall}")
+            st["ultim_avis"] = avui.isoformat()
+
+        _desa_push_state(st)
+        return None
 
 
 def main() -> int:
