@@ -25,3 +25,5 @@ agenda.pdf
 
 # Backups locals del pipeline
 *.bak
+*.BACKUP.*
+*.BACKUP
