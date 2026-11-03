@@ -2281,8 +2281,10 @@
   ],
   "municipio": "Santa Margarida i els Monjos",
   "mes": "Octubre 2026",
-  "fuente_pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9907/AGENDA%20Octubre%2026._Web.pdf",
+  "fuente_pdf": "https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual",
   "generado": "2026-10-03",
   "generado_por": "agenda-check (opencode-go/deepseek-v4-pro via gateway)",
-  "total": 97
+  "total": 97,
+  "fuente_pdf_original": "https://www.santamargaridaielsmonjos.cat/fitxer/9907/AGENDA%20Octubre%2026._Web.pdf",
+  "fuente_pdf_nota": "El PDF oficial original ya no existe en la web municipal (HTTP 404 el 2026-11-03). Se enlaza el catálogo oficial de agendas."
 }

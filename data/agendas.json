@@ -4,25 +4,28 @@
       "id": "setembre-2026",
       "label": "Setembre 2026",
       "file": "agenda-setembre-2026.json",
-      "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual",
       "default": false,
-      "fuente": "ingest curat (LLM deepseek-v4-pro / revisat)"
+      "fuente": "ingest curat (LLM deepseek-v4-pro / revisat)",
+      "pdf_original": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf"
     },
     {
       "id": "juliol-agost-2026",
       "label": "Juliol-Agost 2026",
       "file": "agenda-juliol-agost-2026.json",
-      "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9749/AGENDA%20Juliol-Agost%2026_web.pdf",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual",
       "default": false,
-      "fuente": "extraccio completa (LLM deepseek-v4-pro via subagent OpenClaw, 128 events)"
+      "fuente": "extraccio completa (LLM deepseek-v4-pro via subagent OpenClaw, 128 events)",
+      "pdf_original": "https://www.santamargaridaielsmonjos.cat/fitxer/9749/AGENDA%20Juliol-Agost%2026_web.pdf"
     },
     {
       "id": "octubre-2026",
       "label": "Octubre 2026",
       "file": "agenda-octubre-2026.json",
-      "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9907/AGENDA%20Octubre%2026._Web.pdf",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual",
       "default": false,
-      "fuente": "extraccio completa (LLM deepseek-v4-pro via gateway OpenClaw)"
+      "fuente": "extraccio completa (LLM deepseek-v4-pro via gateway OpenClaw)",
+      "pdf_original": "https://www.santamargaridaielsmonjos.cat/fitxer/9907/AGENDA%20Octubre%2026._Web.pdf"
     },
     {
       "id": "novembre-2026",

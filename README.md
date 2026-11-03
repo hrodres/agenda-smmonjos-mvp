@@ -14,10 +14,12 @@ index.html                      # app (HTML + JS, icones Lucide inline). És el 
 styles.css                      # Tailwind COMPILAT que usa index.html (definició real de
                                 #   bg-brand-600, flex, rounded-xl, colors de badge…). VIU.
 data/
-  agendas.json                  # MANIFEST: llista d'agendes + default (l'última de la llista)
-  agenda-setembre-2026.json     # 88 esdeveniments (agenda per defecte)
+  agendas.json                  # MANIFEST: llista d'agendes + default
+  agenda-novembre-2026.json     # 112 esdeveniments (agenda per defecte, nov. 2026)
+  agenda-octubre-2026.json      #  97 esdeveniments
+  agenda-setembre-2026.json     #  88 esdeveniments
   agenda-juliol-agost-2026.json # 128 esdeveniments (Festa Major + campus)
-  eventos.json                  # FALLBACK (còpia de setembre) si falla agendas.json
+  eventos.json                  # FALLBACK (còpia de l'agenda per defecte) si falla agendas.json
 scripts/
   ingest.py                     # pipeline LLM (opencode-go / deepseek-v4-pro) -> JSON d'agenda
   extract_pdf_dates.py          # extractor heurístic (sense clau) com a fallback
@@ -31,8 +33,9 @@ scripts/
 ## Com funciona (render)
 
 - `index.html` carrega `data/agendas.json` i mostra **l'última agenda del manifest** per
-  defecte (ara: Setembre 2026). El **icono de calendari del títol** obre un popup discret
-  per canviar de mes; cada agenda baixa el seu propi PDF.
+  defecte (ara: **Novembre 2026**; el camp `default` del manifest mana, no l'ordre de la
+  llista). El **icono de calendari del títol** obre un popup discret per canviar de mes;
+  cada agenda enllaça al seu PDF oficial.
 - Pestanyes (dinàmiques, derivades del JSON, no hardcodejades): `Agenda` (Actes),
   `Formació`, `Esport`, `Notícies`, `Telèfons`.
 - **Capçalera:** el **icono de calendari** (esquerra del títol) obre un popup discret per
@@ -99,15 +102,26 @@ Només pusheja si el JSON té >=50 events (guarda de dades dolentes). Si falla, 
 
 **Via manual (si es vol forçar):** delegar a un subagent amb `opencode-go/deepseek-v4-pro`
 que llegeixi el PDF i escrigui `data/agenda-<mes>.json` seguint l'esquema de
-`agenda-setembre-2026.json`. (Dins OpenClaw sí funciona; contra `opencode.ai` directe no.)
+`agenda-novembre-2026.json`. (Dins OpenClaw sí funciona; contra `opencode.ai` directe no.)
 
 Després (només via manual): afegeix l'entrada a `data/agendas.json` (l'última de la llista
 és la que carrega per defecte) i fes `git push`.
 
-**Font oficial:** les agendes en PDF es publiquen a la **web municipal** a
-https://www.santamargaridaielsmonjos.cat/actualitat/publicacions-locals/agenda-municipal
+**Font oficial:** les agendes en PDF es publiquen a la **web municipal**, al catàleg paginat
+de publicacions:
+https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual
 (el banner d'informació de la capçalera enllaça a la home de la web municipal,
 https://www.santamargaridaielsmonjos.cat). Els JSON es generen a partir d'aquests PDF.
+
+> ⚠️ **URL antiga morta.** L'octubre de 2026 la web municipal va canviar d'estructura:
+> `/actualitat/publicacions-locals/agenda-municipal` retorna **404**. La ruta bona és la del
+> catàleg paginat (`?pag=N`) i cada mes és una subpàgina `agenda-<mes>-<any>.html` que
+> enclou el PDF dins d'un `<iframe id="iframePdf">`.
+>
+> **PDFs antics morts:** els enllaços `/fitxer/NNNN/...pdf` dels mesos de juliol-agost,
+> setembre i octubre de 2026 també retornen **404**. Per això el camp `fuente_pdf` d'aquests
+> tres mesos apunta ara al catàleg oficial (l'original es conserva a `fuente_pdf_original`).
+> El de novembre sí que viu: `/media/repository/noticies/AGENDA_Novembre_26_web.pdf`.
 
 **Seguretat de dades:** `ingest.py` fa backup (`.bak`) abans de sobreescriure i **no
 destrueix** l'arxiu existent si falla. (Els `.bak` són artefactes locals i **no es

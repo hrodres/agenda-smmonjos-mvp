@@ -1,7 +1,7 @@
 {
   "municipio": "Santa Margarida i els Monjos",
   "mes": "Setembre 2026",
-  "fuente_pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
+  "fuente_pdf": "https://www.santamargaridaielsmonjos.cat/actualitat-i-publicacions/cataleg-de-publicacions/agenda-mensual",
   "generado_por": "opencode-go/deepseek-v4-pro",
   "total": 87,
   "eventos": [
@@ -1709,5 +1709,7 @@
       "web": null,
       "grup": "Altres Serveis"
     }
-  ]
+  ],
+  "fuente_pdf_original": "https://www.santamargaridaielsmonjos.cat/fitxer/9839/AGENDA%20Setembre%2026_web.pdf",
+  "fuente_pdf_nota": "El PDF oficial original ya no existe en la web municipal (HTTP 404 el 2026-11-03). Se enlaza el catálogo oficial de agendas."
 }
