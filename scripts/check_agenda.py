@@ -164,7 +164,11 @@ def _agenda_item(label: str, url: str):
     any_ = anys[0]
     key = any_ * 12 + MESES[mesos[0]]
     mid = "-".join(mesos) + f"-{any_}"
-    lab = label[0].upper() + label[1:] if label else label
+    # El `alt` de la targeta diu 'Agenda novembre 2026'; els altres mesos (format
+    # antic) ja perdien el prefix perque el regex el consumia. S'elimina aqui per
+    #que tots els labels quedin igual: 'Novembre 2026', no 'Agenda novembre 2026'.
+    lab = re.sub(r"^\s*agenda\s+", "", label, flags=re.I).strip()
+    lab = lab[0].upper() + lab[1:] if lab else lab
     return {"id": mid, "label": lab, "url": url, "key": key}
 
 
