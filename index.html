@@ -141,7 +141,7 @@
     return DIES_FULL[d.getDay()]+' '+dia+' de '+MESOS[mes]+' de '+any;
   }
 
-  var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null };
+  var state = { data:null, q:'', tab:'actes', obert:null, day:null, agendas:null, agendaId:null, scroll:{} };
   var docCloseHandler = null;
 
   // Red de seguretat: si un JSON d'agenda ve sense el camp id (els events de
@@ -229,7 +229,18 @@
       var b = document.createElement('button');
       b.className = (state.tab===t.id?'active':'');
       b.innerHTML = svg(t.icon,'') + '<span>'+t.label+'</span>';
-      b.onclick = function(){ state.tab = t.id; renderTabs(); renderMain(); };
+      b.onclick = function(){
+        if(state.tab === t.id) return;
+        // Desar la posicio de la pestana que deixem i restaurar la de la nova.
+        // Sense aixo el navegador conserva el scroll de l'altra llista i sembla
+        // que la nova pestana arrenca a mitges.
+        state.scroll[state.tab] = window.scrollY || 0;
+        state.tab = t.id;
+        renderTabs();
+        renderMain();
+        var desti = state.scroll[t.id] || 0;
+        requestAnimationFrame(function(){ window.scrollTo(0, desti); });
+      };
       bar.appendChild(b);
     });
   }
