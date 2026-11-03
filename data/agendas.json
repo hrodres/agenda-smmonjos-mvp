@@ -21,9 +21,17 @@
       "label": "Octubre 2026",
       "file": "agenda-octubre-2026.json",
       "pdf": "https://www.santamargaridaielsmonjos.cat/fitxer/9907/AGENDA%20Octubre%2026._Web.pdf",
+      "default": false,
+      "fuente": "extraccio completa (LLM deepseek-v4-pro via gateway OpenClaw)"
+    },
+    {
+      "id": "novembre-2026",
+      "label": "Agenda novembre 2026",
+      "file": "agenda-novembre-2026.json",
+      "pdf": "https://www.santamargaridaielsmonjos.cat/media/repository/noticies/AGENDA_Novembre_26_web.pdf",
       "default": true,
       "fuente": "extraccio completa (LLM deepseek-v4-pro via gateway OpenClaw)"
     }
   ],
-  "default": "octubre-2026"
+  "default": "novembre-2026"
 }

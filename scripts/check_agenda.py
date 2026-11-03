@@ -48,6 +48,68 @@ def fetch_html(url: str) -> str:
     return r.text
 
 
+def resoldre_binari_openclaw() -> str | None:
+    """Retorna la ruta absoluta del CLI `openclaw`, o None si no en troba cap.
+
+    El planificador no carrega nvm: el seu PATH és
+    /usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin i `sh` és dash,
+    així que ~/.bashrc (l'únic que fa source de nvm.sh) no s'executa mai.
+    Invocar "openclaw" a seques donava FileNotFoundError sota el cron.
+    """
+    import shutil
+    candidats = [
+        os.environ.get("OPENCLAW_BIN"),
+        shutil.which("openclaw"),
+        "/root/.nvm/versions/node/v26.8.2/bin/openclaw",
+        "/root/.openclaw/tmp/agent-cli/openclaw",
+        "/usr/local/bin/openclaw",
+    ]
+    for c in candidats:
+        if c and os.path.isfile(c) and os.access(c, os.X_OK):
+            return c
+    return None
+
+
+# Sòl·lids de URL per mes (sense accents: 'març' -> 'marc').
+SLUG_MES = {
+    "gener": "gener", "febrer": "febrer", "març": "marc", "abril": "abril",
+    "maig": "maig", "juny": "juny", "juliol": "juliol", "agost": "agost",
+    "setembre": "setembre", "octubre": "octubre", "novembre": "novembre",
+    "desembre": "desembre",
+}
+
+
+def agendes_per_sondeig(mesos_enrere: int = 2, mesos_endavant: int = 2) -> list[dict]:
+    """Descobreix agendes provant URLs, sense dependre del catàleg paginat.
+
+    El catàleg va deixar de llistar els mesos recents (nov. 2026: només arriba
+    a 'Agenda juny 2026'), però la subpàgina del mes SÍ que existeix i respon
+    200. Es prova el patró d'URL directament.
+    """
+    avui = datetime.date.today()
+    inv = {v: k for k, v in MESES.items()}
+    out = []
+    for delta in range(-mesos_enrere, mesos_endavant + 1):
+        idx = avui.year * 12 + (avui.month - 1) + delta
+        any_, mes = divmod(idx, 12)
+        mes += 1
+        nom = inv.get(mes)
+        if not nom:
+            continue
+        slug = SLUG_MES.get(nom, nom)
+        url = f"{BASE_URL}/actualitat-i-publicacions/agenda-mensual/agenda-{slug}-{any_}.html"
+        try:
+            page = fetch_html(url)
+        except Exception:
+            continue
+        if "agenda" not in page.lower():
+            continue
+        item = _agenda_item(f"Agenda {nom} {any_}", url)
+        if item:
+            out.append(item)
+    return out
+
+
 def parse_agendes(html: str):
     """Retorna llista de dicts {id, label, url, key} ordenats per key descendent.
 
@@ -187,6 +249,28 @@ def detectar_nou(html: str | None = None) -> dict | None:
     return None
 
 
+def detectar_nou_sondeig() -> dict | None:
+    """Com `detectar_nou`, però descobrint els mesos provant URLs.
+
+    El catàleg paginat ja no llista els mesos recents (nov. 2026: arriba només
+    a 'Agenda juny 2026'), de manera que `detectar_nou` no veia l'agenda nova
+    encara que la subpàgina existís.
+    """
+    ags = ya_processats()
+    ids = {a["id"] for a in ags.get("agendas", [])}
+    defkey = 0
+    for a in ags.get("agendas", []):
+        mm = re.match(r"(\w+)-(\d{4})$", a["id"])
+        if mm and mm.group(1) in MESES:
+            defkey = max(defkey, int(mm.group(2)) * 12 + MESES[mm.group(1)])
+    for cand in sorted(agendes_per_sondeig(), key=lambda x: x["key"], reverse=True):
+        if cand["id"] in ids:
+            continue
+        if cand["key"] > defkey:
+            return cand
+    return None
+
+
 def extreure_text_pdf(url: str) -> str:
     import requests, pdfplumber, tempfile
     r = requests.get(url, timeout=60)
@@ -246,9 +330,14 @@ def generar_json(text: str, label: str, parte: str = "") -> dict | None:
     instr = ("\n\n" + parte) if parte else ""
     with open(prompt_path, "w", encoding="utf-8") as f:
         f.write(PROMPT_SCHEMA + instr + "\n\nAGENDA: " + label + "\n\nTEXT DEL PDF:\n" + text)
+    # El planificador no hereta nvm: cal la ruta absoluta o FileNotFoundError.
+    binari = resoldre_binari_openclaw()
+    if not binari:
+        print("ERROR: no s'ha trobat el binari 'openclaw' (OPENCLAW_BIN / nvm / shim).")
+        return None
     try:
         r = subprocess.run(
-            ["openclaw", "agent", "--model", MODEL, "--session-key", SESSION_KEY,
+            [binari, "agent", "--model", MODEL, "--session-key", SESSION_KEY,
              "--message-file", prompt_path, "--json", "--timeout", "2400", "--thinking", "off"],
             capture_output=True, text=True, timeout=2400,
         )
@@ -383,9 +472,48 @@ def aplicar_regles(d: dict) -> dict:
     return d
 
 
+def reintentar_push_pendent() -> int | None:
+    """Reintenta pujar commits locals que van quedar sense pujar.
+
+    Si un push va fallar, el mes ja consta a agendas.json i `detectar_nou` no
+    el tornaria a veure mai: la publicació es perdria en silenci. Es mira
+    primer si el repo va per davant d'origin i es reintenta.
+
+    Silenci en cas de fallada a propòsit: mentre no hi hagi credencial, el push
+    falla cada dia i avisar-ne cada dia seria soroll amb un problema que no es
+    pot resoldre des d'aquí. Quan el token existesqui, el backlog es puja sol.
+    """
+    try:
+        rev = subprocess.run(
+            ["git", "-C", REPO, "rev-list", "--count", "origin/main..HEAD"],
+            capture_output=True, text=True, timeout=60)
+        ahead = int((rev.stdout or "0").strip() or 0) if rev.returncode == 0 else 0
+    except Exception:
+        return None
+    if ahead <= 0:
+        return None
+    try:
+        subprocess.run(["git", "-C", REPO, "push", "origin", "main"],
+                       check=True, capture_output=True, text=True, timeout=180)
+        print(f"PUSH PENDENT RESOLT: {ahead} commit(s) pujats.")
+    except Exception:
+        pass  # silenci: es reintentarà demà sense avisar
+    return None
+
+
 def main() -> int:
-    # El catàleg és paginat: `detectar_nou` sense HTML recorre totes les pàgines.
+    # Si un push anterior va quedar pendent, es reintenta abans de res: el mes
+    # ja consta a agendas.json i no es tornaria a veure mai.
+    # NO bloqueja: amb el push trencat de forma permanent, aturar-se aquí voldria
+    # dir no processar mai cap mes nou. Només s'ha d'informar i continuar.
+    reintentar_push_pendent()
+
+    # El catàleg paginat funciona i és la font oficial, així que mana ell.
+    # El sondeig d'URLs queda NOMÉS com a xarxa de seguretat per si el catàleg
+    # deixa de llistar els mesos recents (ja va passar: nov. 2026 va trigar).
     nou = detectar_nou()
+    if not nou:
+        nou = detectar_nou_sondeig()
     if not nou:
         return 0  # silenci: cap mes nou
 
@@ -476,7 +604,16 @@ def main() -> int:
     subprocess.run(["git", "-C", REPO, "-c", "user.name=hrodres",
                     "-c", "user.email=hrodres@users.noreply.github.com", "commit", "-q",
                     "-m", f"Agenda {nou['label']}: JSON generat (deepseek-v4-pro) + push automàtic"], check=True)
-    subprocess.run(["git", "-C", REPO, "push", "origin", "main"], check=True)
+    try:
+        subprocess.run(["git", "-C", REPO, "push", "origin", "main"],
+                       check=True, capture_output=True, text=True, timeout=180)
+    except subprocess.CalledProcessError as e:
+        # El JSON ja és al disc i a agendas.json: es reintentarà a la següent
+        # execució via reintentar_push_pendent().
+        print(f"PROCESSAT però PUSH FALLIT: {nou['label']} — {len(d['eventos'])} events.")
+        print("  detall:", (e.stderr or "")[:300].replace("\n", " "))
+        print("  es reintentarà a la propera execució.")
+        return 1
     print(f"PROCESSAT i PUSHEJAT: {nou['label']} — {len(d['eventos'])} events, "
           f"{len(d.get('contactes', []))} contactes.")
     return 0
